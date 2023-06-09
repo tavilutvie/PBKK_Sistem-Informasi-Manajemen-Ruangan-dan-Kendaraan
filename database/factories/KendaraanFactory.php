@@ -17,7 +17,8 @@ class KendaraanFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'jenis_kendaraan' => array_rand(["mobil", "motor", "sepeda", "lainnya"]),
+            'status_operasional' => $this->faker->boolean(),  
         ];
     }
 }

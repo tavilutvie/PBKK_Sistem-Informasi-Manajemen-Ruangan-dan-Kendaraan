@@ -13,5 +13,6 @@ class PesananKendaraanSeeder extends Seeder
     public function run(): void
     {
         //
+        PesananKendaraan::factory(10)->create();
     }
 }

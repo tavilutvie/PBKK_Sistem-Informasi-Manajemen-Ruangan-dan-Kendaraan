@@ -13,5 +13,6 @@ class JadwalSewaRuanganSeeder extends Seeder
     public function run(): void
     {
         //
+        JadwalSewaRuangan::factory(10)->create();
     }
 }
