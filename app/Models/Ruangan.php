@@ -17,10 +17,10 @@ class Ruangan extends Model
     ];
 
     public function pesananRuangan() {
-        return $this->hasMany(PesananRuangan::class, 'ruangan_id');
+        return $this->hasMany(PesananRuangan::class);
     }
 
     public function jadwalSewaRuangan() {
-        return $this->hasMany(JadwalSewaRuangan::class, 'ruangan_id');
+        return $this->hasMany(JadwalSewaRuangan::class);
     }
 }

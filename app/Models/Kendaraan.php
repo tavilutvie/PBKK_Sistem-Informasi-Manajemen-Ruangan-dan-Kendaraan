@@ -16,10 +16,10 @@ class Kendaraan extends Model
     ];
 
     public function pesananKendaraan() {
-        return $this->hasMany(PesananKendaraan::class, 'kendaraan_id');
+        return $this->hasMany(PesananKendaraan::class);
     }
 
     public function jadwalSewaKendaraan() {
-        return $this->hasMany(JadwalSewaKendaraan::class, 'kendaraan_id');
+        return $this->hasMany(JadwalSewaKendaraan::class);
     }
 }

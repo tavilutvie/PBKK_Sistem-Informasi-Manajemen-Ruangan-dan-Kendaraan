@@ -26,10 +26,10 @@ class Akun extends Model
     ];
 
     public function pesananRuangan() {
-        return $this->hasMany(PesananRuangan::class, 'id_akun');
+        return $this->hasMany(PesananRuangan::class);
     }
 
     public function pesananKendaraan() {
-        return $this->hasMany(PesananKendaraan::class, 'id_akun');
+        return $this->hasMany(PesananKendaraan::class);
     }
 }
