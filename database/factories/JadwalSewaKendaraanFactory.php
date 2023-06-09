@@ -18,7 +18,7 @@ class JadwalSewaKendaraanFactory extends Factory
     {
         return [
             //
-            'tanggal' => $this->faker->date(),
+            'tanggal_pesanan' => $this->faker->date(),
             'waktu_mulai' => $this->faker->time(),
             'waktu_selesai' => $this->faker->time(),
 

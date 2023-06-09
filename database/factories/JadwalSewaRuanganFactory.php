@@ -18,7 +18,7 @@ class JadwalSewaRuanganFactory extends Factory
     {
         return [
             //tanggal date, waktu mulai time, waktu selesai time
-            'tanggal' => $this->faker->date(),
+            'tanggal_pesanan' => $this->faker->date(),
             'waktu_mulai' => $this->faker->time(),
             'waktu_selesai' => $this->faker->time(),
 

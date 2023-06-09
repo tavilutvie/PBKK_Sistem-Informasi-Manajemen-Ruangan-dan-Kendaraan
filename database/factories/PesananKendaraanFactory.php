@@ -20,8 +20,8 @@ class PesananKendaraanFactory extends Factory
             //
             'status_pesanan' => array_rand(["menunggu", "disetujui", "ditolak"]),
             'status_dokumen' => $this->faker->boolean(),
-            'waktu_mulai_pesan' => $this->faker->dateTime(),
-            'waktu_selesai_pesan' => $this->faker->dateTime(),
+            'waktu_mulai' => $this->faker->dateTime(),
+            'waktu_selesai' => $this->faker->dateTime(),
 
             'Kendaraan_id_kendaraan' => random_int(1,10),
             'Akun_id_akun' => random_int(1,10),
