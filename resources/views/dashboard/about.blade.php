@@ -5,7 +5,7 @@
 @section("main_content")
     <!-- TITLE -->
     <div class="container py-5">
-        <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMPRU ITS</h1>
+        <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMRK ITS</h1>
     </div>
     <!---->
 
@@ -20,9 +20,9 @@
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-8 border-bottom border-3">
-                <p class="text-center text-dark">SIMPRU (Sistem Informasi Manajemen Peminjaman Ruangan) ITS adalah
-                    sebuah sistem informasi milik ITS yang digunakan untuk melayani peminjaman ruangan (kendaraan, dan
-                    lainnya) oleh seluruh mahasiswa, dosen, dan elemen ITS sebagai bentuk pemenuhan kebutuhan warga ITS.
+                <p class="text-center text-dark">SIMRK (Sistem Informasi Manajemen Ruangan dan Kendaraan) ITS adalah
+                    sebuah sistem informasi milik ITS yang digunakan untuk melayani peminjaman ruangan, kendaraan, dan
+                    lainnya oleh seluruh mahasiswa, dosen, dan elemen ITS sebagai bentuk pemenuhan kebutuhan warga ITS.
                 </p>
             </div>
         </div>

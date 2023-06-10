@@ -2,7 +2,7 @@
 <nav class="container-fluid navbar navbar-expand-lg bg-light sticky-top px-5">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img id="logo-simpru" src="/src/img/SIMRKLogo.png" alt="Logo SIMRK" width="180" height="80.04">
+                <img id="logo-simrk" src="/src/img/SIMRKLogo.png" alt="Logo SIMRK" width="180" height="80.04">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
