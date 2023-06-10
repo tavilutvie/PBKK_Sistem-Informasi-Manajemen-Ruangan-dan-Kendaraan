@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,4 @@ Route::get('/register', function () {
     ]); 
 });
 
-Route::post('/register', [
-    
-]);
+Route::post('/register', [RegisterController::class, 'store']);
