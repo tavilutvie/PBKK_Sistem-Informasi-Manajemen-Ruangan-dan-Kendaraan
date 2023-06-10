@@ -40,3 +40,15 @@ Route::get('/register', function () {
 Route::post('/register', [
     
 ]);
+
+Route::get('/detail_ruangan', function () {
+    return view('/room/roomDetail', [
+        "page" => "roomDetail"
+    ]); 
+});
+
+Route::get('/detail_kendaraan', function () {
+    return view('/vehicle/vehicleDetail', [
+        "page" => "vehicleDetail"
+    ]); 
+});
