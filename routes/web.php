@@ -58,3 +58,9 @@ Route::get('/admin', function () {
         "page" => "Admin"
     ]); 
 });
+
+Route::get('/schedule', function () {
+    return view('/schedule/schedule', [
+        "page" => "Schedule"
+    ]); 
+});

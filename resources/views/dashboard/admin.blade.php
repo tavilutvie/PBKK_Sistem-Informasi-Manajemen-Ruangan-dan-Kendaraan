@@ -96,4 +96,8 @@
                 </tr>
             </tbody>
         </table>
+
+        <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-5">
+            <a href="#" class="btn btn-primary">LOGOUT</a>
+        </div>
 </div>
