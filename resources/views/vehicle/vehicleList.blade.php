@@ -13,8 +13,7 @@
             <h5 class="card-title">jenis_kendaraan</h5>
             <p class="card-text">Nomor Plat kendaraan: nomor_plat_kendaraan</p>
             <p class="card-text">Status Operasional kendaraan: status_operasional_kendaraan</p>
-            <a href="#" class="btn btn-primary">Lihat
-                Detail</a>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </div>
 
@@ -24,8 +23,7 @@
             <h5 class="card-title">jenis_kendaraan</h5>
             <p class="card-text">Nomor Plat kendaraan: nomor_plat_kendaraan</p>
             <p class="card-text">Status Operasional kendaraan: status_operasional_kendaraan</p>
-            <a href="#" class="btn btn-primary">Lihat
-                Detail</a>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </div>
 
@@ -35,8 +33,7 @@
             <h5 class="card-title">jenis_kendaraan</h5>
             <p class="card-text">Nomor Plat kendaraan: nomor_plat_kendaraan</p>
             <p class="card-text">Status Operasional kendaraan: status_operasional_kendaraan</p>
-            <a href="#" class="btn btn-primary">Lihat
-                Detail</a>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </div>
 
@@ -46,8 +43,7 @@
             <h5 class="card-title">jenis_kendaraan</h5>
             <p class="card-text">Nomor Plat kendaraan: nomor_plat_kendaraan</p>
             <p class="card-text">Status Operasional kendaraan: status_operasional_kendaraan</p>
-            <a href="#" class="btn btn-primary">Lihat
-                Detail</a>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </div>
 
@@ -57,8 +53,7 @@
             <h5 class="card-title">jenis_kendaraan</h5>
             <p class="card-text">Nomor Plat kendaraan: nomor_plat_kendaraan</p>
             <p class="card-text">Status Operasional kendaraan: status_operasional_kendaraan</p>
-            <a href="#" class="btn btn-primary">Lihat
-                Detail</a>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </div>
 
@@ -68,8 +63,7 @@
             <h5 class="card-title">jenis_kendaraan</h5>
             <p class="card-text">Nomor Plat kendaraan: nomor_plat_kendaraan</p>
             <p class="card-text">Status Operasional kendaraan: status_operasional_kendaraan</p>
-            <a href="#" class="btn btn-primary">Lihat
-                Detail</a>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </div>
 
@@ -79,8 +73,7 @@
             <h5 class="card-title">jenis_kendaraan</h5>
             <p class="card-text">Nomor Plat kendaraan: nomor_plat_kendaraan</p>
             <p class="card-text">Status Operasional kendaraan: status_operasional_kendaraan</p>
-            <a href="#" class="btn btn-primary">Lihat
-                Detail</a>
+            <a href="#" class="btn btn-primary">Pesan Sekarang</a>
         </div>
     </div>
 

@@ -12,9 +12,7 @@
         <div class="card-body">
             <h5 class="card-title">nama_ruangan</h5>
             <p class="card-text">Jenis Ruangan: jenis_ruangan</p>
-            <p class="card-text">Kapasitas Ruangan: kapasitas_ruangan</p>
-            <p class="card-text">Status Operasional Ruangan: status_operasional_ruangan</p>
-            <a href="#" class="btn btn-primary">Lihat
+            <a href="/roomDetail" class="btn btn-primary">Lihat
                 Detail</a>
         </div>
     </div>
@@ -24,9 +22,7 @@
         <div class="card-body">
             <h5 class="card-title">nama_ruangan</h5>
             <p class="card-text">Jenis Ruangan: jenis_ruangan</p>
-            <p class="card-text">Kapasitas Ruangan: kapasitas_ruangan</p>
-            <p class="card-text">Status Operasional Ruangan: status_operasional_ruangan</p>
-            <a href="#" class="btn btn-primary">Lihat
+            <a href="/roomDetail" class="btn btn-primary">Lihat
                 Detail</a>
         </div>
     </div>
@@ -36,9 +32,7 @@
         <div class="card-body">
             <h5 class="card-title">nama_ruangan</h5>
             <p class="card-text">Jenis Ruangan: jenis_ruangan</p>
-            <p class="card-text">Kapasitas Ruangan: kapasitas_ruangan</p>
-            <p class="card-text">Status Operasional Ruangan: status_operasional_ruangan</p>
-            <a href="#" class="btn btn-primary">Lihat
+            <a href="/roomDetail" class="btn btn-primary">Lihat
                 Detail</a>
         </div>
     </div>
@@ -48,9 +42,7 @@
         <div class="card-body">
             <h5 class="card-title">nama_ruangan</h5>
             <p class="card-text">Jenis Ruangan: jenis_ruangan</p>
-            <p class="card-text">Kapasitas Ruangan: kapasitas_ruangan</p>
-            <p class="card-text">Status Operasional Ruangan: status_operasional_ruangan</p>
-            <a href="#" class="btn btn-primary">Lihat
+            <a href="/roomDetail" class="btn btn-primary">Lihat
                 Detail</a>
         </div>
     </div>
@@ -60,9 +52,7 @@
         <div class="card-body">
             <h5 class="card-title">nama_ruangan</h5>
             <p class="card-text">Jenis Ruangan: jenis_ruangan</p>
-            <p class="card-text">Kapasitas Ruangan: kapasitas_ruangan</p>
-            <p class="card-text">Status Operasional Ruangan: status_operasional_ruangan</p>
-            <a href="#" class="btn btn-primary">Lihat
+            <a href="/roomDetail" class="btn btn-primary">Lihat
                 Detail</a>
         </div>
     </div>
@@ -72,9 +62,7 @@
         <div class="card-body">
             <h5 class="card-title">nama_ruangan</h5>
             <p class="card-text">Jenis Ruangan: jenis_ruangan</p>
-            <p class="card-text">Kapasitas Ruangan: kapasitas_ruangan</p>
-            <p class="card-text">Status Operasional Ruangan: status_operasional_ruangan</p>
-            <a href="#" class="btn btn-primary">Lihat
+            <a href="/roomDetail" class="btn btn-primary">Lihat
                 Detail</a>
         </div>
     </div>
