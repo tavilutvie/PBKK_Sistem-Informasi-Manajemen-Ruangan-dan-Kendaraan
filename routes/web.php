@@ -52,3 +52,9 @@ Route::get('/vehicleDetail', function () {
         "page" => "vehicleDetail"
     ]); 
 });
+
+Route::get('/admin', function () {
+    return view('/dashboard/admin', [
+        "page" => "Admin"
+    ]); 
+});
