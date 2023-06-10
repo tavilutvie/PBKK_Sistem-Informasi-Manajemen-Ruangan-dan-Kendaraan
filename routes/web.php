@@ -41,13 +41,13 @@ Route::post('/register', [
     
 ]);
 
-Route::get('/detail_ruangan', function () {
+Route::get('/roomDetail', function () {
     return view('/room/roomDetail', [
         "page" => "roomDetail"
     ]); 
 });
 
-Route::get('/detail_kendaraan', function () {
+Route::get('/vehicleDetail', function () {
     return view('/vehicle/vehicleDetail', [
         "page" => "vehicleDetail"
     ]); 
