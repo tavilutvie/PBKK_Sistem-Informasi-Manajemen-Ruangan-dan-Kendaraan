@@ -34,9 +34,29 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('/auth/register', [
         "page" => "Register"
-    ]); 
+    ]);
 });
 
 Route::post('/register', [
-    
+
 ]);
+
+Route::get('/roomList', function () {
+    return view('/room/roomList', [
+        "page" => "roomList"
+    ]);
+});
+
+Route::get('/vehicleList', function () {
+    return view('/vehicle/vehicleList', [
+        "page" => "vehicleList"
+    ]);
+});
+
+Route::get('/orderList', function () {
+    return view('/order/orderList', [
+        "page" => "orderList"
+    ]);
+});
+
+

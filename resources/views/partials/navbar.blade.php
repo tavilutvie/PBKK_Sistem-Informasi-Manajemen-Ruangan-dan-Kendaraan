@@ -35,8 +35,8 @@
                             Kategori Pemesanan
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./res/list_ruangan.php">Ruangan</a></li>
-                            <li><a class="dropdown-item" href="./res/list_kendaraan.php">Kendaraan</a></li>
+                            <li><a class="dropdown-item" href="/roomList">Ruangan</a></li>
+                            <li><a class="dropdown-item" href="/vehicleList">Kendaraan</a></li>
                         </ul>
                     </li>
                     <li class="nav-item d-md-none">
@@ -44,11 +44,11 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <form class="d-flex mx-2" role="search">
+                    {{-- <form class="d-flex mx-2" role="search">
                         <input class="form-control me-2" type="search" placeholder="Ingin menyewa apa?"
                             aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Cari</button>
-                    </form>
+                    </form> --}}
                     <div class="dropdown mx-2 d-none d-md-block">
                         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./src/icon/AccountIcon.svg" alt="Account Icon" width="36px" height="36px">
@@ -58,7 +58,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="./res/list_pesanan.php">Pesanan Anda</a></li>
+                            <li><a class="dropdown-item" href="/orderList">Pesanan Anda</a></li>
                             <form class="my-3" action="./helper/logout_process.php" method="post">
                                 <button type="submit" class="dropdown-item">Keluar</button>
                             </form>
