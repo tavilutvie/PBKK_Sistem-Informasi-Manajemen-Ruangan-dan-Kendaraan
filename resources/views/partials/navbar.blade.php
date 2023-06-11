@@ -56,21 +56,21 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             @auth
                                 <li class="dropdown-item">Halo, {{ auth()->user()->name }} </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="./res/list_pesanan.php">Pesanan Anda</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="./res/list_pesanan.php">Pesanan Anda</a></li>
                                 <form class="my-3" action="/logout" method="GET">
                                     @csrf
-                                <button type="submit" class="dropdown-item">Keluar</button>
-                            </form>
+                                    <button type="submit" class="dropdown-item">Keluar</button>
+                                </form>
                             @endauth
                             @guest
-                            <li><a class="dropdown-item" href="login">Login</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="register">Buat Akun Baru</a></li>
+                                <li><a class="dropdown-item" href="login">Login</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="register">Buat Akun Baru</a></li>
                             @endguest
                         </ul>
                     </div>
