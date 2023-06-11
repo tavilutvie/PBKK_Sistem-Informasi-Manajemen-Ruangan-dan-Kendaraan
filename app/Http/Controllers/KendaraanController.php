@@ -63,4 +63,25 @@ class KendaraanController extends Controller
     {
         //
     }
+
+    /**
+     * Get List of kendaraan
+     */
+    public function list() {
+
+    }
+
+    /**
+     * Get Detail of one kendaraan
+     */
+    public function detail(Kendaraan $kendaraan) {
+
+    }
+
+    /**
+     * Get schedule of kendaraan dipinjam
+     */
+    public function schedule(Kendaraan $kendaraan) {
+
+    }
 }

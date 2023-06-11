@@ -1,33 +1,33 @@
-@extends("layouts.template")
-
-@include("partials.navbar")
+@extends('Template.head')
 
 @section("main_content")
+
+@include("Partials.navbar")
     <!-- TITLE -->
     <div class="container py-5">
-        <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMPRU ITS</h1>
-    </div>
-    <!---->
+    <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMRK ITS</h1>
+</div>
+<!---->
 
     <!-- LOGO -->
     <div class="container my-3">
         <div class="row">
             <div class="col-12">
                 <a href="/index.html">
-                    <img src="../src/img/Logo.svg" alt="Logo" class="img-fluid mx-auto d-block">
+                    <img src="/public/src/img/SIMRKLogo.png" alt="Logo" class="img-fluid mx-auto d-block">
                 </a>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-8 border-bottom border-3">
-                <p class="text-center text-dark">SIMPRU (Sistem Informasi Manajemen Peminjaman Ruangan) ITS adalah
-                    sebuah sistem informasi milik ITS yang digunakan untuk melayani peminjaman ruangan (kendaraan, dan
-                    lainnya) oleh seluruh mahasiswa, dosen, dan elemen ITS sebagai bentuk pemenuhan kebutuhan warga ITS.
-                </p>
-            </div>
+            <p class="text-center text-dark">SIMRK (Sistem Informasi Manajemen Ruangan dan Kendaraan) ITS adalah
+                sebuah sistem informasi milik ITS yang digunakan untuk melayani peminjaman ruangan, kendaraan, dan
+                lainnya oleh seluruh mahasiswa, dosen, dan elemen ITS sebagai bentuk pemenuhan kebutuhan warga ITS.
+            </p>
         </div>
     </div>
-    <!---->
+</div>
+<!---->
 
     <!-- Ruangan -->
     <div class="row container-fluid my-5">
@@ -69,4 +69,8 @@
     <div class="d-flex justify-content-center w-100 px-5 my-5">
         <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
     </div>
+<!---->
+
+@include('Partials.footer')
+
 @endsection

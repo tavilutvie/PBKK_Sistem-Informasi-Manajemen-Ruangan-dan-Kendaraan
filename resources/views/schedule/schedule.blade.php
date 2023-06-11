@@ -1,8 +1,8 @@
-@extends("layouts.template")
-
-@include("partials.navbar")
+@extends('Template.head')
 
 @section("main_content")
+
+@include("Partials.navbar")
 <!-- TITLE -->
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 pt-2">JADWAL PEMAKAIAN</h1>
@@ -12,7 +12,7 @@
 <div class="container pt-1 border-bottom border-3 mb-4 pb-3">
     <h3 class="text-center text-dark border-5 pt-1">nama_ruangan</h3>
     <h3 class="text-center text-dark border-5 pt-1 pb-3">bulan_tahun</h3>
-    
+
     <!-- Masukin kalender disini -->
     <table class="table table-responsive w-75">
         <thead>
@@ -33,7 +33,7 @@
     <div class="container">
         <div class="d-flex justify-content-center">
             <button type="button" class="btn btn-primary m-2" id="prev"><</button>
-            <button type="button" class="btn btn-primary m-2" id="next">></button>  
+            <button type="button" class="btn btn-primary m-2" id="next">></button>
         </div>
     </div>
 </div>
@@ -80,4 +80,6 @@
 <!---->
 <script src="../js/dateview.js"></script>
 <script src="../js/datecolor.js"></script>
+
+@include('Partials.footer')
 @endsection

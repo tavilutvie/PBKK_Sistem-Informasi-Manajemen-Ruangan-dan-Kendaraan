@@ -1,8 +1,8 @@
-@extends("layouts.template")
-
-@include("partials.navbar")
+@extends("Template.head")
 
 @section("main_content")
+
+@include("Partials.navbar")
     <!-- TITLE -->
     <div class="container pt-4">
         <h1 class="text-center text-dark border-5 py-2">nama_ruangan</h1>
@@ -29,4 +29,6 @@
     <div class="d-flex justify-content-center w-100 px-5 mt-3 mb-5">
         <a href="../room/roomList" class="btn btn-primary">Kembali ke Daftar Ruangan</a>
     </div>
+
+@include('Partials.footer')
 @endsection

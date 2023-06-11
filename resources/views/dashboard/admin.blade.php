@@ -1,5 +1,5 @@
-@extends("layouts.template_admin")
-@section("main_content")
+@extends('Template.head')
+@section('main_content')
 <!-- TITLE -->
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 py-2">ADMIN PAGE</h1>
@@ -98,6 +98,7 @@
         </table>
 
         <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-5">
-            <a href="#" class="btn btn-primary">LOGOUT</a>
+            <a href="/logout" class="btn btn-primary">LOGOUT</a>
         </div>
 </div>
+@endsection

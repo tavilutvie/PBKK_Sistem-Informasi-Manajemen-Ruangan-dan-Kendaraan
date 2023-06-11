@@ -22,8 +22,16 @@ class Akuns extends Model
         'password',
     ];
 
-    // Table relation
+    // Table relationships
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function pesananRuangan() {
+        return $this->hasMany(PesananRuangan::class);
+    }
+
+    public function pesananKendaraan() {
+        return $this->hasMany(PesananKendaraan::class);
     }
 }

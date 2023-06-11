@@ -32,20 +32,20 @@
 
                         <form action="/login" method="POST">
                             @csrf
-                            <div class="form-outline form-white mb-4">
-                                <label class="form-label" for="typeEmailX">Email</label>
+                        <div class="form-outline form-white mb-4">
+                            <label class="form-label" for="typeEmailX">Email</label>
                                 <input type="email" name="email" id="typeEmailX" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{ old('email') }}" required/>
                                 @error('email')
                                     <div id="validationServerUsernameFeedback" class=" invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
-                            </div>
+                        </div>
 
-                            <div class="form-outline form-white mb-5">
-                                <label class="form-label" for="typePasswordX">Password</label>
+                        <div class="form-outline form-white mb-5">
+                            <label class="form-label" for="typePasswordX">Password</label>
                                 <input type="password" name="password" id="typePasswordX" class="form-control form-control-lg" required/>
-                            </div>
+                        </div>
 
                             <button class="btn btn-outline-light btn-lg px-5 mb-4" type="submit">Login</button>
                         </form>

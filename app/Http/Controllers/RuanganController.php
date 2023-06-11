@@ -63,4 +63,25 @@ class RuanganController extends Controller
     {
         //
     }
+
+    /**
+     * Get List of ruangan
+     */
+    public function list() {
+
+    }
+
+    /**
+     * Get Detail of one ruangan
+     */
+    public function detail(Ruangan $ruangan) {
+
+    }
+
+    /**
+     * Get schedule of ruangan dipinjam
+     */
+    public function schedule(Ruangan $ruangan) {
+
+    }
 }

@@ -17,7 +17,7 @@ class PesananRuangan extends Model
     ];
 
     public function akun() {
-        return $this->belongsTo(Akun::class);
+        return $this->belongsTo(Akuns::class);
     }
 
     public function ruangan() {

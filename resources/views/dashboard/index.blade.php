@@ -1,8 +1,26 @@
-@extends("layouts.template")
-
-@include("partials.navbar")
+@extends('Template.head')
 
 @section('main_content')
+
+@include('Partials.navbar')
+
+@if (session()->has('success'))
+    <div class="d-flex justify-content-center align-items-center bg-success">
+        <div class="alert alert-success alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="d-flex justify-content-center align-items-center bg-danger">
+        <div class="alert alert-danger alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
 
     <!-- Carousel -->
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -139,5 +157,7 @@
         </div>
     </div>
     <!---->
+
+@include('Partials.footer')
 
 @endsection

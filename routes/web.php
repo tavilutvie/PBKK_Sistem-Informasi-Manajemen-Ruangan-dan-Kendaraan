@@ -3,6 +3,8 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KendaraanController;
+use App\Http\Controllers\RuanganController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,25 +24,16 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/', [DashboardController::class, 'index']);
 Route::get('/about', [DashboardController::class, 'about']);
-Route::get('/login', [DashboardController::class, 'login']);
-Route::get('/register', [DashboardController::class, 'register']);
+Route::get('/login', [DashboardController::class, 'login'])->middleware(['guest'])->name('login');
+Route::get('/register', [DashboardController::class, 'register'])->middleware(['guest'])->name('login');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/roomDetail', function () {
-    return view('/room/roomDetail', [
-        "page" => "roomDetail"
-    ]);
-});
+Route::get('/roomList', [RuanganController::class, 'list']);
+Route::get('/roomDetail', [RuanganController::class, 'detail']);
+Route::get('/roomSchedule', [RuanganController::class, 'schedule'])->middleware(['auth'])->name('schedule');
 
-Route::get('/admin', function () {
-    return view('/dashboard/admin', [
-        "page" => "Admin"
-    ]);
-});
+Route::get('/vehicleList', [KendaraanController::class], 'list');
+Route::get('/vehicleSchedule', [KendaraanController::class], 'schedule')->middleware(['auth'])->name('schedule');
 
-Route::get('/schedule', function () {
-    return view('/schedule/schedule', [
-        "page" => "Schedule"
-    ]);
-});
+Route::get('/admin', [DashboardController::class], 'admin')->middleware(['auth'])->name('admin');

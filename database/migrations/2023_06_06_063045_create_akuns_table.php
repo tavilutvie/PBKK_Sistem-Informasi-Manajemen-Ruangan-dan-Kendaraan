@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('akuns', function (Blueprint $table) {
-            $table->id();
+            $table->id('id_akun');
             $table->boolean('is_admin')->default(false);
             $table->boolean('is_verified')->default(false);
             $table->timestamp('dibuat_pada')->useCurrent();
