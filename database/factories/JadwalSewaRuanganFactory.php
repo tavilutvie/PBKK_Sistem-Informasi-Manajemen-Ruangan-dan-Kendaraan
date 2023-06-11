@@ -17,7 +17,12 @@ class JadwalSewaRuanganFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            //tanggal date, waktu mulai time, waktu selesai time
+            'tanggal_pesanan' => $this->faker->date(),
+            'waktu_mulai' => $this->faker->time(),
+            'waktu_selesai' => $this->faker->time(),
+
+            'Ruangan_id_ruangan' => random_int(1,10),
         ];
     }
 }

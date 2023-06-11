@@ -44,7 +44,7 @@
                 <p class="my-0 my-lg-3 text-dark">Ruangan-ruangan di ITS juga telah dilengkapi oleh beberapa keperluan
                     dasar untuk ruangan serbaguna, seperti layar, sound, kursi yang nyaman, serta keamanan dan
                     kebersihan.</p>
-                <a href="../res/list_ruangan.php" class="btn btn-primary my-3">Pesan Sekarang</a>
+                <a href="/roomList" class="btn btn-primary my-3">Pesan Sekarang</a>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                 <p class="my-0 my-lg-3 text-dark">Kendaraan-kendaraan yang disediakan terdiri dari kendaraan roda dua
                     dan roda empat. ITS menyediakan beberapa kendaraan, seperti mobil, truk pick-up, dan beberapa truk
                     besar lainnya untuk keperluan pemindahan barang dan lain sebagainya</p>
-                <a href="../res/list_kendaraan.php" class="btn btn-primary my-3">Pesan Sekarang</a>
+                <a href="/vehicleList" class="btn btn-primary my-3">Pesan Sekarang</a>
             </div>
             <div class="d-flex justify-content-center">
                 <img src="../src/img/kendaraan.webp" alt="Kendaraan Disewakan" class="w-75">
@@ -75,4 +75,3 @@
 @include('Partials.footer')
 
 @endsection
-n

@@ -37,3 +37,23 @@ Route::get('/vehicleList', [KendaraanController::class], 'list');
 Route::get('/vehicleSchedule', [KendaraanController::class], 'schedule')->middleware(['auth'])->name('schedule');
 
 Route::get('/admin', [DashboardController::class], 'admin')->middleware(['auth'])->name('admin');
+
+Route::get('/roomList', function () {
+    return view('/room/roomList', [
+        "page" => "roomList"
+    ]);
+});
+
+Route::get('/vehicleList', function () {
+    return view('/vehicle/vehicleList', [
+        "page" => "vehicleList"
+    ]);
+});
+
+Route::get('/orderList', function () {
+    return view('/order/orderList', [
+        "page" => "orderList"
+    ]);
+});
+
+

@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div id="selengkapnya" class="text-center my-4">
-                <a href="./res/list_ruangan.php" class="btn btn-success"><b>Ruang Lainnya</b></a>
+                <a href="/roomList" class="btn btn-success"><b>Ruang Lainnya</b></a>
             </div>
         </div>
     </div>
@@ -152,7 +152,7 @@
                 </div>
             </div>
             <div id="selengkapnya" class="text-center my-4">
-                <a href="./res/list_kendaraan.php" class="btn btn-success"><b>Kendaraan Lainnya</b></a>
+                <a href="/vehicleList" class="btn btn-success"><b>Kendaraan Lainnya</b></a>
             </div>
         </div>
     </div>
