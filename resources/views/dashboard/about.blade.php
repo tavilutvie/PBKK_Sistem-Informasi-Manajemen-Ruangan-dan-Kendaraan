@@ -5,7 +5,7 @@
 @include('Partials.navbar')
 
     <!-- TITLE -->
-    <div class="container py-5">
+    <div class="container pb-5">
     <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMRK ITS</h1>
 </div>
 <!---->
@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-12">
                 <a href="/index.html">
-                    <img src="/public/src/img/SIMRKLogo.png" alt="Logo" class="img-fluid mx-auto d-block">
+                    <img src="src\img\SIMRKLogo.png" alt="Logo" class="img-fluid mx-auto d-block">
                 </a>
             </div>
         </div>
