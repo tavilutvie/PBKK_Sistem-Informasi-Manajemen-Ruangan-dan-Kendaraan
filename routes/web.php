@@ -26,3 +26,21 @@ Route::get('/login', [DashboardController::class, 'login']);
 Route::get('/register', [DashboardController::class, 'register']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+Route::get('/roomDetail', function () {
+    return view('/room/roomDetail', [
+        "page" => "roomDetail"
+    ]);
+});
+
+Route::get('/admin', function () {
+    return view('/dashboard/admin', [
+        "page" => "Admin"
+    ]);
+});
+
+Route::get('/schedule', function () {
+    return view('/schedule/schedule', [
+        "page" => "Schedule"
+    ]);
+});
