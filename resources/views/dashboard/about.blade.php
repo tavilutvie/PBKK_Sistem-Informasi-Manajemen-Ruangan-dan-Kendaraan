@@ -1,8 +1,9 @@
 @extends('Template.head')
 
-@section("main_content")
+@section('main_content')
 
-@include("Partials.navbar")
+@include('Partials.navbar')
+
     <!-- TITLE -->
     <div class="container py-5">
     <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMRK ITS</h1>

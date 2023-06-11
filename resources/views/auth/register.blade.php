@@ -49,7 +49,7 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                        <label class="form-label" for="email">E-mail</label>
+                      <label class="form-label" for="email">E-mail</label>
                       <input type="email" name="email" id="email" class="form-control form-control-lg @error('email') is-invalid @enderror" value="{{ old('email') }}" required/>
                       @error('email')
                           <div id="validationServerUsernameFeedback" class=" invalid-feedback">
@@ -73,7 +73,7 @@
                         @enderror
                     </div>
 
-                </div>
+                    </div>
               </div>
 
               <div class="row">
@@ -85,9 +85,9 @@
                       @error('nomor_telepon')
                           <div id="validationServerUsernameFeedback" class=" invalid-feedback">
                             {{ $message }}
-                    </div>
+                          </div>
                         @enderror
-                  </div>
+                    </div>
 
                 </div>
               </div>
@@ -99,7 +99,7 @@
                 <div class="col-md-6 mb-4 pb-2">
 
                     <div class="form-outline">
-                        <label class="form-label" for="nip">NIM / NRP</label>
+                      <label class="form-label" for="nip">NIM / NRP</label>
                       <input type="number" name="nip" id="nip" class="form-control form-control-lg @error('nip') is-invalid @enderror" value="{{ old('nip') }}" required/>
                       @error('nip')
                           <div id="validationServerUsernameFeedback" class=" invalid-feedback">
