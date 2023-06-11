@@ -31,10 +31,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 Route::get('/roomList', [RuanganController::class, 'list']);
 Route::get('/roomList/{room}', [RuanganController::class, 'detail']);
-Route::get('/roomList/{room}/schedule', [RuanganController::class, 'schedule'])->middleware(['auth'])->name('schedule');
+Route::get('{room}/schedule', [RuanganController::class, 'schedule'])->middleware(['auth'])->name('schedule');
 
-Route::get('/vehicleList', [KendaraanController::class], 'list');
-Route::get('/vehicleSchedule/{kendaraan}/schedule', [KendaraanController::class], 'schedule')->middleware(['auth'])->name('schedule');
+Route::get('/vehicleList', [KendaraanController::class, 'list']);
+Route::get('{kendaraan}/schedule', [KendaraanController::class], 'schedule')->middleware(['auth'])->name('schedule');
 
 Route::get('/orderList', [OrderController::class], 'list');
 Route::post('{ruangan}/orderRuangan', [OrderController::class], 'orderRuangan')->middleware(['auth'])->name('orderRuangan');

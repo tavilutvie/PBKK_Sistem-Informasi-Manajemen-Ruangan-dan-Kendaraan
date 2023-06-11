@@ -68,8 +68,8 @@ class KendaraanController extends Controller
      * Get List of kendaraan
      */
     public function list() {
-        return view('Vehicle/vehicleList', [
-            "page" => "Kendaraan"
+        return view('Vehicle\vehicleList', [
+            'page' => 'Kendaraan',
         ]);
     }
 

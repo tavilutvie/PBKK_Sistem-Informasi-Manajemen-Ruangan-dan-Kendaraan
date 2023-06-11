@@ -50,11 +50,6 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    {{-- <form class="d-flex mx-2" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Ingin menyewa apa?"
-                            aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Cari</button>
-                    </form> --}}
                     <div class="dropdown mx-2 d-none d-md-block">
                         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./src/icon/AccountIcon.svg" alt="Account Icon" width="36px" height="36px">

@@ -77,7 +77,9 @@ class RuanganController extends Controller
      * Get Detail of one ruangan
      */
     public function detail(Ruangan $ruangan) {
-
+        return view('Room\roomDetail', [
+            "page" => "Ruangan"
+        ]);
     }
 
     /**
