@@ -30,30 +30,16 @@ Route::get('/register', [DashboardController::class, 'register'])->middleware(['
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/roomList', [RuanganController::class, 'list']);
-Route::get('/roomDetail', [RuanganController::class, 'detail']);
-Route::get('/roomSchedule', [RuanganController::class, 'schedule'])->middleware(['auth'])->name('schedule');
+Route::get('/roomList/{room}', [RuanganController::class, 'detail']);
+Route::get('/roomList/{room}/schedule', [RuanganController::class, 'schedule'])->middleware(['auth'])->name('schedule');
 
 Route::get('/vehicleList', [KendaraanController::class], 'list');
-Route::get('/vehicleSchedule', [KendaraanController::class], 'schedule')->middleware(['auth'])->name('schedule');
+Route::get('/vehicleSchedule/{kendaraan}/schedule', [KendaraanController::class], 'schedule')->middleware(['auth'])->name('schedule');
+
+Route::get('/orderList', [OrderController::class], 'list');
+Route::post('{ruangan}/orderRuangan', [OrderController::class], 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
+Route::post('{kendaraan}/orderKendaraan', [OrderController::class], 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
 
 Route::get('/admin', [DashboardController::class], 'admin')->middleware(['auth'])->name('admin');
-
-Route::get('/roomList', function () {
-    return view('/room/roomList', [
-        "page" => "roomList"
-    ]);
-});
-
-Route::get('/vehicleList', function () {
-    return view('/vehicle/vehicleList', [
-        "page" => "vehicleList"
-    ]);
-});
-
-Route::get('/orderList', function () {
-    return view('/order/orderList', [
-        "page" => "orderList"
-    ]);
-});
 
 

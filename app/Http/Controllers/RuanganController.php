@@ -68,7 +68,9 @@ class RuanganController extends Controller
      * Get List of ruangan
      */
     public function list() {
-
+        return view('Room/roomList', [
+            "page" => "Ruangan"
+        ]);
     }
 
     /**

@@ -65,7 +65,7 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="./res/list_pesanan.php">Pesanan Anda</a></li>
+                                <li><a class="dropdown-item" href="/orderList">Pesanan Anda</a></li>
                                 <form class="my-3" action="/logout" method="GET">
                                     @csrf
                                     <button type="submit" class="dropdown-item">Keluar</button>

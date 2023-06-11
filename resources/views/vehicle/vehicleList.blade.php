@@ -1,9 +1,8 @@
-@extends('layouts.template')
-
-@include('partials.navbar')
+@extends('Template.head')
 
 @section('main_content')
 
+@include('Partials.navbar')
 
 <div class="list_pemesanan d-flex justify-content-center align-items-center flex-wrap">
 
@@ -83,4 +82,6 @@
     <div class="d-flex justify-content-center w-100 px-5 my-5">
         <a href="/" class="btn btn-primary m-2">Kembali ke Beranda</a>
     </div>
+
+@include('Partials.footer')
 @endsection
