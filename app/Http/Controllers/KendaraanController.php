@@ -67,17 +67,11 @@ class KendaraanController extends Controller
     /**
      * Get List of kendaraan
      */
-    public function list() {
+    public function list(Kendaraan $kendaraan) {
         return view('Vehicle\vehicleList', [
-            'page' => 'Kendaraan',
+            "page" => "Kendaraan",
+            "ruangans" => $kendaraan->all(),
         ]);
-    }
-
-    /**
-     * Get Detail of one kendaraan
-     */
-    public function detail(Kendaraan $kendaraan) {
-
     }
 
     /**

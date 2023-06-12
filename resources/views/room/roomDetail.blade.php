@@ -4,8 +4,11 @@
 
 @include("Partials.navbar")
     <!-- TITLE -->
-    <div class="container pt-4">
+    <div class="container pt-4 d-flex flex-column">
         <h1 class="text-center text-dark border-5 py-2">{{ $ruangan->nama_ruangan }}</h1>
+        @if ($ruangan->status_operasional == 0)
+            <b class="text-center text-danger border-5 py-2">Ruangan Tidak dapat beroperasi!</b>
+        @endif
     </div>
     <!---->
 
@@ -25,8 +28,12 @@
                 </p>
                 <p class="my-3 text-dark">Kapasitas: {{ $ruangan->kapasitas }}</p>
                 <div class="d-flex justify-content-center">
-                    <a href="{{ $ruangan->id_ruangan }}/schedule" class="btn btn-primary my-3">Lihat Jadwal</a>
-                </div>
+                    @if ($ruangan->status_operasional == 1)
+                        <a href="{{ $ruangan->id_ruangan }}/schedule" class="btn btn-primary my-3">Lihat Jadwal</a>
+                    @else
+                        <a href="{{ $ruangan->id_ruangan }}/schedule" class="btn btn-primary my-3 disabled">Lihat Jadwal</a>
+                    @endif
+                    </div>
             </div>
         </div>
     </div>
@@ -36,5 +43,5 @@
         <a href="/roomList" class="btn btn-primary">Kembali ke Daftar Ruangan</a>
     </div>
 
-@include('Partials.footer')
+    @include('Partials.footer')
 @endsection

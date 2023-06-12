@@ -12,14 +12,14 @@
                     <h1 class="text-light text-center my-4">Sosial Media</h1>
                     <div class="d-flex justify-content-center">
                         <a href="https://www.facebook.com/its.ac.id" class="btn btn-light mx-1" target="_blank">
-                            <img src="./src/icon/FacebookIcon.svg" alt="Facebook Icon">
+                            <img src="/src/icon/FacebookIcon.svg" alt="Facebook Icon">
                         </a>
                         <a href="https://www.instagram.com/its.ac.id/" class="btn btn-light mx-1" target="_blank">
-                            <img src="./src/icon/InstagramIcon.svg" alt="Instagram Icon">
+                            <img src="/src/icon/InstagramIcon.svg" alt="Instagram Icon">
                         </a>
                         <a href="https://www.youtube.com/channel/UCZ9Y4Z2Z1Z0Z9Z0Z9Z0Z0Z0" class="btn btn-light mx-1"
                             target="_blank">
-                            <img src="./src/icon/YoutubeIcon.svg" alt="Youtube Icon">
+                            <img src="/src/icon/YoutubeIcon.svg" alt="Youtube Icon">
                         </a>
                     </div>
                 </div>
