@@ -67,9 +67,10 @@ class RuanganController extends Controller
     /**
      * Get List of ruangan
      */
-    public function list() {
+    public function list(Ruangan $ruangan) {
         return view('Room/roomList', [
-            "page" => "Ruangan"
+            "page" => "Ruangan",
+            "ruangans" => $ruangan->all()
         ]);
     }
 
@@ -78,7 +79,8 @@ class RuanganController extends Controller
      */
     public function detail(Ruangan $ruangan) {
         return view('Room\roomDetail', [
-            "page" => "Ruangan"
+            "page" => $ruangan->nama_ruangan,
+            "ruangan" => $ruangan
         ]);
     }
 

@@ -5,21 +5,21 @@
 @include("Partials.navbar")
     <!-- TITLE -->
     <div class="container pt-4">
-        <h1 class="text-center text-dark border-5 py-2">nama_ruangan</h1>
+        <h1 class="text-center text-dark border-5 py-2">{{ $ruangan->nama_ruangan }}</h1>
     </div>
     <!---->
 
     <!-- Ruangan -->
     <div class="row d-flex align-items-center justify-content-around flex-wrap">
         <div class="card pt-3 my-3" style="width: 22rem; height: 32rem;">
-            <img src="src/img/___NAMA_RUANGAN___.webp" class="card-img-top rounded" alt="Pascasarjana">
+            <img src="src/img/{{ $ruangan->nama_ruangan }}.webp" class="card-img-top rounded" alt="Pascasarjana">
             <div class="text-center text-lg-start my-3 my-lg-0">
-                <p class="my-3 text-dark">Nama Ruangan: nama_ruangan</p>
-                <p class="my-3 text-dark">Jenis Ruangan: jenis_ruangan</p>
-                <p class="my-3 text-dark">Status Operasional: status_operasional</p>
-                <p class="my-3 text-dark">Kapasistas: kapasitas</p>
+                <p class="my-3 text-dark">Nama Ruangan: {{ $ruangan->nama_ruangan }}</p>
+                <p class="my-3 text-dark">Jenis Ruangan: {{ $ruangan->jenis_ruangan }}</p>
+                <p class="my-3 text-dark">Status Operasional: {{ $ruangan->status_operasional }}</p>
+                <p class="my-3 text-dark">Kapasistas: {{ $ruangan->kapasitas }}</p>
                 <div class="d-flex justify-content-center">
-                    <a href="___NAMA_RUANGAN____/schedule" class="btn btn-primary my-3">Lihat Jadwal</a>
+                    <a href="{{ $ruangan->id_ruangan }}/schedule" class="btn btn-primary my-3">Lihat Jadwal</a>
                 </div>
             </div>
         </div>
