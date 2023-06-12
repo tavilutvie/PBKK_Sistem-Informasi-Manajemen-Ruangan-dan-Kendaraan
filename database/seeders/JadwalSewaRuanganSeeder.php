@@ -87,5 +87,72 @@ class JadwalSewaRuanganSeeder extends Seeder
             'waktu_selesai' => '07:30:00',
             'Ruangan_id_ruangan' => '5'
         ]);
+
+
+
+
+
+
+
+
+
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-02',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-08',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-09',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
+
+
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-11',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-12',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-14',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-15',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
+
+        JadwalSewaRuangan::create([
+            'tanggal_pesanan' => '2023-07-23',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Ruangan_id_ruangan' => '3'
+        ]);
     }
 }
