@@ -7,7 +7,6 @@ use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\RuanganController;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
