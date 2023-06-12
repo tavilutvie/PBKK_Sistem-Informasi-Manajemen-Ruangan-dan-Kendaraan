@@ -16,8 +16,14 @@
             <div class="text-center text-lg-start my-3 my-lg-0">
                 <p class="my-3 text-dark">Nama Ruangan: {{ $ruangan->nama_ruangan }}</p>
                 <p class="my-3 text-dark">Jenis Ruangan: {{ $ruangan->jenis_ruangan }}</p>
-                <p class="my-3 text-dark">Status Operasional: {{ $ruangan->status_operasional }}</p>
-                <p class="my-3 text-dark">Kapasistas: {{ $ruangan->kapasitas }}</p>
+                <p class="my-3 text-dark">Status Operasional:
+                    @if ($ruangan->status_operasional == 1)
+                        Tersedia
+                    @else
+                        Tidak Tersedia
+                    @endif
+                </p>
+                <p class="my-3 text-dark">Kapasitas: {{ $ruangan->kapasitas }}</p>
                 <div class="d-flex justify-content-center">
                     <a href="{{ $ruangan->id_ruangan }}/schedule" class="btn btn-primary my-3">Lihat Jadwal</a>
                 </div>
