@@ -17,10 +17,10 @@ class PesananRuangan extends Model
     ];
 
     public function akun() {
-        return $this->belongsTo(Akuns::class);
+        return $this->belongsTo(Akuns::class, 'Akun_id_akun', 'id_akun');
     }
 
     public function ruangan() {
-        return $this->belongsTo(Ruangan::class);
+        return $this->belongsTo(Ruangan::class, 'Ruangan_id_ruangan', 'id_ruangan');
     }
 }

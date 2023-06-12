@@ -91,7 +91,7 @@ class RuanganController extends Controller
         return view('schedule\schedule', [
             "page" => $ruangan->nama_ruangan,
             "ruangan" => $ruangan,
-            "jadwal_sewa_ruangan" => $ruangan->jadwalSewaRuangan()->get(),
+            "jadwal_sewa_ruangan" => $ruangan->jadwalSewaRuangan,
             "month" => $month,
             "year" => $year
         ]);

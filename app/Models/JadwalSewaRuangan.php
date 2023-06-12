@@ -16,6 +16,6 @@ class JadwalSewaRuangan extends Model
     ];
 
     public function ruangan() {
-        return $this->belongsTo(Ruangan::class);
+        return $this->belongsTo(Ruangan::class, 'Ruangan_id_ruangan', 'id_ruangan');
     }
 }

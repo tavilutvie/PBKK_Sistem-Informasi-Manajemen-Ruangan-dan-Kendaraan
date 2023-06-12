@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('tanggal_pesanan');
             $table->time('waktu_mulai');
             $table->time('waktu_selesai');
-            
+
             // Foreign keys
             $table->unsignedBigInteger('Ruangan_id_ruangan');
             $table->foreign('Ruangan_id_ruangan')->references('id_ruangan')->on('ruangans');
