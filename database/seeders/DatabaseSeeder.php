@@ -19,10 +19,10 @@ class DatabaseSeeder extends Seeder
             // AkunSeeder::class,
             KendaraanSeeder::class,
             RuanganSeeder::class,
-            PesananKendaraanSeeder::class,
-            PesananRuanganSeeder::class,
-            JadwalSewaKendaraanSeeder::class,
-            JadwalSewaRuanganSeeder::class,
+            // PesananKendaraanSeeder::class,
+            // PesananRuanganSeeder::class,
+            // JadwalSewaKendaraanSeeder::class,
+            // JadwalSewaRuanganSeeder::class,
         ]);
 
         // \App\Models\User::factory()->create([
