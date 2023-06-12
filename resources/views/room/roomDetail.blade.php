@@ -5,7 +5,7 @@
 @include("Partials.navbar")
     <!-- TITLE -->
     <div class="container pt-4 d-flex flex-column">
-        <h1 class="text-center text-dark border-5 py-2">{{ $ruangan->nama_ruangan }}</h1>
+        <h1 class="text-center text-dark border-5 py-2">{{ str_replace("_", " ", $ruangan->nama_ruangan) }}</h1>
         @if ($ruangan->status_operasional == 0)
             <b class="text-center text-danger border-5 py-2">Ruangan Tidak dapat beroperasi!</b>
         @endif
@@ -15,7 +15,7 @@
     <!-- Ruangan -->
     <div class="row d-flex align-items-center justify-content-around flex-wrap">
         <div class="card pt-3 my-3" style="width: 22rem; height: 32rem;">
-            <img src="src/img/{{ $ruangan->nama_ruangan }}.webp" class="card-img-top rounded" alt="Pascasarjana">
+            <img src="/src/img/{{ $ruangan->nama_ruangan }}.webp" class="card-img-top rounded" alt="Pascasarjana">
             <div class="text-center text-lg-start my-3 my-lg-0">
                 <p class="my-3 text-dark">Nama Ruangan: {{ $ruangan->nama_ruangan }}</p>
                 <p class="my-3 text-dark">Jenis Ruangan: {{ $ruangan->jenis_ruangan }}</p>

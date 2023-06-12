@@ -60,11 +60,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($ruangan->pesananRuangan->all() as $pesanan_ruangan)
+            @foreach ($ruangan->jadwalSewaRuangan->all() as $jadwalSewaRuangan)
                 <tr>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[0] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[1] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_selesai)[1] }}</td>
+                    <td>{{ $jadwalSewaRuangan }}</td>
+                    <td>{{ explode(" ", $jadwalSewaRuangan->waktu_mulai)[1] }}</td>
+                    <td>{{ explode(" ", $jadwalSewaRuangan->waktu_selesai)[1] }}</td>
                 </tr>
             @endforeach
         </tbody>
