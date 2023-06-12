@@ -17,45 +17,59 @@ class RuanganSeeder extends Seeder
         // Ruangan::factory(10)->create();
 
         Ruangan::create([
-            'nama_ruangan' => 'TeaterA-1',
+            'nama_ruangan' => 'Teater_A-1',
             'jenis_ruangan' => 'teater',
             'status_operasional' => true,
             'kapasitas' => 60,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'RuangPascasarjana',
+            'nama_ruangan' => 'Ruang_Pascasarjana',
             'jenis_ruangan' => 'auditorium',
             'status_operasional' => false,
             'kapasitas' => 100,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'TeaterA',
+            'nama_ruangan' => 'Teater_A',
             'jenis_ruangan' => 'teater',
             'status_operasional' => true,
             'kapasitas' => 30,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'PusatRobotika',
+            'nama_ruangan' => 'Pusat_Robotika',
             'jenis_ruangan' => 'gedung',
             'status_operasional' => false,
             'kapasitas' => 30,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'TeaterB',
+            'nama_ruangan' => 'Teater_B',
             'jenis_ruangan' => 'teater',
             'status_operasional' => true,
             'kapasitas' => 50,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'Lapangan Basket',
-            'jenis_ruangan' => 'lapangan',
+            'nama_ruangan' => 'Teater_C',
+            'jenis_ruangan' => 'teater',
             'status_operasional' => false,
             'kapasitas' => 50,
+        ]);
+
+        Ruangan::create([
+            'nama_ruangan' => 'Lapangan_Taman_Alumni',
+            'jenis_ruangan' => 'labangan',
+            'status_operasional' => false,
+            'kapasitas' => 2000,
+        ]);
+
+        Ruangan::create([
+            'nama_ruangan' => 'Lapangan_Perpustakaan',
+            'jenis_ruangan' => 'labangan',
+            'status_operasional' => false,
+            'kapasitas' => 1000,
         ]);
 
     }
