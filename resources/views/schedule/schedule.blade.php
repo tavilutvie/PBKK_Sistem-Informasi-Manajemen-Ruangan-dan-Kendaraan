@@ -10,8 +10,8 @@
 
 <!-- Kalender -->
 <div class="container pt-1 border-bottom border-3 mb-4 pb-3">
-    <h3 class="text-center text-dark border-5 pt-1">nama_ruangan</h3>
-    <h3 id="table-month" class="text-center text-dark border-5 pt-1 pb-3">{{ $month }} - {{ $year }} </h3>
+    <h3 class="text-center text-dark border-5 pt-1">{{ $ruangan->nama_ruangan }}</h3>
+    <h3 id="table-month" class="text-center text-dark border-5 pt-1 pb-3"></h3>
 
     <!-- Masukin kalender disini -->
     <table class="table table-responsive">
@@ -32,8 +32,17 @@
 
     <div class="container">
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-primary m-2" id="prev"><</button>
-            <button type="button" class="btn btn-primary m-2" id="next">></button>
+            <div class="d-none">
+            @if ($month == 13)
+                {{ $month = 1 }}
+                {{ $year = $year + 1 }}
+            @elseif ($month == 0)
+                {{ $month = 12 }}
+                {{ $year = $year - 1 }}
+            @endif
+            </div>
+            <a href="/roomList/{{ $ruangan->id_ruangan }}/schedule/{{ $month-1 }}/{{ $year }}" class="btn btn-primary m-2" id="prev"><</a>
+            <a href="/roomList/{{ $ruangan->id_ruangan }}/schedule/{{ $month+1 }}/{{ $year }}" class="btn btn-primary m-2" id="next">></a>
         </div>
     </div>
 </div>
@@ -51,29 +60,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2022-12-13</td>
-                <td>08:00:00</td>
-                <td>10:00:00</td>
-            </tr>
-            <tr>
-                <td>2022-12-13</td>
-                <td>08:00:00</td>
-                <td>10:00:00</td>
-            </tr>
-            <tr>
-                <td>2022-12-13</td>
-                <td>08:00:00</td>
-                <td>10:00:00</td>
+            @foreach ($ruangan->pesananRuangan->all() as $pesanan_ruangan)
+                <tr>
+                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[0] }}</td>
+                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[1] }}</td>
+                    <td>{{ explode(" ", $pesanan_ruangan->waktu_selesai)[1] }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
 
     <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-4">
-        <a href="../room/roomList" class="btn btn-success">Lakukan Pemesanan</a>
+        <a href="#" class="btn btn-success">Lakukan Pemesanan</a>
     </div>
 
     <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-5">
-        <a href="../room/roomList" class="btn btn-outline-primary">Kembali ke Daftar</a>
+        <a href="/roomList" class="btn btn-outline-primary">Kembali ke Daftar Ruangan</a>
     </div>
 
 </div>

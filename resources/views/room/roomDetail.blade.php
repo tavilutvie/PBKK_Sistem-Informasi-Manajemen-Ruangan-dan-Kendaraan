@@ -29,9 +29,9 @@
                 <p class="my-3 text-dark">Kapasitas: {{ $ruangan->kapasitas }}</p>
                 <div class="d-flex justify-content-center">
                     @if ($ruangan->status_operasional == 1)
-                        <a href="{{ $ruangan->id_ruangan }}/schedule" class="btn btn-primary my-3">Lihat Jadwal</a>
+                        <a href="/roomList/{{ $ruangan->id_ruangan }}/schedule/{{ date('m') }}/{{ date('Y') }}" class="btn btn-primary my-3">Lihat Jadwal</a>
                     @else
-                        <a href="{{ $ruangan->id_ruangan }}/schedule" class="btn btn-primary my-3 disabled">Lihat Jadwal</a>
+                        <a href="#" class="btn btn-primary my-3 disabled">Lihat Jadwal</a>
                     @endif
                     </div>
             </div>
