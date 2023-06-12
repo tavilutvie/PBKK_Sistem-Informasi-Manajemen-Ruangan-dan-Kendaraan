@@ -88,7 +88,7 @@ class RuanganController extends Controller
      * Get schedule of ruangan dipinjam
      */
     public function schedule(Ruangan $ruangan, int $month, int $year) {
-        return view('schedule\schedule', [
+        return view('schedule\roomSchedule', [
             "page" => $ruangan->nama_ruangan,
             "ruangan" => $ruangan,
             "month" => $month,

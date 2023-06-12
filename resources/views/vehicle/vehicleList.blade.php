@@ -21,9 +21,9 @@
                 </p>
 
                 @if ($kendaraan->status_operasional == 1)
-                    <a href="{{ $kendaraan->id_kendaraan }}/schedule/{{ date('m') }}/{{ date('Y') }}" class="btn btn-primary">Pesan Sekarang</a>
+                    <a href="/vehicleList/{{ $kendaraan->id_kendaraan }}/schedule/{{ date('m') }}/{{ date('Y') }}" class="btn btn-primary">Pesan Sekarang</a>
                 @else
-                    <a href="{{ $kendaraan->id_kendaraan }}/schedule" class="btn btn-primary disabled">Pesan Sekarang</a>
+                    <a href="" class="btn btn-primary disabled">Pesan Sekarang</a>
                 @endif
             </div>
         </div>

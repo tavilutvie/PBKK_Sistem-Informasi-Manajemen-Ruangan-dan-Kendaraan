@@ -77,7 +77,17 @@ class KendaraanController extends Controller
     /**
      * Get schedule of kendaraan dipinjam
      */
-    public function schedule(Kendaraan $kendaraan) {
-
+    public function schedule(Kendaraan $kendaraan, int $month, int $year) {
+        return view('schedule\vehicleSchedule', [
+            "page" => $kendaraan->jenis_kendaraan,
+            "kendaraan" => $kendaraan,
+            "month" => $month,
+            "year" => $year,
+            "jadwal_sewa_kendaraans" =>
+                $kendaraan->jadwalSewaKendaraan()
+                    ->whereMonth('tanggal_pesanan', $month)
+                    ->whereYear('tanggal_pesanan', $year)
+                    ->get(),
+        ]);
     }
 }
