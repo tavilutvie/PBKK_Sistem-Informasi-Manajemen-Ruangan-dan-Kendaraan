@@ -21,15 +21,15 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
-        
+
         $this->call([
             AkunsSeeder::class,
             KendaraanSeeder::class,
             RuanganSeeder::class,
             PesananKendaraanSeeder::class,
             PesananRuanganSeeder::class,
-            // JadwalSewaKendaraanSeeder::class,
-            // JadwalSewaRuanganSeeder::class,
+            JadwalSewaKendaraanSeeder::class,
+            JadwalSewaRuanganSeeder::class,
         ]);
 
 
