@@ -9,7 +9,7 @@
 
     @foreach ($ruangans as $ruangan)
         <div class="card m-2" style="width: 18rem;">
-            <img src="public/src/img/{{ $ruangan->nama_ruangan }}.webp" class="card-img-top" alt="Gambar ruangan" width="268px" height="160px">
+            <img src="/src/img/{{ $ruangan->nama_ruangan }}.webp" class="card-img-top" alt="Gambar ruangan" width="268px" height="160px">
             <div class="card-body">
                 <h5 class="card-title">{{ $ruangan->nama_ruangan }}</h5>
                 <p class="card-text">Jenis Ruangan: {{ $ruangan->jenis_ruangan }}</p>

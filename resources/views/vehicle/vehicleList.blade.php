@@ -8,7 +8,7 @@
 
     @foreach ($kendaraans as $kendaraan)
         <div class="card m-2" style="width: 18rem;">
-            <img src="public/src/img/{{ $kendaraan->jenis_kendaraan }}.webp" class="card-img-top" alt="Gambar kendaraan" width="268px" height="160px">
+            <img src="/src/img/{{ $kendaraan->jenis_kendaraan }}.webp" class="card-img-top" alt="Gambar kendaraan" width="268px" height="160px">
             <div class="card-body">
                 <h5 class="card-title">{{ ucfirst($kendaraan->jenis_kendaraan) }}</h5>
                 <p class="card-text">Nomor Plat kendaraan: {{ $kendaraan->nomor_plat }}</p>
