@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
@@ -35,10 +36,12 @@ Route::get('/roomList/{ruangan:id_ruangan}', [RuanganController::class, 'detail'
 Route::get('/roomList/{ruangan:id_ruangan}/schedule/{month}/{year}', [RuanganController::class, 'schedule'])->middleware(['auth'])->name('schedule');
 
 Route::get('/vehicleList', [KendaraanController::class, 'list']);
-Route::get('{kendaraan}/schedule', [KendaraanController::class], 'schedule')->middleware(['auth'])->name('schedule');
+Route::get('{kendaraan}/schedule', [KendaraanController::class, 'schedule'])->middleware(['auth'])->name('schedule');
 
 Route::get('/orderList', [OrderController::class, 'list']);
-Route::post('{ruangan}/orderRuangan', [OrderController::class], 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
-Route::post('{kendaraan}/orderKendaraan', [OrderController::class], 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
+Route::post('{ruangan}/orderRuangan', [OrderController::class, 'orderRuangan'])->middleware(['auth'])->name('orderRuangan');
+Route::post('{kendaraan}/orderKendaraan', [OrderController::class, 'orderKendaraan'])->middleware(['auth'])->name('orderKendaraan');
 
-Route::get('/admin', [DashboardController::class], 'admin')->middleware(['auth'])->name('admin');
+Route::get('/admin', [DashboardController::class, 'admin'])->middleware(['auth'])->name('admin');
+
+
