@@ -1,6 +1,6 @@
 function setColor(initMonth) {
     // get semua tanggal dipesan (php)
-    let dateOrdered = document.getElementsByClassName("tanggalPemakaian");
+    let dateOrdered = document.getElementsByClassName("tanggal-pemakaian");
     dateOrdered = [...dateOrdered];
 
     // get tanggal dipesan (date element)
@@ -8,7 +8,7 @@ function setColor(initMonth) {
     dateOrdered.forEach(element => {
         let date = element.innerHTML.slice(8);
         date = parseInt(date);
-        
+
         dateFormatted.push(date);
     });
 

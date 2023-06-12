@@ -62,7 +62,7 @@
         <tbody>
             @foreach ($jadwal_sewa_ruangans as $jadwal_sewa_ruangan)
                 <tr>
-                    <td>{{ $jadwal_sewa_ruangan->tanggal_pesanan }}</td>
+                    <td class="tanggal-pemakaian">{{ $jadwal_sewa_ruangan->tanggal_pesanan }}</td>
                     <td>{{ $jadwal_sewa_ruangan->waktu_mulai }}</td>
                     <td>{{ $jadwal_sewa_ruangan->waktu_selesai }}</td>
                 </tr>
