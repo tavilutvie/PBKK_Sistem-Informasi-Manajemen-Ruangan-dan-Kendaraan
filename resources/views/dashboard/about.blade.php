@@ -1,33 +1,34 @@
-@extends("layouts.template")
+@extends('Template.head')
 
-@include("partials.navbar")
+@section('main_content')
 
-@section("main_content")
+@include('Partials.navbar')
+
     <!-- TITLE -->
-    <div class="container py-5">
-        <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMRK ITS</h1>
-    </div>
-    <!---->
+    <div class="container pb-5">
+    <h1 class="text-center text-dark border-bottom border-5 py-2">TENTANG SIMRK ITS</h1>
+</div>
+<!---->
 
     <!-- LOGO -->
     <div class="container my-3">
         <div class="row">
             <div class="col-12">
                 <a href="/index.html">
-                    <img src="../src/img/Logo.svg" alt="Logo" class="img-fluid mx-auto d-block">
+                    <img src="src\img\SIMRKLogo.png" alt="Logo" class="img-fluid mx-auto d-block">
                 </a>
             </div>
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col-8 border-bottom border-3">
-                <p class="text-center text-dark">SIMRK (Sistem Informasi Manajemen Ruangan dan Kendaraan) ITS adalah
-                    sebuah sistem informasi milik ITS yang digunakan untuk melayani peminjaman ruangan, kendaraan, dan
-                    lainnya oleh seluruh mahasiswa, dosen, dan elemen ITS sebagai bentuk pemenuhan kebutuhan warga ITS.
-                </p>
-            </div>
+            <p class="text-center text-dark">SIMRK (Sistem Informasi Manajemen Ruangan dan Kendaraan) ITS adalah
+                sebuah sistem informasi milik ITS yang digunakan untuk melayani peminjaman ruangan, kendaraan, dan
+                lainnya oleh seluruh mahasiswa, dosen, dan elemen ITS sebagai bentuk pemenuhan kebutuhan warga ITS.
+            </p>
         </div>
     </div>
-    <!---->
+</div>
+<!---->
 
     <!-- Ruangan -->
     <div class="row container-fluid my-5">
@@ -43,7 +44,7 @@
                 <p class="my-0 my-lg-3 text-dark">Ruangan-ruangan di ITS juga telah dilengkapi oleh beberapa keperluan
                     dasar untuk ruangan serbaguna, seperti layar, sound, kursi yang nyaman, serta keamanan dan
                     kebersihan.</p>
-                <a href="../res/list_ruangan.php" class="btn btn-primary my-3">Pesan Sekarang</a>
+                <a href="/roomList" class="btn btn-primary my-3">Pesan Sekarang</a>
             </div>
         </div>
     </div>
@@ -59,7 +60,7 @@
                 <p class="my-0 my-lg-3 text-dark">Kendaraan-kendaraan yang disediakan terdiri dari kendaraan roda dua
                     dan roda empat. ITS menyediakan beberapa kendaraan, seperti mobil, truk pick-up, dan beberapa truk
                     besar lainnya untuk keperluan pemindahan barang dan lain sebagainya</p>
-                <a href="../res/list_kendaraan.php" class="btn btn-primary my-3">Pesan Sekarang</a>
+                <a href="/vehicleList" class="btn btn-primary my-3">Pesan Sekarang</a>
             </div>
             <div class="d-flex justify-content-center">
                 <img src="../src/img/kendaraan.webp" alt="Kendaraan Disewakan" class="w-75">
@@ -69,4 +70,8 @@
     <div class="d-flex justify-content-center w-100 px-5 my-5">
         <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
     </div>
+<!---->
+
+@include('Partials.footer')
+
 @endsection

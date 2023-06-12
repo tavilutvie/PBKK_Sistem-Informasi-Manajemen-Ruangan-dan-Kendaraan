@@ -18,15 +18,15 @@ return new class extends Migration
             $table->timestamp('dibuat_pada')->useCurrent();
             $table->string('nama_belakang');
             $table->string('nama_depan');
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
             $table->string('nomor_telepon')->unique();
             $table->string('nip');
             $table->string('jabatan');
             $table->string('foto_tanda_pengenal');
-            
+
             $table->timestamps();
+
+            // Foreign key
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });
     }
 

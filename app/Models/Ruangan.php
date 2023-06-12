@@ -10,7 +10,10 @@ class Ruangan extends Model
     use HasFactory;
 
     protected $fillable = [
-        
+        'nama_ruangan',
+        'jenis_ruangan',
+        'status_operasional',
+        'kapasitas'
     ];
 
     public function pesananRuangan() {

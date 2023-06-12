@@ -1,13 +1,7 @@
-## HOW TO SETUP PROGRAM
-Jalankan tiap command pada root
-```
-cp .env.example .env
-composer install
-php artisan key:generate
-npm install
-```
+PULL PROJECT
 
-## HOW TO RUN PROGRAM
-Buka XAMPP, aktifkan MySQL
-Buka phpMyAdmin, buat database baru namanya ```simrk```
-Balik ke terminal, tulis ```php artisan migrate:fresh --seed```
+1. composer install
+2. composer update
+3. php artisan key:generate
+4. php artisan migrate:fresh
+5. php artisan serve

@@ -18,6 +18,11 @@ class JadwalSewaKendaraanFactory extends Factory
     {
         return [
             //
+            'tanggal_pesanan' => $this->faker->date(),
+            'waktu_mulai' => $this->faker->time(),
+            'waktu_selesai' => $this->faker->time(),
+
+            'Kendaraan_id_kendaraan' => random_int(1,10),
         ];
     }
 }

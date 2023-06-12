@@ -138,13 +138,6 @@
                 <div class="w-100 col-md-6 mb-4">
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Kartu Tanda Pengenal</label>
-                    <input class="form-control" type="file" id="formFile" name="foto_tanda_pengenal" accept=".png, .jpg, .jpeg">
-                  </div>
-                </div>
-
-                <div class="w-100 col-md-6 mb-4">
-                  <div class="mb-3">
-                    <label for="formFile" class="form-label">Kartu Tanda Pengenal</label>
                     <input class="form-control" type="file" id="formFile" name="foto_tanda_pengenal" accept=".png, .jpg, .jpeg" required>
                   </div>
                 </div>

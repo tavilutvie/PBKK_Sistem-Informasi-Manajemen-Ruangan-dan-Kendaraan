@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\AkunSeeder;
+use App\Models\User;
 
 use App\Models\Akun;
 
@@ -29,7 +29,6 @@ class DatabaseSeeder extends Seeder
             'jabatan' => 'mahasiswa',
             'foto_tanda_pengenal' => 'foto_tanda_pengenal'
         ]);
-        // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

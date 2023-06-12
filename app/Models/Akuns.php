@@ -5,25 +5,27 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Akun extends Model
+class Akuns extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'nama_belakang',
         'nama_depan',
-        'username',
-        'email',
-        'password',
         'nomor_telepon',
         'nip',
         'jabatan',
-        'foto_tanda_pengenal'
+        'foto_tanda_pengenal',
     ];
 
     protected $hidden = [
         'password',
     ];
+
+    // Table relationships
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 
     public function pesananRuangan() {
         return $this->hasMany(PesananRuangan::class);

@@ -17,7 +17,14 @@ class PesananRuanganFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            //status pesanan varchar, status dokumen bool, waktu mulai, datetime, waktu selesai datetime
+            'status_pesanan' => array_rand(["menunggu", "disetujui", "ditolak"]),
+            'status_dokumen' => $this->faker->boolean(),
+            'waktu_mulai' => $this->faker->dateTime(),
+            'waktu_selesai' => $this->faker->dateTime(),
+
+            'Ruangan_id_ruangan' => random_int(1,10),
+            'Akun_id_akun' => random_int(1,10),
         ];
     }
 }
