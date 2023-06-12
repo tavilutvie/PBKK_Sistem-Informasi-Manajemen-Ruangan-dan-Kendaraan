@@ -18,13 +18,13 @@ class PesananKendaraanFactory extends Factory
     {
         return [
             //
-            'status_pesanan' => array_rand(["menunggu", "disetujui", "ditolak"]),
+            'status_pesanan' => array_rand(["Menunggu Dokumen", "Disetujui", "Ditolak"]),
             'status_dokumen' => $this->faker->boolean(),
             'waktu_mulai' => $this->faker->dateTime(),
             'waktu_selesai' => $this->faker->dateTime(),
 
-            'Kendaraan_id_kendaraan' => random_int(1,10),
-            'Akun_id_akun' => random_int(1,10),
+            'Kendaraan_id_kendaraan' => random_int(1,6),
+            'Akun_id_akun' => 1,
         ];
     }
 }

@@ -13,21 +13,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(10)->create();
+        // User::factory(10)->create();
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => '1234567890',
 
+        ]);
+
+        
         $this->call([
-            // AkunSeeder::class,
+            AkunsSeeder::class,
             KendaraanSeeder::class,
             RuanganSeeder::class,
-            // PesananKendaraanSeeder::class,
-            // PesananRuanganSeeder::class,
+            PesananKendaraanSeeder::class,
+            PesananRuanganSeeder::class,
             // JadwalSewaKendaraanSeeder::class,
             // JadwalSewaRuanganSeeder::class,
         ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
     }
 }
