@@ -15,19 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // $this->call([
-        //     AkunSeeder::class,
-        // ]);
-        Akun::create([
-            'nama_belakang' => 'lutvie',
-            'nama_depan' => 'tavirazin',
-            'username' => 'tavirazin',
-            'email' => 'tavirazin@gmail.com',
-            'password' => '12345678',
-            'nomor_telepon' => '081234567890',
-            'nip' => '1234567890',
-            'jabatan' => 'mahasiswa',
-            'foto_tanda_pengenal' => 'foto_tanda_pengenal'
+        User::factory(10)->create();
+
+        $this->call([
+            AkunSeeder::class,
+            KendaraanSeeder::class,
+            RuanganSeeder::class,
+            PesananKendaraanSeeder::class,
+            PesananRuanganSeeder::class,
+            JadwalSewaKendaraanSeeder::class,
+            JadwalSewaRuanganSeeder::class,
         ]);
 
         // \App\Models\User::factory()->create([
