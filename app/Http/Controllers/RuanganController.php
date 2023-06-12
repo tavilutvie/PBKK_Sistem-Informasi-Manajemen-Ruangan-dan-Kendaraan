@@ -68,7 +68,7 @@ class RuanganController extends Controller
      * Get List of ruangan
      */
     public function list(Ruangan $ruangan) {
-        return view('Room/roomList', [
+        return view('Room\roomList', [
             "page" => "Ruangan",
             "ruangans" => $ruangan->all()
         ]);

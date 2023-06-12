@@ -12,7 +12,7 @@ class OrderController extends Controller
      * Get all orders.
      */
     public function list() {
-        return view('Order/orderList', [
+        return view('Order\orderList', [
             'page' => 'Order List',
         ]);
     }
@@ -21,7 +21,7 @@ class OrderController extends Controller
      * Order Ruangan.
      */
     public function orderRuangan(Ruangan $ruangan) {
-        return view('Order/orderRuangan', [
+        return view('Order\orderRuangan', [
             'page' => 'Order Ruangan',
         ]);
     }
@@ -30,7 +30,7 @@ class OrderController extends Controller
      * Order Kendaraan.
      */
     public function orderKendaraan(Kendaraan $kendaraan) {
-        return view('Order/orderKendaraan', [
+        return view('Order\orderKendaraan', [
             'page' => 'Order Kendaraan',
         ]);
     }
