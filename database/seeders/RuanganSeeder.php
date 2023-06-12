@@ -17,36 +17,36 @@ class RuanganSeeder extends Seeder
         // Ruangan::factory(10)->create();
 
         Ruangan::create([
-            'nama_ruangan' => 'Lab Pemrograman 1',
-            'jenis_ruangan' => 'lab',
+            'nama_ruangan' => 'TeaterA-1',
+            'jenis_ruangan' => 'teater',
             'status_operasional' => true,
             'kapasitas' => 60,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'Aula Handayani',
+            'nama_ruangan' => 'RuangPascasarjana',
             'jenis_ruangan' => 'auditorium',
             'status_operasional' => false,
             'kapasitas' => 100,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'Kelas 101',
-            'jenis_ruangan' => 'kelas',
+            'nama_ruangan' => 'TeaterA',
+            'jenis_ruangan' => 'teater',
             'status_operasional' => true,
             'kapasitas' => 30,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'Kelas 102',
-            'jenis_ruangan' => 'kelas',
+            'nama_ruangan' => 'PusatRobotika',
+            'jenis_ruangan' => 'gedung',
             'status_operasional' => false,
             'kapasitas' => 30,
         ]);
 
         Ruangan::create([
-            'nama_ruangan' => 'Lapangan Tennis',
-            'jenis_ruangan' => 'kelas',
+            'nama_ruangan' => 'TeaterB',
+            'jenis_ruangan' => 'teater',
             'status_operasional' => true,
             'kapasitas' => 50,
         ]);
