@@ -37,7 +37,7 @@ Route::get('/roomList/{ruangan:id_ruangan}/schedule/{month}/{year}', [RuanganCon
 Route::get('/vehicleList', [KendaraanController::class, 'list']);
 Route::get('{kendaraan}/schedule', [KendaraanController::class, 'schedule'])->middleware(['auth'])->name('schedule');
 
-Route::get('/orderList', [OrderController::class, 'list']);
+Route::get('/orderList', [OrderController::class, 'list'])->middleware(['auth'])->name('orderList');
 Route::post('{ruangan}/orderRuangan', [OrderController::class, 'orderRuangan'])->middleware(['auth'])->name('orderRuangan');
 Route::post('{kendaraan}/orderKendaraan', [OrderController::class, 'orderKendaraan'])->middleware(['auth'])->name('orderKendaraan');
 

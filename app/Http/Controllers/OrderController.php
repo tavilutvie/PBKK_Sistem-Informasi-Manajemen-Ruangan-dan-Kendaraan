@@ -14,6 +14,9 @@ class OrderController extends Controller
     public function list() {
         return view('Order\orderList', [
             'page' => 'Order List',
+            'username' => auth()->user()->name,
+            'pesanan_ruangans' => auth()->user()->akun->pesananRuangan,
+            'pesanan_kendaraans' => auth()->user()->akun->pesananKendaraan,
         ]);
     }
 
