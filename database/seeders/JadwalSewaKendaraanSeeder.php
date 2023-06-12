@@ -14,6 +14,41 @@ class JadwalSewaKendaraanSeeder extends Seeder
     public function run(): void
     {
         //
-        JadwalSewaKendaraan::factory(10)->create();
+        // JadwalSewaKendaraan::factory(10)->create();
+
+        JadwalSewaKendaraan::create([
+            'tanggal_pesanan' => '2016-06-02',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Kendaraan_id_kendaraan' => '1'
+        ]);
+
+        JadwalSewaKendaraan::create([
+            'tanggal_pesanan' => '2019-11-02',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Kendaraan_id_kendaraan' => '2'
+        ]);
+
+        JadwalSewaKendaraan::create([
+            'tanggal_pesanan' => '2020-04-02',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Kendaraan_id_kendaraan' => '3'
+        ]);
+
+        JadwalSewaKendaraan::create([
+            'tanggal_pesanan' => '2021-03-02',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Kendaraan_id_kendaraan' => '4'
+        ]);
+
+        JadwalSewaKendaraan::create([
+            'tanggal_pesanan' => '2022-12-02',
+            'waktu_mulai' => '04:00:00',
+            'waktu_selesai' => '07:30:00',
+            'Kendaraan_id_kendaraan' => '5'
+        ]);
     }
 }
