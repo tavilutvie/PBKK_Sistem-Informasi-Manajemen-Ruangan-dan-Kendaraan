@@ -16,7 +16,7 @@ class JadwalSewaKendaraan extends Model
     ];
 
     public function kendaraan() {
-        return $this->belongsTo(Kendaraan::class);
+        return $this->belongsTo(Kendaraan::class, 'Kendaraan_id_kendaraan', 'id_kendaraan');
     }
     
 }
