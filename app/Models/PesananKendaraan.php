@@ -17,7 +17,7 @@ class PesananKendaraan extends Model
     ];
 
     public function akun() {
-        return $this->belongsTo(Akuns::class);
+        return $this->belongsTo(Akuns::class, 'Akun_id_akun', 'id_akun');
     }
 
     public function kendaraan() {
