@@ -11,10 +11,10 @@
 <!-- Kalender -->
 <div class="container pt-1 border-bottom border-3 mb-4 pb-3">
     <h3 class="text-center text-dark border-5 pt-1">nama_ruangan</h3>
-    <h3 class="text-center text-dark border-5 pt-1 pb-3">bulan_tahun</h3>
+    <h3 id="table-month" class="text-center text-dark border-5 pt-1 pb-3">{{ $month }} - {{ $year }} </h3>
 
     <!-- Masukin kalender disini -->
-    <table class="table table-responsive w-75">
+    <table class="table table-responsive">
         <thead>
             <tr>
                 <th scope="col" class="week">S</th>
@@ -78,8 +78,13 @@
 
 </div>
 <!---->
-<script src="../js/dateview.js"></script>
-<script src="../js/datecolor.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.2.slim.js" integrity="sha256-OflJKW8Z8amEUuCaflBZJ4GOg4+JnNh9JdVfoV+6biw=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    let currMonth = <?= $month ?>;
+    let currYear = <?= $year ?>;
+</script>
+<script src="/js/dateview.js"></script>
+<script src="/js/datecolor.js"></script>
 
 @include('Partials.footer')
 @endsection

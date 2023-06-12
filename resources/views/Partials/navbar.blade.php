@@ -2,7 +2,7 @@
 <nav class="container-fluid navbar navbar-expand-lg bg-light sticky-top px-5">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img id="logo-simrk" src="src/img/SIMRKLogo.png" alt="Logo SIMRK" width="180" height="80.04">
+                <img id="logo-simrk" src="/src/img/SIMRKLogo.png" alt="Logo SIMRK" width="180" height="80.04">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -52,7 +52,7 @@
                 <div class="d-flex">
                     <div class="dropdown mx-2 d-none d-md-block">
                         <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="./src/icon/AccountIcon.svg" alt="Account Icon" width="36px" height="36px">
+                            <img src="/src/icon/AccountIcon.svg" alt="Account Icon" width="36px" height="36px">
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             @auth

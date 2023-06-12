@@ -42,4 +42,12 @@ Route::post('{kendaraan}/orderKendaraan', [OrderController::class], 'orderKendar
 
 Route::get('/admin', [DashboardController::class], 'admin')->middleware(['auth'])->name('admin');
 
+Route::get('/schedule/{month}/{year}', function (int $month, int $year) {
+    return view('schedule/schedule', [
+        "page" => "Schedule",
+        "month" => $month,
+        "year" => $year
+    ]);
+});
+
 
