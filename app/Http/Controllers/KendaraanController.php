@@ -70,7 +70,7 @@ class KendaraanController extends Controller
     public function list(Kendaraan $kendaraan) {
         return view('Vehicle\vehicleList', [
             "page" => "Kendaraan",
-            "ruangans" => $kendaraan->all(),
+            "kendaraans" => $kendaraan->all(),
         ]);
     }
 

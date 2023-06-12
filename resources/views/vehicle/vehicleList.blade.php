@@ -10,9 +10,9 @@
         <div class="card m-2" style="width: 18rem;">
             <img src="public/src/img/{{ $kendaraan->jenis_kendaraan }}.webp" class="card-img-top" alt="Gambar kendaraan" width="268px" height="160px">
             <div class="card-body">
-                <h5 class="card-title">{{ $kendaraan->jenis_kendaraan }}</h5>
+                <h5 class="card-title">{{ ucfirst($kendaraan->jenis_kendaraan) }}</h5>
                 <p class="card-text">Nomor Plat kendaraan: {{ $kendaraan->nomor_plat }}</p>
-                <p class="card-text @if ($kendaraan->status_operasional == 0) text-danger @endif">Status Operasional kendaraan:
+                <p class="card-text @if ($kendaraan->status_operasional == 0) text-danger @endif">Status Operasional:
                     @if ($kendaraan->status_operasional == 1)
                         Tersedia
                     @else
