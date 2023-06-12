@@ -60,6 +60,7 @@
             </tr>
         </thead>
         <tbody>
+            {{ dd($jadwal_sewa_ruangan) }}
             @foreach ($ruangan->jadwalSewaRuangan->all() as $jadwalSewaRuangan)
                 <tr>
                     <td>{{ $jadwalSewaRuangan }}</td>
