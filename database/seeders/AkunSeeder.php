@@ -13,6 +13,6 @@ class AkunSeeder extends Seeder
      */
     public function run(): void
     {
-        Akun::factory(10)->create();
+        // Akun::factory(10)->create();
     }
 }
