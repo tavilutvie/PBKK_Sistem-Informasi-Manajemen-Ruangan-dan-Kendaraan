@@ -12,6 +12,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    public function isAdmin()
+{
+    return $this->is_admin; // Assuming your user model has an "is_admin" column in the database
+}
+
     /**
      * The attributes that are mass assignable.
      *
