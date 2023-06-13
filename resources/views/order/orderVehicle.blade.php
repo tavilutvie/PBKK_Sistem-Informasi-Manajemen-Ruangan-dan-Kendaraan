@@ -20,15 +20,15 @@
         
         <div class="form-group py-2"> <!-- Date input -->
             <label class="control-label" for="date">Date</label>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="date"/>
         </div>
         <div class="form-group py-2"> <!-- Jam mulai pemakaian -->
             <label class="control-label" for="waktu_mulai">Jam Mulai Pemakaian</label>
-            <input class="form-control" id="waktu_mulai" name="waktu_mulai" placeholder="HH:MM" type="text"/>
+            <input class="form-control" id="waktu_mulai" name="waktu_mulai" placeholder="HH:MM" type="time"/>
         </div>
         <div class="form-group py-2"> <!-- Jam selesai pemakaian -->
             <label class="control-label" for="waktu_selesai">Jam Selesai Pemakaian</label>
-            <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM" type="text"/>
+            <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM" type="time"/>
         </div>
       </div>
     </div>
