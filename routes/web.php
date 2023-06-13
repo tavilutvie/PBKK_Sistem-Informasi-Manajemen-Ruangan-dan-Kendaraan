@@ -43,4 +43,7 @@ Route::post('{kendaraan}/orderKendaraan', [OrderController::class, 'orderKendara
 
 Route::get('/admin', [DashboardController::class, 'admin'])->middleware(['auth'])->name('admin');
 
+Route::get('/orderRuanganTest', [OrderController::class, 'orderRuanganTest']);
+Route::get('/orderKendaraanTest', [OrderController::class, 'orderKendaraanTest']);
+
 

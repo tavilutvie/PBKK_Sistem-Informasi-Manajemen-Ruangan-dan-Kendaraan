@@ -34,4 +34,16 @@ class OrderController extends Controller
             'page' => 'Order Kendaraan',
         ]);
     }
+
+    public function orderRuanganTest() {
+        return view('Order/orderRoom', [
+            'page' => 'Order Ruangan Test',
+        ]);
+    }
+
+    public function orderKendaraanTest() {
+        return view('Order/orderVehicle', [
+            'page' => 'Order Kendaraan Test',
+        ]);
+    }
 }
