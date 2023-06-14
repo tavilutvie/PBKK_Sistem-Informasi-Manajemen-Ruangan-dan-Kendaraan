@@ -4,14 +4,15 @@ namespace App\Repositories;
 
 use App\Models\Akuns;
 
-class AkunsRepository
+class AkunRepository
 {
     /**
      * Create new Akuns
      */
-    public function create(array $new)
+    public function create(int $user_id, array $new)
     {
         $akun = new Akuns();
+        $akun->user_id = $user_id;
         $akun->nama_belakang = $new['nama_belakang'];
         $akun->nama_depan = $new['nama_depan'];
         $akun->nomor_telepon = $new['nomor_telepon'];
@@ -32,11 +33,11 @@ class AkunsRepository
     }
 
     /**
-     * Get Akuns by username
+     * Get Akuns by ID
      */
-    public function get(string $username)
+    public function getById(int $id)
     {
-        return Akuns::where('username', $username)->first();
+        return Akuns::where('id_akun', $id)->first();
     }
 
     /**

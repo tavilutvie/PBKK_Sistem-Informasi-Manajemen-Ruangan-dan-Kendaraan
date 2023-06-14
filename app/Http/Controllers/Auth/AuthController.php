@@ -4,49 +4,36 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use App\Services\AkunServiceProvider;
+use App\Services\AuthServiceProvider;
+use App\Services\UserServiceProvider;
 
 class AuthController extends Controller
 {
+    public function __construct(
+        private AuthServiceProvider $authServiceProvider,
+        private AkunServiceProvider $akunServiceProvider,
+        private UserServiceProvider $userServiceProvider
+    )
+    {}
+
     /**
      * Register user (POST Method)
      */
     public function register(Request $request) {
-        $validated_user = $request->validate([
-            'name' => 'required|max:255|unique:users|min:4|max:255',
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:8',
-        ]);
+        $is_valid_user = $this->userServiceProvider->validateUser($request);
+        $is_valid_akun = $this->akunServiceProvider->validateAkun($request);
 
-        $validated_akun = $request->validate([
-            'nama_belakang' => 'required|max:255',
-            'nama_depan' => 'required|max:255',
-            'nomor_telepon' => 'required|unique:Akuns|max:20',
-            'nip' => 'required|unique:Akuns|min:10|max:20',
-            'jabatan' => 'required|max:255',
-            'foto_tanda_pengenal' => 'required|image'
-        ]);
+        if (!$is_valid_user || !$is_valid_akun) return redirect('/register')->with('error', 'Registration failed!');
 
-        $imagePath = "";
-        if ($request->hasFile('foto_tanda_pengenal')) {
-            $image = $request->file('foto_tanda_pengenal');
-            $filename = time(). '-'. str_replace(' ', '_', $image->getClientOriginalName());
-            $image->storeAs('public/images/user_profile', $filename);
+        // save data
+        $this->userServiceProvider->saveUser($is_valid_user);
 
-            // Get the image path
-            $imagePath = 'storage/images/user_profile/' . $filename;
-        }
+        // get user id
+        $user_id = $this->userServiceProvider->getUserIdByUsername($is_valid_user['name']);
 
-        // change image to path
-        $validated_akun['foto_tanda_pengenal'] = $imagePath;
-
-        $validated_user['password'] = Hash::make($validated_user['password']);
-
-        // Save Data
-        User::create($validated_user)
-            ->akun()
-            ->create($validated_akun);
+        // save akun with given user id
+        $this->akunServiceProvider->saveAkun($user_id, $is_valid_akun);
 
         return redirect('/login')->with('success', 'Registration successful!');
     }
@@ -55,23 +42,18 @@ class AuthController extends Controller
      * Login user (POST Method)
      */
     public function login(Request $request) {
-        $validated = $request->validate([
-            'email' => 'required|email:rfc,dns',
-            'password' => 'required|min:8',
-        ]);
+        $login_result = $this->authServiceProvider->loginAuth($request);
 
-        if (auth()->attempt($validated)) {
-            return redirect('/')->with('success', 'Login successful!');
-        }
-
-        return redirect('/login')->with('error', 'Login failed!');
+        if (!$login_result) return redirect('/login')->with('error', 'Login failed!');
+        return redirect('/')->with('success', 'Login successful!');
     }
 
     /**
      * Logout user (POST Method)
      */
     public function logout() {
-        auth()->logout();
-        return redirect('/login')->with('success', 'Logout successful!');
+        $logout_result = $this->authServiceProvider->logoutAuth();
+
+        return redirect('/')->with('success', 'Logout successful!');
     }
 }
