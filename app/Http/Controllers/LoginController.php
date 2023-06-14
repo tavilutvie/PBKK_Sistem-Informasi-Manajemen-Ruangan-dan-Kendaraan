@@ -74,12 +74,11 @@ class LoginController extends Controller
         ]);
 
         if (auth()->attempt($validated)) {
-            if (auth()->user()->akun->is_admin) { // Assuming you have an "isAdmin" method in your User model
+            if (auth()->user()->akun->is_admin) {
                 return redirect('/admin')->with('success', 'Login successful!');
             } else {
                 return redirect('/dashboard')->with('success', 'Login successful!');
             }
-            // return redirect('/dashboard')->with('success', 'Login successful!');
         }
 
         return redirect('/login')->with('error', 'Login failed!');

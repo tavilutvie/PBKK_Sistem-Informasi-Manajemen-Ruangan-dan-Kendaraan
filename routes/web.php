@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KendaraanController;
 use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,5 +43,8 @@ Route::post('{ruangan}/orderRuangan', [OrderController::class, 'orderRuangan'])-
 Route::post('{kendaraan}/orderKendaraan', [OrderController::class, 'orderKendaraan'])->middleware(['auth'])->name('orderKendaraan');
 
 Route::get('/admin', [DashboardController::class, 'admin'])->middleware(['auth'])->name('admin');
+
+// Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::post('/admin/{id}/update', [AdminController::class, 'update'])->name('admin.update');
 
 
