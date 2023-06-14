@@ -75,7 +75,7 @@
     </div>
 
     <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-5">
-        <a href="/vehicle" class="btn btn-outline-primary">Kembali ke Daftar Kendaraan</a>
+        <a href="/vehicleList" class="btn btn-outline-primary">Kembali ke Daftar Kendaraan</a>
     </div>
 
 </div>

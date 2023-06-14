@@ -40,7 +40,7 @@ Route::controller(RuanganController::class)->group(function() {
 
 Route::controller(KendaraanController::class)->group(function() {
     Route::get('/vehicleList', 'list')->name('vehicleList');
-    Route::get('{kendaraan:id_kendaraan}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('schedule');
+    Route::get('/vehicleList/{kendaraan:id_kendaraan}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('schedule');
 });
 
 Route::controller(OrderController::class)->group(function() {
