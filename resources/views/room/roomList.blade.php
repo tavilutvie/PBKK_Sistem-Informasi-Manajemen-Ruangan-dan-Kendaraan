@@ -11,8 +11,8 @@
         <div class="card m-2" style="width: 18rem;">
             <img src="/src/img/{{ $ruangan->nama_ruangan }}.webp" class="card-img-top" alt="Gambar ruangan" width="268px" height="160px">
             <div class="card-body">
-                <h5 class="card-title">{{ $ruangan->nama_ruangan }}</h5>
-                <p class="card-text">Jenis Ruangan: {{ $ruangan->jenis_ruangan }}</p>
+                <h5 class="card-title">{{ str_replace("_", " ", ucfirst($ruangan->nama_ruangan)) }}</h5>
+                <p class="card-text">Jenis Ruangan: {{ ucfirst($ruangan->jenis_ruangan) }}</p>
                 <a href="/roomList/{{ $ruangan->id_ruangan }}" class="btn btn-primary">Lihat
                     Detail</a>
             </div>

@@ -68,7 +68,7 @@ class RuanganController extends Controller
      * Get List of ruangan
      */
     public function list(Ruangan $ruangan) {
-        return view('Room/roomList', [
+        return view('Room\roomList', [
             "page" => "Ruangan",
             "ruangans" => $ruangan->all()
         ]);
@@ -88,7 +88,7 @@ class RuanganController extends Controller
      * Get schedule of ruangan dipinjam
      */
     public function schedule(Ruangan $ruangan, int $month, int $year) {
-        return view('schedule\schedule', [
+        return view('schedule\roomSchedule', [
             "page" => $ruangan->nama_ruangan,
             "ruangan" => $ruangan,
             "month" => $month,

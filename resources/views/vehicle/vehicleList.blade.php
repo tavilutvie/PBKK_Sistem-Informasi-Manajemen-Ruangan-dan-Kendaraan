@@ -10,7 +10,7 @@
         <div class="card m-2" style="width: 18rem;">
             <img src="/src/img/{{ $kendaraan->jenis_kendaraan }}.webp" class="card-img-top" alt="Gambar kendaraan" width="268px" height="160px">
             <div class="card-body">
-                <h5 class="card-title">{{ ucfirst($kendaraan->jenis_kendaraan) }}</h5>
+                <h5 class="card-title">{{ str_replace("_", " ", ucfirst($kendaraan->jenis_kendaraan)) }}</h5>
                 <p class="card-text">Nomor Plat kendaraan: {{ $kendaraan->nomor_plat }}</p>
                 <p class="card-text @if ($kendaraan->status_operasional == 0) text-danger @endif">Status Operasional:
                     @if ($kendaraan->status_operasional == 1)
@@ -21,9 +21,9 @@
                 </p>
 
                 @if ($kendaraan->status_operasional == 1)
-                    <a href="{{ $kendaraan->id_kendaraan }}/schedule/{{ date('m') }}/{{ date('Y') }}" class="btn btn-primary">Pesan Sekarang</a>
+                    <a href="/vehicleList/{{ $kendaraan->id_kendaraan }}/schedule/{{ date('m') }}/{{ date('Y') }}" class="btn btn-primary">Pesan Sekarang</a>
                 @else
-                    <a href="{{ $kendaraan->id_kendaraan }}/schedule" class="btn btn-primary disabled">Pesan Sekarang</a>
+                    <a href="" class="btn btn-primary disabled">Pesan Sekarang</a>
                 @endif
             </div>
         </div>
