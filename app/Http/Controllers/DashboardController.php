@@ -29,10 +29,4 @@ class DashboardController extends Controller
             "page" => "Register"
         ]);
     }
-
-    public function admin() {
-        return view('/Dashboard/admin', [
-            "page" => "Admin Page"
-        ]);
-    }
 }
