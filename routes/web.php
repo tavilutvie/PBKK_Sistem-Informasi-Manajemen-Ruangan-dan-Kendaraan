@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KendaraanController;
-use App\Http\Controllers\RuanganController;
+use App\Http\Controllers\Domain\KendaraanController;
+use App\Http\Controllers\Domain\RuanganController;
 use Illuminate\Support\Facades\Route;
 
 /*
