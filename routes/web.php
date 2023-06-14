@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
@@ -19,16 +20,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', [RegisterController::class, 'store']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/logout', 'logout')->middleware(['auth'])->name('logout');
+    Route::post('/register', 'register')->middleware(['guest'])->name('register');
+    Route::post('/login', 'login')->middleware(['guest'])->name('login');
+});
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/about', [DashboardController::class, 'about']);
-Route::get('/login', [DashboardController::class, 'login'])->middleware(['guest'])->name('login');
-Route::get('/register', [DashboardController::class, 'register'])->middleware(['guest'])->name('login');
+Route::controller(DashboardController::class)->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/login', 'login')->middleware(['guest'])->name('login');
+    Route::get('/register', 'register')->middleware(['guest'])->name('register');
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+// Route::post('/register', [RegisterController::class, 'store']);
+// Route::post('/login', [LoginController::class, 'login']);
+// Route::get('/logout', [LoginController::class, 'logout']);
+
+// Route::get('/', [DashboardController::class, 'index']);
+// Route::get('/about', [DashboardController::class, 'about']);
+// Route::get('/login', [DashboardController::class, 'login'])->middleware(['guest'])->name('login');
+// Route::get('/register', [DashboardController::class, 'register'])->middleware(['guest'])->name('login');
 
 Route::get('/roomList', [RuanganController::class, 'list']);
 Route::get('/roomList/{ruangan:id_ruangan}', [RuanganController::class, 'detail']);

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     /**
-     * Register user
+     * Register user (POST Method)
      */
     public function register(Request $request) {
         $validated_user = $request->validate([
@@ -51,7 +51,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Login user
+     * Login user (POST Method)
      */
     public function login(Request $request) {
         $validated = $request->validate([
@@ -60,14 +60,14 @@ class AuthController extends Controller
         ]);
 
         if (auth()->attempt($validated)) {
-            return redirect('/dashboard')->with('success', 'Login successful!');
+            return redirect('/')->with('success', 'Login successful!');
         }
 
         return redirect('/login')->with('error', 'Login failed!');
     }
 
     /**
-     * Logout user
+     * Logout user (POST Method)
      */
     public function logout() {
         auth()->logout();
