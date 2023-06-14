@@ -1,103 +1,51 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Domain;
 
-use App\Models\Ruangan;
-use App\Http\Requests\StoreRuanganRequest;
-use App\Http\Requests\UpdateRuanganRequest;
+use App\Http\Controllers\Controller;
+use App\Services\RuanganServiceProvider;
 
 class RuanganController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreRuanganRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ruangan $ruangan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Ruangan $ruangan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateRuanganRequest $request, Ruangan $ruangan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Ruangan $ruangan)
-    {
-        //
-    }
+    public function __construct(
+        private RuanganServiceProvider $ruanganServiceProvider
+    ) {}
 
     /**
      * Get List of ruangan
      */
-    public function list(Ruangan $ruangan) {
+    public function list() {
         return view('Room\roomList', [
             "page" => "Ruangan",
-            "ruangans" => $ruangan->all()
+            "ruangans" => $this->ruanganServiceProvider->getListRuangan(),
         ]);
     }
 
     /**
      * Get Detail of one ruangan
      */
-    public function detail(Ruangan $ruangan) {
+    public function detail(int $id) {
+        $ruangan_info = $this->ruanganServiceProvider->getDetailRuangan($id);
+
         return view('Room\roomDetail', [
-            "page" => $ruangan->nama_ruangan,
-            "ruangan" => $ruangan
+            "page" => $ruangan_info['nama_ruangan'],
+            "ruangan" => $ruangan_info,
         ]);
     }
 
     /**
      * Get schedule of ruangan dipinjam
      */
-    public function schedule(Ruangan $ruangan, int $month, int $year) {
+    public function schedule(int $id, int $month, int $year) {
+        $jadwal_sewa_ruangan = $this->ruanganServiceProvider->getScheduleWithMonthYear($id, $month, $year);
+        $ruangan_info = $this->ruanganServiceProvider->getDetailRuangan($id);
+
         return view('schedule\roomSchedule', [
-            "page" => $ruangan->nama_ruangan,
-            "ruangan" => $ruangan,
+            "page" => $ruangan_info['nama_ruangan'],
+            "ruangan" => $ruangan_info,
             "month" => $month,
             "year" => $year,
-            "jadwal_sewa_ruangans" =>
-                $ruangan->jadwalSewaRuangan()
-                    ->whereMonth('tanggal_pesanan', $month)
-                    ->whereYear('tanggal_pesanan', $year)
-                    ->get(),
+            "jadwal_sewa_ruangans" => $jadwal_sewa_ruangan,
         ]);
     }
 }

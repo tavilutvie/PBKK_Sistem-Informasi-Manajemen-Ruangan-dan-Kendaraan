@@ -3,17 +3,14 @@
 @section("main_content")
 
 @include("Partials.navbar")
-<!-- TITLE -->
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 pt-2">JADWAL PEMAKAIAN</h1>
 </div>
 
-<!-- Kalender -->
 <div class="container pt-1 border-bottom border-3 mb-4 pb-3">
-    <h3 class="text-center text-dark border-5 pt-1">{{ $ruangan->nama_ruangan }}</h3>
+    <h3 class="text-center text-dark border-5 pt-1">{{ $ruangan['nama_ruangan'] }}</h3>
     <h3 id="table-month" class="text-center text-dark border-5 pt-1 pb-3"></h3>
 
-    <!-- Masukin kalender disini -->
     <table class="table table-responsive">
         <thead>
             <tr>
@@ -41,13 +38,12 @@
                 {{ $year = $year - 1 }}
             @endif
             </div>
-            <a href="/roomList/{{ $ruangan->id_ruangan }}/schedule/{{ $month-1 }}/{{ $year }}" class="btn btn-primary m-2" id="prev"><</a>
-            <a href="/roomList/{{ $ruangan->id_ruangan }}/schedule/{{ $month+1 }}/{{ $year }}" class="btn btn-primary m-2" id="next">></a>
+            <a href="/roomList/{{ $ruangan['id_ruangan'] }}/schedule/{{ $month-1 }}/{{ $year }}" class="btn btn-primary m-2" id="prev"><</a>
+            <a href="/roomList/{{ $ruangan['id_ruangan'] }}/schedule/{{ $month+1 }}/{{ $year }}" class="btn btn-primary m-2" id="next">></a>
         </div>
     </div>
 </div>
 
-<!-- Jadwal -->
 <div class="row d-flex align-items-center justify-content-around flex-wrap">
 <div>
     <h2 class="text-center text-dark border-5 py-1">Jadwal</h2>
@@ -62,9 +58,9 @@
         <tbody>
             @foreach ($jadwal_sewa_ruangans as $jadwal_sewa_ruangan)
                 <tr>
-                    <td class="tanggal-pemakaian">{{ $jadwal_sewa_ruangan->tanggal_pesanan }}</td>
-                    <td>{{ $jadwal_sewa_ruangan->waktu_mulai }}</td>
-                    <td>{{ $jadwal_sewa_ruangan->waktu_selesai }}</td>
+                    <td class="tanggal-pemakaian">{{ $jadwal_sewa_ruangan['tanggal_pesanan'] }}</td>
+                    <td>{{ $jadwal_sewa_ruangan['waktu_mulai'] }}</td>
+                    <td>{{ $jadwal_sewa_ruangan['waktu_selesai'] }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -79,7 +75,7 @@
     </div>
 
 </div>
-<!---->
+
 <script src="https://code.jquery.com/jquery-3.6.2.slim.js" integrity="sha256-OflJKW8Z8amEUuCaflBZJ4GOg4+JnNh9JdVfoV+6biw=" crossorigin="anonymous"></script>
 <script type="text/javascript">
     let currMonth = <?= $month ?>;

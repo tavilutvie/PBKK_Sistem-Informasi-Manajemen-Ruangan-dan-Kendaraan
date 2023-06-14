@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Domain;
 
+use App\Http\Controllers\Controller;
 use App\Models\Kendaraan;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;

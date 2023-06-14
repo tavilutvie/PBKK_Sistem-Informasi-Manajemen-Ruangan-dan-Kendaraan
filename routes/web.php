@@ -32,13 +32,13 @@ Route::controller(DashboardController::class)->group(function() {
 
 Route::controller(RuanganController::class)->group(function() {
     Route::get('/roomList', 'list')->name('roomList');
-    Route::get('/roomList/{ruangan:id_ruangan}', 'detail')->name('roomDetail');
-    Route::get('/roomList/{ruangan:id_ruangan}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('schedule');
+    Route::get('/roomList/{id}', 'detail')->name('roomDetail');
+    Route::get('/roomList/{id}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('roomSchedule');
 });
 
 Route::controller(KendaraanController::class)->group(function() {
     Route::get('/vehicleList', 'list')->name('vehicleList');
-    Route::get('/vehicleList/{kendaraan:id_kendaraan}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('schedule');
+    Route::get('/vehicleList/{kendaraan:id_kendaraan}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('vehicleSschedule');
 });
 
 Route::controller(OrderController::class)->group(function() {
