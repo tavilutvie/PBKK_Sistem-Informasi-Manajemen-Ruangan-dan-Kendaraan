@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Domain\KendaraanController;
@@ -45,4 +46,8 @@ Route::controller(OrderController::class)->group(function() {
     Route::get('/orderList', 'list')->middleware(['auth'])->name('orderList');
     Route::post('{ruangan:id_ruangan}/orderRuangan', 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
     Route::post('{kendaraan:id_kendaraan}/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
+});
+
+Route::controller(AdminController::class)->group(function() {
+    Route::get('/admin', 'index')->middleware(['auth', 'admin'])->name('admin');
 });

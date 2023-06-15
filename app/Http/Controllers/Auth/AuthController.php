@@ -44,8 +44,14 @@ class AuthController extends Controller
     public function login(Request $request) {
         $login_result = $this->authServiceProvider->loginAuth($request);
 
-        if (!$login_result) return redirect('/login')->with('error', 'Login failed!');
-        return redirect('/')->with('success', 'Login successful!');
+        if (!$login_result)
+            return redirect('/login')->with('error', 'Login failed!');
+
+        // check if admin
+        if (!auth()->user()->akun->is_admin)
+            return redirect('/')->with('success', 'Login successful!');
+
+        return redirect('/admin')->with('success', 'Login successful!');
     }
 
     /**
