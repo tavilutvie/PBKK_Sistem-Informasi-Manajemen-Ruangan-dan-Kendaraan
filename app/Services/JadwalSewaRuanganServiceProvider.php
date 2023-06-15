@@ -16,11 +16,12 @@ class JadwalSewaRuanganServiceProvider
      * Get room schedule with given month and year info
      *
      */
-    public function getWithIdRuangan(int $id_ruangan, int $month, int $year) {
-        $jadwal_sewa_ruangan_all = $this->jadwal_sewa_ruangan_repository->getAll();
+    public function getWithIdRuangan(int $id_ruangan, int $month, int $year)
+    {
+        $jadwal_sewa_ruangan_with_id = $this->jadwal_sewa_ruangan_repository->getByIdRuangan($id_ruangan);
 
         $jadwal_sewa_ruangan_each_MY = [];
-        foreach ($jadwal_sewa_ruangan_all as $jadwal_sewa_ruangan)
+        foreach ($jadwal_sewa_ruangan_with_id as $jadwal_sewa_ruangan)
         {
             $jadwal_month = $this->utilFunctions->GetMonthFromDate($jadwal_sewa_ruangan->tanggal_pesanan);
             $jadwal_year = $this->utilFunctions->GetYearFromDate($jadwal_sewa_ruangan->tanggal_pesanan);

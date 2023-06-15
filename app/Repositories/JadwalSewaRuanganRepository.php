@@ -41,7 +41,7 @@ class JadwalSewaRuanganRepository
      */
     public function getByIdRuangan(int $id_ruangan)
     {
-        return JadwalSewaRuangan::where('Ruangan_id_ruangan', $id_ruangan)->first();
+        return JadwalSewaRuangan::where('Ruangan_id_ruangan', $id_ruangan)->get();
     }
 
     /**
@@ -72,7 +72,7 @@ class JadwalSewaRuanganRepository
             return null;
         }
 
-        $jadwalSewaRuangan->tanggal = $update['tanggal_pesanan'];
+        $jadwalSewaRuangan->tanggal_pesanan = $update['tanggal_pesanan'];
         $jadwalSewaRuangan->waktu_mulai = $update['waktu_mulai'];
         $jadwalSewaRuangan->waktu_selesai = $update['waktu_selesai'];
         $jadwalSewaRuangan->save();
