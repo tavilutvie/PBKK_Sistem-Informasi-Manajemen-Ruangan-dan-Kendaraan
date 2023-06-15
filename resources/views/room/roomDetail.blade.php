@@ -17,8 +17,8 @@
         <div class="card pt-3 my-3" style="width: 22rem; height: 32rem;">
             <img src="/src/img/{{ $ruangan['nama_ruangan'] }}.webp" class="card-img-top rounded" alt="Pascasarjana">
             <div class="text-center text-lg-start my-3 my-lg-0">
-                <p class="my-3 text-dark">Nama Ruangan: {{ $ruangan['nama_ruangan'] }}</p>
-                <p class="my-3 text-dark">Jenis Ruangan: {{ $ruangan['jenis_ruangan'] }}</p>
+                <p class="my-3 text-dark">Nama Ruangan: {{ str_replace("_", " ", ucfirst($ruangan['nama_ruangan'])) }}</p>
+                <p class="my-3 text-dark">Jenis Ruangan: {{ ucfirst($ruangan['jenis_ruangan']) }}</p>
                 <p class="my-3 text-dark">Status Operasional:
                     @if ($ruangan['status_operasional'] == 1)
                         Tersedia

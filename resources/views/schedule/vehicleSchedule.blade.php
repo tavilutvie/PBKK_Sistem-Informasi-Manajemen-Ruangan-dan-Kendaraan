@@ -10,7 +10,7 @@
 
 <!-- Kalender -->
 <div class="container pt-1 border-bottom border-3 mb-4 pb-3">
-    <h3 class="text-center text-dark border-5 pt-1">{{ $kendaraan['jenis_kendaraan'] }}</h3>
+    <h3 class="text-center text-dark border-5 pt-1">{{ str_replace("_", " ", ucfirst($kendaraan['jenis_kendaraan'])) }}</h3>
     <h5 class="text-center text-dark border-5 pt-1 mb-3">{{ $kendaraan['nomor_plat'] }}</h5>
     <h3 id="table-month" class="text-center text-dark border-5 pt-1 pb-3"></h3>
 

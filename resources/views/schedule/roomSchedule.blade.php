@@ -8,7 +8,7 @@
 </div>
 
 <div class="container pt-1 border-bottom border-3 mb-4 pb-3">
-    <h3 class="text-center text-dark border-5 pt-1">{{ $ruangan['nama_ruangan'] }}</h3>
+    <h3 class="text-center text-dark border-5 pt-1">{{ str_replace("_", " ", ucfirst($ruangan['nama_ruangan'])) }}</h3>
     <h3 id="table-month" class="text-center text-dark border-5 pt-1 pb-3"></h3>
 
     <table class="table table-responsive">
