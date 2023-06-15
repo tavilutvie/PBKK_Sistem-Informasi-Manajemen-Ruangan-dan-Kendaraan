@@ -32,6 +32,16 @@ class UserServiceProvider
     }
 
     /**
+     * Get user by ID
+     */
+    public function getUsernameById(int $id) {
+        $user_data = $this->userRepository->getById($id);
+        $username = $user_data->name;
+
+        return $username;
+    }
+
+    /**
      * Save user
      */
     public function saveUser(array $new_data) {

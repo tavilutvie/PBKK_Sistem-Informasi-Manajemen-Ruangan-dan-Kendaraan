@@ -12,7 +12,7 @@ class AkunServiceProvider
     ) {}
 
     /**
-     * Validate AKun
+     * Validate Akun
      */
     public function validateAkun(Request $request) {
         $isValid = $request->validate([
@@ -32,5 +32,24 @@ class AkunServiceProvider
      */
     public function saveAkun(int $id, array $new_data) {
         $this->akunRepository->create($id, $new_data);
+    }
+
+    /**
+     * Get akun by ID
+     */
+    public function getAkunById(int $id) {
+        $akun_data = $this->akunRepository->getById($id);
+
+        $akun_data_array = [
+            'user_id' => $akun_data->user_id,
+            'nama_belakang' => $akun_data->nama_belakang,
+            'nama_depan' => $akun_data->nama_depan,
+            'nomor_telepon' => $akun_data->nomor_telepon,
+            'nip' => $akun_data->nip,
+            'jabatan' => $akun_data->jabatan,
+            'foto_tanda_pengenal' => $akun_data->foto_tanda_pengenal
+        ];
+
+        return $akun_data_array;
     }
 }

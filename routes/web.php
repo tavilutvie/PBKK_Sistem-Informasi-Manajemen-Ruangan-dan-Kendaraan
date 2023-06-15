@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Domain\KendaraanController;
 use App\Http\Controllers\Domain\RuanganController;
+use App\Http\Controllers\Domain\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*

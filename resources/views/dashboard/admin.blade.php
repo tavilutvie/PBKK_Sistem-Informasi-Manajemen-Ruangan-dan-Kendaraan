@@ -19,81 +19,40 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>budiM</td>
-                    <td><div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault"></label>
-                    </td>
-                    <td>2022-12-13</td>
-                    <td>08:00:00</td>
-                    <td>10:00:00</td>
-                    <td>Teater B</td>
-                    <td>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pengecekan Dokumen
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Pengecekan Dokumen</a></li>
-                            <li><a class="dropdown-item" href="#">Disetujui</a></li>
-                            <li><a class="dropdown-item" href="#">Gagal</a></li>
-                        </ul>
-                        </div>
-                    </td>
-                    <td><button type="button" class="btn btn-primary">UPDATE NOW</button></td>
-                </tr>
-
-                <td>2</td>
-                    <td>budiM</td>
-                    <td><div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault"></label>
-                    </td>
-                    <td>2022-12-13</td>
-                    <td>08:00:00</td>
-                    <td>10:00:00</td>
-                    <td>Teater B</td>
-                    <td>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pengecekan Dokumen
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Pengecekan Dokumen</a></li>
-                            <li><a class="dropdown-item" href="#">Disetujui</a></li>
-                            <li><a class="dropdown-item" href="#">Gagal</a></li>
-                        </ul>
-                        </div>
-                    </td>
-                    <td><button type="button" class="btn btn-primary">UPDATE NOW</button></td>
-                </tr>
-
-                <td>3</td>
-                    <td>budiM</td>
-                    <td><div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault"></label>
-                    </td>
-                    <td>2022-12-13</td>
-                    <td>08:00:00</td>
-                    <td>10:00:00</td>
-                    <td>Teater B</td>
-                    <td>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            Pengecekan Dokumen
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Pengecekan Dokumen</a></li>
-                            <li><a class="dropdown-item" href="#">Disetujui</a></li>
-                            <li><a class="dropdown-item" href="#">Gagal</a></li>
-                        </ul>
-                        </div>
-                    </td>
-                    <td><button type="button" class="btn btn-primary">UPDATE NOW</button></td>
-                </tr>
+                <div class="d-none">
+                    {{
+                        $iterator = 1;
+                     }}
+                </div>
+                @foreach ($ruangan_orders as $ruangan_order)
+                    <form action="admin/updateRuangan" method="post">
+                        <tr>
+                            <td>{{ $iterator }}</td>
+                            <td>{{ $ruangan_order['username'] }}</td>
+                            <td>
+                                <div class="form-check">
+                                    <input name="status_dokumen" class="form-check-input" type="checkbox" value="{{ $ruangan_order['status_dokumen'] }}" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault"></label>
+                                </div>
+                            </td>
+                            <td>{{ $ruangan_order['tanggal'] }}</td>
+                            <td>{{ explode(" ", $ruangan_order['waktu_mulai'])[1] }}</td>
+                            <td>{{ explode(" ", $ruangan_order['waktu_selesai'])[1] }}</td>
+                            <td>{{ $ruangan_order['nama_ruangan'] }}</td>
+                            <td>
+                                <select name="status_pesanan" class="form-select" required>
+                                    <option value="Pengecekan Dokumen">Pengecekan Dokumen</option>
+                                    <option value="Disetujui">Disetujui</option>
+                                    <option value="Gagal">Gagal</option>
+                                </select>
+                            </td>
+                            <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
+                        </tr>
+                    </form>
+                    <div class="d-none">
+                        {{ $iterator = $iterator + 1 }}
+                    </div>
+                @endforeach
             </tbody>
         </table>
 

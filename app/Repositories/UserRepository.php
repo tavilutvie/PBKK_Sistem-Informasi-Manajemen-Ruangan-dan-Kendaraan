@@ -37,6 +37,14 @@ class UserRepository
     }
 
     /**
+     * Get Users by ID
+     */
+    public function getById(int $id)
+    {
+        return User::where('id', $id)->first();
+    }
+
+    /**
      * Update User by username
      */
     public function update(string $username, string $nama_kolom, string $update)
