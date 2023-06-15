@@ -15,13 +15,24 @@ class AkunsSeeder extends Seeder
     {
 
         Akuns::create([
+            'nama_depan' => 'user',
+            'nama_belakang' => 'damas',
+            'nomor_telepon' => '081232267890',
+            'nip' => '5012322678',
+            'jabatan' => 'mahasiswa',
+            'foto_tanda_pengenal' => 'foto.jpg',
+            'user_id' => 1,
+        ]);
+
+        Akuns::create([
+            'is_admin' => true,
             'nama_depan' => 'admin',
             'nama_belakang' => 'damas',
             'nomor_telepon' => '081234567890',
             'nip' => '5012345678',
             'jabatan' => 'mahasiswa',
             'foto_tanda_pengenal' => 'foto.jpg',
-            'user_id' => 1,
+            'user_id' => 2,
         ]);
     }
 }
