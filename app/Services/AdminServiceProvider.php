@@ -74,7 +74,7 @@ class AdminServiceProvider
                 $data['username'] = $username;
 
                 // Get jenis kendaraan
-                $kendaraan_data = $this->kendaraan_service_provider->getKendaraanById($data['Kendaraan_id_ruangan']);
+                $kendaraan_data = $this->kendaraan_service_provider->getKendaraanById($data['Kendaraan_id_kendaraan']);
                 $data['jenis_kendaraan'] = $kendaraan_data['jenis_kendaraan'];
 
                 array_push($filtered_data, $data);
