@@ -43,6 +43,7 @@
                             <td>{{ $ruangan_order['nama_ruangan'] }}</td>
                             <td>
                                 <select name="status_pesanan" class="form-select" required>
+                                    <option value="Menunggu Dokumen">Menunggu Dokumen</option>
                                     <option value="Pengecekan Dokumen">Pengecekan Dokumen</option>
                                     <option value="Disetujui">Disetujui</option>
                                     <option value="Gagal">Gagal</option>
@@ -98,6 +99,7 @@
                             <td>{{ $kendaraan_order['jenis_kendaraan'] }}</td>
                             <td>
                                 <select name="status_pesanan" class="form-select" required>
+                                    <option value="Menunggu Dokumen">Menunggu Dokumen</option>
                                     <option value="Pengecekan Dokumen">Pengecekan Dokumen</option>
                                     <option value="Disetujui">Disetujui</option>
                                     <option value="Gagal">Gagal</option>
