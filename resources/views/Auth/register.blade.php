@@ -138,7 +138,12 @@
                 <div class="w-100 col-md-6 mb-4">
                   <div class="mb-3">
                     <label for="formFile" class="form-label">Kartu Tanda Pengenal</label>
-                    <input class="form-control" type="file" id="formFile" name="foto_tanda_pengenal" accept=".png, .jpg, .jpeg">
+                    <input class="form-control @error('foto_tanda_pengenal') is-invalid @enderror" value="{{ old('foto_tanda_pengenal') }}" type="file" id="formFile" name="foto_tanda_pengenal" accept=".png, .jpg, .jpeg">
+                    @error('foto_tanda_pengenal')
+                        <div id="validationServerUsernameFeedback" class=" invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                   </div>
                 </div>
 

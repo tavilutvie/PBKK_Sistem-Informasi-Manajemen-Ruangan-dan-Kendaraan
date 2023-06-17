@@ -16,6 +16,7 @@ class Akuns extends Model
         'nip',
         'jabatan',
         'foto_tanda_pengenal',
+        'user_id'
     ];
 
     protected $hidden = [

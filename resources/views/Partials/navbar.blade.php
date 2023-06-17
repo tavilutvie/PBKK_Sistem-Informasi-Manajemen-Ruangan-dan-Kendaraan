@@ -45,8 +45,20 @@
                             <li><a class="dropdown-item" href="/vehicleList">Kendaraan</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item d-md-none">
-                        <a class="nav-link" href="#">Akun Saya</a>
+                    <li class="nav-item dropdown d-md-none">
+                    @auth
+                        <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                                Halo, {{ auth()->user()->name }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/orderList" class="dropdown-item">Pesanan Anda</a></li>
+                            <form class="my-2" action="/logout" method="GET">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Keluar</button>
+                            </form>
+                        </ul>
+                    @endauth
                     </li>
                 </ul>
                 <div class="d-flex">

@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\KendaraanController;
-use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Domain\KendaraanController;
+use App\Http\Controllers\Domain\RuanganController;
+use App\Http\Controllers\Domain\OrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,31 +19,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/register', [RegisterController::class, 'store']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::controller(AuthController::class)->group(function() {
+    Route::get('/logout', 'logout')->middleware(['auth'])->name('logout');
+    Route::post('/register', 'register')->middleware(['guest']);
+    Route::post('/login', 'login')->middleware(['guest']);
+});
 
-Route::get('/', [DashboardController::class, 'index']);
-Route::get('/about', [DashboardController::class, 'about']);
-Route::get('/login', [DashboardController::class, 'login'])->middleware(['guest'])->name('login');
-Route::get('/register', [DashboardController::class, 'register'])->middleware(['guest'])->name('login');
+Route::controller(DashboardController::class)->group(function() {
+    Route::get('/', 'index')->name('index');
+    Route::get('/about', 'about')->name('about');
+    Route::get('/login', 'login')->middleware(['guest'])->name('login');
+    Route::get('/register', 'register')->middleware(['guest'])->name('register');
+});
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::controller(RuanganController::class)->group(function() {
+    Route::get('/roomList', 'list')->name('roomList');
+    Route::get('/roomList/{id}', 'detail')->name('roomDetail');
+    Route::get('/roomList/{id}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('roomSchedule');
+});
 
-Route::get('/roomList', [RuanganController::class, 'list']);
-Route::get('/roomList/{ruangan:id_ruangan}', [RuanganController::class, 'detail']);
-Route::get('/roomList/{ruangan:id_ruangan}/schedule/{month}/{year}', [RuanganController::class, 'schedule'])->middleware(['auth'])->name('schedule');
+Route::controller(KendaraanController::class)->group(function() {
+    Route::get('/vehicleList', 'list')->name('vehicleList');
+    Route::get('/vehicleList/{id}/schedule/{month}/{year}', 'schedule')->middleware(['auth'])->name('vehicleSschedule');
+});
 
-Route::get('/vehicleList', [KendaraanController::class, 'list']);
-Route::get('{kendaraan}/schedule', [KendaraanController::class, 'schedule'])->middleware(['auth'])->name('schedule');
+Route::controller(OrderController::class)->group(function() {
+    Route::get('/orderList', 'list')->middleware(['auth'])->name('orderList');
+    Route::post('{ruangan:id_ruangan}/orderRuangan', 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
+    Route::post('{kendaraan:id_kendaraan}/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
+});
 
-Route::get('/orderList', [OrderController::class, 'list']);
-Route::post('{ruangan}/orderRuangan', [OrderController::class, 'orderRuangan'])->middleware(['auth'])->name('orderRuangan');
-Route::post('{kendaraan}/orderKendaraan', [OrderController::class, 'orderKendaraan'])->middleware(['auth'])->name('orderKendaraan');
-
-Route::get('/admin', [DashboardController::class, 'admin'])->middleware(['auth'])->name('admin');
-
-// Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::post('/admin/{id}/update', [AdminController::class, 'update'])->name('admin.update');
-
-
+Route::controller(AdminController::class)->group(function() {
+    Route::get('/admin', 'index')->middleware(['auth', 'admin'])->name('admin');
+    Route::post('/admin/updateRuangan/{id}', 'updateRuangan')->middleware(['auth', 'admin'])->name('updateRuangan');
+    Route::post('/admin/updateKendaraan/{id}', 'updateKendaraan')->middleware(['auth', 'admin'])->name('updateKendaraan');
+});

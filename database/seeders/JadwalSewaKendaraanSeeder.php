@@ -17,7 +17,7 @@ class JadwalSewaKendaraanSeeder extends Seeder
         // JadwalSewaKendaraan::factory(10)->create();
 
         JadwalSewaKendaraan::create([
-            'tanggal_pesanan' => '2022-06-02',
+            'tanggal_pesanan' => '2023-06-02',
             'waktu_mulai' => '04:00:00',
             'waktu_selesai' => '07:30:00',
             'Kendaraan_id_kendaraan' => '1'

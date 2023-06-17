@@ -145,9 +145,10 @@
                 <div class="card my-3" style="width: 18rem; height: 24rem;">
                     <img src="/src/img/Truk_Engkel.webp" class="card-img-top rounded" alt="Graha ITS">
                     <div class="card-body">
-                        <h5 class="card-title">Graha ITS</h5>
-                        <p class="card-text">Graha ITS adalah gedung yang berada di kampus ITS yang berfungsi sebagai
-                            tempat untuk mengadakan acara-acara besar. Graha ITS memiliki kapasitas sampai 1500 orang</p>
+                        <h5 class="card-title">Truk Engkel</h5>
+                        <p class="card-text">Truk Engkel milik ITS dapat digunakan untuk kebutuhan pemindahan
+                            barang-barang proyek, seperti kayu, besi, dan sebagainya di area kampus ITS
+                        </p>
                     </div>
                 </div>
             </div>
