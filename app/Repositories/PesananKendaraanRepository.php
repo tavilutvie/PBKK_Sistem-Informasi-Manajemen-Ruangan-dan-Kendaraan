@@ -58,14 +58,21 @@ class PesananKendaraanRepository
         return PesananKendaraan::where('User_id_user', $id_user)->get();
     }
 
+
     /**
      * Update Order Kendaraan by id
      */
-    public function update(int $id, string $nama_kolom, string $update)
+    public function update(array $update)
     {
-        $pesanan_kendaraan = PesananKendaraan::where('id_pesanan_kendaraan', $id)->first();
-        $pesanan_kendaraan->$nama_kolom = $update;
-        $pesanan_kendaraan->save();
+        $pesanan_kendaraan = PesananKendaraan::where('id_pesanan_kendaraan', $update['id_pesanan_kendaraan']);
+
+        if(!$pesanan_kendaraan) {
+            return null;
+        }
+
+        foreach($update as $key => $value) {
+            $pesanan_kendaraan->update([$key => $value]);
+        }
 
         return $pesanan_kendaraan;
     }
@@ -76,6 +83,11 @@ class PesananKendaraanRepository
     public function delete(int $id)
     {
         $pesanan_kendaraan = PesananKendaraan::where('id_pesanan_kendaraan', $id)->first();
+
+        if(!$pesanan_kendaraan) {
+            return null;
+        }
+
         $pesanan_kendaraan->delete();
 
         return $pesanan_kendaraan;

@@ -37,4 +37,11 @@ class JadwalSewaKendaraanServiceProvider
 
         return $jadwal_sewa_kendaraan_each_MY;
     }
+
+    /**
+     * Add new jadwal data
+     */
+    public function addData(array $data) {
+        $this->jadwal_sewa_kendaraan_repository->create($data);
+    }
 }

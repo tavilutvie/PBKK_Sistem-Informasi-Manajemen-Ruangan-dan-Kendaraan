@@ -32,4 +32,12 @@ class PesananKendaraanServiceProvider
 
         return $pesanan_kendaraan_all;
     }
+    /**
+     * Update kendaraan order data
+     */
+    public function updateKendaraanOrder(array $data) {
+        $this->pesanan_kendaraan_repository->update($data);
+
+        return;
+    }
 }

@@ -65,7 +65,56 @@ class AdminController extends Controller
                 'Ruangan_id_ruangan' => $id_ruangan
             ];
 
-            $this->admin_service_provider->addNewSchedule($jadwal_data);
+            $this->admin_service_provider->addNewScheduleRuangan($jadwal_data);
+        }
+
+        return redirect()->route('admin');
+    }
+
+    /**
+     * Update ruangan order data
+     */
+    public function updateKendaraan(Request $request, int $id) {
+        $status_dokumen = $request->status_dokumen;
+        $status_pesanan = $request->status_pesanan;
+        if($status_dokumen == null && $status_pesanan == null) {
+            $status_dokumen = false;
+            $status_pesanan = 'Menunggu Dokumen';
+        }
+        elseif ($status_dokumen != null && $status_pesanan == null) {
+            $status_dokumen = true;
+            $status_pesanan = 'Pengecekan Dokumen';
+        }
+        elseif ($status_dokumen == null && $status_pesanan != null) {
+            $status_dokumen = false;
+            $status_pesanan = 'Menunggu Dokumen';
+        }
+        else {
+            $status_dokumen = true;
+        }
+
+        // update data ke order
+        $kendaraan_data = [
+            'id_pesanan_kendaraan' => $id,
+            'status_pesanan' => $status_pesanan,
+            'status_dokumen' => $status_dokumen,
+        ];
+
+        $this->admin_service_provider->updateKendaraanOrder($kendaraan_data, $id);
+
+        // update data ke jadwal jika status_pesanan == Disetujui
+        if ($status_pesanan == 'Disetujui') {
+
+            // get kendaraan id
+            $id_kendaraan = $this->admin_service_provider->getKendaraanId($request->jenis_kendaraan);
+            $jadwal_data = [
+                'tanggal_pesanan' => $request->tanggal_pesanan,
+                'waktu_mulai' => $request->waktu_mulai,
+                'waktu_selesai' => $request->waktu_selesai,
+                'Kendaraan_id_kendaraan' => $id_kendaraan
+            ];
+
+            $this->admin_service_provider->addNewScheduleKendaraan($jadwal_data);
         }
 
         return redirect()->route('admin');
