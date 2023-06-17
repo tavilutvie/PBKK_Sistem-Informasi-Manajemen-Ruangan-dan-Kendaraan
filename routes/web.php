@@ -45,8 +45,10 @@ Route::controller(KendaraanController::class)->group(function() {
 
 Route::controller(OrderController::class)->group(function() {
     Route::get('/orderList', 'list')->middleware(['auth'])->name('orderList');
-    Route::post('{ruangan:id_ruangan}/orderRuangan', 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
-    Route::post('{kendaraan:id_kendaraan}/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
+    Route::get('{id}/orderRuangan', 'orderRuanganView')->middleware(['auth'])->name('orderRuanganView');
+    Route::get('{id}/orderKendaraan', 'orderKendaraanView')->middleware(['auth'])->name('orderKendaraanView');
+    Route::post('/orderRuangan', 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
+    Route::post('/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
 });
 
 Route::controller(AdminController::class)->group(function() {

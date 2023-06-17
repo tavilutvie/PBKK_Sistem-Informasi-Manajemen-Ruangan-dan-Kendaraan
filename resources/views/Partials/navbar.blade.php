@@ -45,6 +45,14 @@
                             <li><a class="dropdown-item" href="/vehicleList">Kendaraan</a></li>
                         </ul>
                     </li>
+                    @guest
+                        <li class="nav-item">
+                            <a href="login" class="nav-link">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="register" class="nav-link">Buat Akun</a>
+                        </li>
+                    @endguest
                     <li class="nav-item dropdown d-md-none">
                     @auth
                         <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
