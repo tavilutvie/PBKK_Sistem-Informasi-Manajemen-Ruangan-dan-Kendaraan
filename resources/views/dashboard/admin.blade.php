@@ -48,10 +48,10 @@
                                     @endif
                                 </div>
                             </td>
-                            <td>{{ $ruangan_order['tanggal'] }}</td>
-                            <td>{{ explode(" ", $ruangan_order['waktu_mulai'])[1] }}</td>
-                            <td>{{ explode(" ", $ruangan_order['waktu_selesai'])[1] }}</td>
-                            <td>{{ $ruangan_order['nama_ruangan'] }}</td>
+                            <td><input name="tanggal_pesanan" type="date" value="{{ $ruangan_order['tanggal'] }}" readonly="readonly"></td>
+                            <td><input name="waktu_mulai" type="time" value="{{ explode(" ", $ruangan_order['waktu_mulai'])[1] }}" readonly="readonly"></td>
+                            <td><input name="waktu_selesai" type="time" value="{{ explode(" ", $ruangan_order['waktu_selesai'])[1] }}" readonly="readonly"></td>
+                            <td><input name="nama_ruangan" type="text" value="{{ $ruangan_order['nama_ruangan'] }}" readonly="readonly"></td>
                             <td>
                                 <select name="status_pesanan" class="form-select" required
                                 @if ($ruangan_order['status_dokumen'] == 0)

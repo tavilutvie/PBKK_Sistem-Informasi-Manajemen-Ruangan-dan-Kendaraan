@@ -38,6 +38,14 @@ class RuanganRepository
     }
 
     /**
+     * Get Ruangan id by name
+     */
+    public function getIdByName(string $nama_ruangan) {
+        $ruangan_data = Ruangan::where('nama_ruangan', $nama_ruangan)->first();
+        return $ruangan_data->id_ruangan;
+    }
+
+    /**
      * Update Ruangan by id
      */
     public function update(int $id, string $nama_kolom, string $update)

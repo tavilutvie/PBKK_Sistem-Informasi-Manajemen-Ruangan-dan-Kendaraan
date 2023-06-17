@@ -80,4 +80,11 @@ class RuanganServiceProvider
 
         return $ruangan_row;
     }
+
+    /**
+     * Get ruangan id from nama
+     */
+    public function getIdByRoomName(string $nama_ruangan) {
+        return $this->ruangan_repository->getIdByName($nama_ruangan);
+    }
 }

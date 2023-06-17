@@ -44,12 +44,29 @@ class AdminController extends Controller
             $status_dokumen = true;
         }
 
+        // update data ke order
         $ruangan_data = [
+            'id_pesanan_ruangan' => $id,
             'status_pesanan' => $status_pesanan,
             'status_dokumen' => $status_dokumen,
         ];
 
         $this->admin_service_provider->updateRuanganOrder($ruangan_data, $id);
+
+        // update data ke jadwal jika status_pesanan == Disetujui
+        if ($status_pesanan == 'Disetujui') {
+
+            // get ruangan id
+            $id_ruangan = $this->admin_service_provider->getRuanganId($request->nama_ruangan);
+            $jadwal_data = [
+                'tanggal_pesanan' => $request->tanggal_pesanan,
+                'waktu_mulai' => $request->waktu_mulai,
+                'waktu_selesai' => $request->waktu_selesai,
+                'Ruangan_id_ruangan' => $id_ruangan
+            ];
+
+            $this->admin_service_provider->addNewSchedule($jadwal_data);
+        }
 
         return redirect()->route('admin');
     }

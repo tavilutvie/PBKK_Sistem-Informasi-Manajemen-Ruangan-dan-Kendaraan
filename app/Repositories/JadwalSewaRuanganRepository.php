@@ -12,9 +12,10 @@ class JadwalSewaRuanganRepository
     public function create(array $new)
     {
         $jadwalSewaRuangan = new JadwalSewaRuangan();
-        $jadwalSewaRuangan->tanggal = $new['tanggal_pesanan'];
+        $jadwalSewaRuangan->tanggal_pesanan = $new['tanggal_pesanan'];
         $jadwalSewaRuangan->waktu_mulai = $new['waktu_mulai'];
         $jadwalSewaRuangan->waktu_selesai = $new['waktu_selesai'];
+        $jadwalSewaRuangan->Ruangan_id_ruangan = $new['Ruangan_id_ruangan'];
         $jadwalSewaRuangan->save();
 
         return $jadwalSewaRuangan;

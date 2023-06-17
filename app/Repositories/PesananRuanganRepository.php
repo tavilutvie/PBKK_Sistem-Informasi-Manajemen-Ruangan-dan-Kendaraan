@@ -60,9 +60,9 @@ class PesananRuanganRepository
     /**
      * Update Order Ruangan Row
      */
-    public function update(int $id, array $update)
+    public function update(array $update)
     {
-        $pesanan_ruangan = PesananRuangan::where('id_pesanan_ruangan', $id);
+        $pesanan_ruangan = PesananRuangan::where('id_pesanan_ruangan', $update['id_pesanan_ruangan']);
 
         if(!$pesanan_ruangan) {
             return null;

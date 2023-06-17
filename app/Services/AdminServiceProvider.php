@@ -8,6 +8,9 @@ use App\Services\AkunServiceProvider;
 use App\Services\UserServiceProvider;
 use App\Services\RuanganServiceProvider;
 use App\Services\KendaraanServiceProvider;
+use App\Services\JadwalSewaRuanganServiceProvider;
+use App\Services\JadwalSewaKendaraanServiceProvider;
+use Database\Seeders\JadwalSewaRuanganSeeder;
 
 class AdminServiceProvider
 {
@@ -17,7 +20,9 @@ class AdminServiceProvider
         private UserServiceProvider $user_service_provider,
         private AkunServiceProvider $akun_service_provider,
         private RuanganServiceProvider $ruangan_service_provider,
-        private KendaraanServiceProvider $kendaraan_service_provider
+        private KendaraanServiceProvider $kendaraan_service_provider,
+        private JadwalSewaRuanganServiceProvider $jadwal_sewa_ruangan_service_provider,
+        private JadwalSewaKendaraanServiceProvider $jadwal_sewa_kendaraan_service_provider,
     ) {}
 
     /**
@@ -103,9 +108,23 @@ class AdminServiceProvider
     /**
      * Update Ruangan order data
      */
-    public function updateRuanganOrder(array $ruangan_data, int $id_ruangan) {
-        $this->pesanan_ruangan_service_provider->updateRuanganOrder($ruangan_data, $id_ruangan);
+    public function updateRuanganOrder(array $ruangan_data) {
+        $this->pesanan_ruangan_service_provider->updateRuanganOrder($ruangan_data);
 
         return;
+    }
+
+    /**
+     * Add New Jadwal data
+     */
+    public function addNewSchedule(array $jadwal_data) {
+        $this->jadwal_sewa_ruangan_service_provider->addData($jadwal_data);
+    }
+
+    /**
+     * Get Ruangan id from nama
+     */
+    public function getRuanganId(string $nama_ruangan) {
+        return $this->ruangan_service_provider->getIdByRoomName($nama_ruangan);
     }
 }

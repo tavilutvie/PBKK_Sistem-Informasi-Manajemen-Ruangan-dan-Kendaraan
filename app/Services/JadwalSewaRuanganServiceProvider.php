@@ -38,4 +38,11 @@ class JadwalSewaRuanganServiceProvider
 
         return $jadwal_sewa_ruangan_each_MY;
     }
+
+    /**
+     * Add new jadwal data
+     */
+    public function addData(array $data) {
+        $this->jadwal_sewa_ruangan_repository->create($data);
+    }
 }

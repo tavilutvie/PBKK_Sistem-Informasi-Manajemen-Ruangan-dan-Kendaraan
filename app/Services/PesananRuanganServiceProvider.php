@@ -36,8 +36,8 @@ class PesananRuanganServiceProvider
     /**
      * Update ruangan order data
      */
-    public function updateRuanganOrder(array $data, int $id) {
-        $this->pesanan_ruangan_repository->update($id, $data);
+    public function updateRuanganOrder(array $data) {
+        $this->pesanan_ruangan_repository->update($data);
 
         return;
     }
