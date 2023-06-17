@@ -19,6 +19,7 @@ class PesananKendaraanServiceProvider
 
         foreach($pesanan_kendaraans as $pesanan_kendaraan) {
             $pesanan_kendaraan_row = [
+                'id_pesanan_kendaraan' => $pesanan_kendaraan->id_pesanan_kendaraan,
                 'Akun_id_akun' => $pesanan_kendaraan->Akun_id_akun,
                 'Kendaraan_id_kendaraan' => $pesanan_kendaraan->Kendaraan_id_kendaraan,
                 'status_pesanan' => $pesanan_kendaraan->status_pesanan,

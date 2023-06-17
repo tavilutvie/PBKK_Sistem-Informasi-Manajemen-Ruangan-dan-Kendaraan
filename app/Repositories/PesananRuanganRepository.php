@@ -58,35 +58,19 @@ class PesananRuanganRepository
     }
 
     /**
-     * Update Order Ruangan by id
-     */
-    public function update(int $id, string $nama_kolom, string $update)
-    {
-        $pesanan_ruangan = PesananRuangan::where('id_pesanan_ruangan', $id)->first();
-
-        if(!$pesanan_ruangan) {
-            return null;
-        }
-
-        $pesanan_ruangan->$nama_kolom = $update;
-        $pesanan_ruangan->save();
-
-        return $pesanan_ruangan;
-    }
-
-    /**
      * Update Order Ruangan Row
      */
-    public function updateRow(int $id, array $update)
+    public function update(int $id, array $update)
     {
-        $pesanan_ruangan = PesananRuangan::where('id_pesanan_ruangan', $id)->first();
+        $pesanan_ruangan = PesananRuangan::where('id_pesanan_ruangan', $id);
 
         if(!$pesanan_ruangan) {
             return null;
         }
 
-        $pesanan_ruangan->update($update);
-        $pesanan_ruangan->save();
+        foreach($update as $key => $value) {
+            $pesanan_ruangan->update([$key => $value]);
+        }
 
         return $pesanan_ruangan;
     }

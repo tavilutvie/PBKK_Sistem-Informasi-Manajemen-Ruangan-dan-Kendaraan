@@ -3,7 +3,7 @@
 <!-- TITLE -->
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 py-2">ADMIN PAGE</h1>
-    
+
     <!-- RUANGAN -->
     <h2 class="text-center text-dark border-5 py-1">LIST PEMESANAN RUANGAN</h2>
     <table class="container table table-striped">
@@ -27,14 +27,25 @@
                      }}
                 </div>
                 @foreach ($ruangan_orders as $ruangan_order)
-                    <form action="admin/updateRuangan" method="post">
+                    <form action="/admin/updateRuangan/{{ $ruangan_order['id_pesanan_ruangan'] }}" method="post">
+                        @csrf
                         <tr>
                             <td>{{ $iterator }}</td>
                             <td>{{ $ruangan_order['username'] }}</td>
                             <td>
                                 <div class="form-check">
-                                    <input name="status_dokumen" class="form-check-input" type="checkbox" value="{{ $ruangan_order['status_dokumen'] }}" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
+                                    <input name="status_dokumen" class="form-check-input" type="checkbox" id="flexCheckDefault"
+                                    @if ($ruangan_order['status_dokumen'] == 1)
+                                        checked>
+                                        <div class="d-none">
+                                            {{ $ruangan_order['status_pesanan'] = 'Pengecekan Dokumen' }}
+                                        </div>
+                                    @else
+                                        >
+                                        <div class="d-none">
+                                            {{ $ruangan_order['status_pesanan'] = 'Menunggu Dokumen' }}
+                                        </div>
+                                    @endif
                                 </div>
                             </td>
                             <td>{{ $ruangan_order['tanggal'] }}</td>
@@ -42,8 +53,13 @@
                             <td>{{ explode(" ", $ruangan_order['waktu_selesai'])[1] }}</td>
                             <td>{{ $ruangan_order['nama_ruangan'] }}</td>
                             <td>
-                                <select name="status_pesanan" class="form-select" required>
-                                    <option value="Menunggu Dokumen">Menunggu Dokumen</option>
+                                <select name="status_pesanan" class="form-select" required
+                                @if ($ruangan_order['status_dokumen'] == 0)
+                                    disabled>
+                                    <option value="Menunggu Dokumen" selected>Menunggu Dokumen</option>
+                                @else
+                                    >
+                                @endif>
                                     <option value="Pengecekan Dokumen">Pengecekan Dokumen</option>
                                     <option value="Disetujui">Disetujui</option>
                                     <option value="Gagal">Gagal</option>
@@ -59,7 +75,7 @@
             </tbody>
         </table>
     <!--  -->
-    
+
     <!-- KENDARAAN -->
     <h2 class="text-center text-dark border-5 py-1">LIST PEMESANAN KENDARAAN</h2>
     <table class="container table table-striped">
@@ -83,14 +99,15 @@
                      }}
                 </div>
                 @foreach ($kendaraan_orders as $kendaraan_order)
-                    <form action="admin/updateKendaraan" method="post">
+                    <form action="/admin/updateKendaraan" method="post">
+                        @csrf
                         <tr>
                             <td>{{ $iterator }}</td>
                             <td>{{ $kendaraan_order['username'] }}</td>
                             <td>
                                 <div class="form-check">
-                                    <input name="status_dokumen" class="form-check-input" type="checkbox" value="{{ $kendaraan_order['status_dokumen'] }}" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault"></label>
+                                    <input name="status_dokumen" class="form-check-input" type="checkbox" id="flexCheckDefault"
+                                        @if ($ruangan_order['status_dokumen']) checked @endif>
                                 </div>
                             </td>
                             <td>{{ $kendaraan_order['tanggal'] }}</td>
@@ -98,8 +115,11 @@
                             <td>{{ explode(" ", $kendaraan_order['waktu_selesai'])[1] }}</td>
                             <td>{{ $kendaraan_order['jenis_kendaraan'] }}</td>
                             <td>
-                                <select name="status_pesanan" class="form-select" required>
-                                    <option value="Menunggu Dokumen">Menunggu Dokumen</option>
+                                <select name="status_pesanan" class="form-select" required
+                                    @if ($ruangan_order['status_pesanan'] == 'Menunggu Dokumen')
+                                        disabled>
+                                        <option value="Menunggu Dokumen" selected>Menunggu Dokumen</option>
+                                    @endif>
                                     <option value="Pengecekan Dokumen">Pengecekan Dokumen</option>
                                     <option value="Disetujui">Disetujui</option>
                                     <option value="Gagal">Gagal</option>

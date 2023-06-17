@@ -99,4 +99,13 @@ class AdminServiceProvider
             "kendaraan_order_list" => $filtered_kendaraan_order_list
         ];
     }
+
+    /**
+     * Update Ruangan order data
+     */
+    public function updateRuanganOrder(array $ruangan_data, int $id_ruangan) {
+        $this->pesanan_ruangan_service_provider->updateRuanganOrder($ruangan_data, $id_ruangan);
+
+        return;
+    }
 }

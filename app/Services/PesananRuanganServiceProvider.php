@@ -19,6 +19,7 @@ class PesananRuanganServiceProvider
 
         foreach($pesanan_ruangans as $pesanan_ruangan) {
             $pesanan_ruangan_row = [
+                'id_pesanan_ruangan' => $pesanan_ruangan->id_pesanan_ruangan,
                 'Akun_id_akun' => $pesanan_ruangan->Akun_id_akun,
                 'Ruangan_id_ruangan' => $pesanan_ruangan->Ruangan_id_ruangan,
                 'status_pesanan' => $pesanan_ruangan->status_pesanan,
@@ -30,5 +31,14 @@ class PesananRuanganServiceProvider
         }
 
         return $pesanan_ruangan_all;
+    }
+
+    /**
+     * Update ruangan order data
+     */
+    public function updateRuanganOrder(array $data, int $id) {
+        $this->pesanan_ruangan_repository->update($id, $data);
+
+        return;
     }
 }
