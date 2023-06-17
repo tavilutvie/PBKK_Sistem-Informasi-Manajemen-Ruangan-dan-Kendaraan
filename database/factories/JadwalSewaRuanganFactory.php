@@ -22,7 +22,7 @@ class JadwalSewaRuanganFactory extends Factory
             'waktu_mulai' => $this->faker->time(),
             'waktu_selesai' => $this->faker->time(),
 
-            'Ruangan_id_ruangan' => random_int(1,10),
+            'Ruangan_id_ruangan' => random_int(1,6),
         ];
     }
 }

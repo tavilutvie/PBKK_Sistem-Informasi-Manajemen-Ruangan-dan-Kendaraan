@@ -10,14 +10,17 @@ class Ruangan extends Model
     use HasFactory;
 
     protected $fillable = [
-        
+        'nama_ruangan',
+        'jenis_ruangan',
+        'status_operasional',
+        'kapasitas'
     ];
 
     public function pesananRuangan() {
-        return $this->hasMany(PesananRuangan::class);
+        return $this->hasMany(PesananRuangan::class, 'Ruangan_id_ruangan');
     }
 
     public function jadwalSewaRuangan() {
-        return $this->hasMany(JadwalSewaRuangan::class);
+        return $this->hasMany(JadwalSewaRuangan::class, 'Ruangan_id_ruangan', 'id_ruangan');
     }
 }

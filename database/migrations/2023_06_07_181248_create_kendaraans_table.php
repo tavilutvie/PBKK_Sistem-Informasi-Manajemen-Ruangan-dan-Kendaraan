@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_kendaraan');
             $table->string('jenis_kendaraan');
             $table->string('nomor_plat');
-            $table->string('status_operasional')->default('Tersedia');
+            $table->boolean('status_operasional')->default(true);
 
             $table->timestamps();
         });

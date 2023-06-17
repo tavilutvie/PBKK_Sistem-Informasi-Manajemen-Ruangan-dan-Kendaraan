@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class JadwalSewaRuangan extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'tanggal_pesanan',
+        'waktu_mulai',
+        'waktu_selesai'
+    ];
+
+    public function ruangan() {
+        return $this->belongsTo(Ruangan::class, 'Ruangan_id_ruangan', 'id_ruangan');
+    }
 }

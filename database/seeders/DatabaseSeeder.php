@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Database\Seeders\AkunSeeder;
+use App\Models\User;
+
+use App\Models\Akun;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,8 +15,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // User::factory(10)->create();
+        User::factory()->create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'password' => 'user12345',
+
+        ]);
+
+        User::factory()->create([
+            'name' => 'admin',
+            'email' => 'admin@gmail.com',
+            'password' => 'admin123',
+
+        ]);
+
+
         $this->call([
-            AkunSeeder::class,
+            AkunsSeeder::class,
             KendaraanSeeder::class,
             RuanganSeeder::class,
             PesananKendaraanSeeder::class,
@@ -22,11 +40,7 @@ class DatabaseSeeder extends Seeder
             JadwalSewaKendaraanSeeder::class,
             JadwalSewaRuanganSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+
     }
 }

@@ -18,13 +18,13 @@ class PesananRuanganFactory extends Factory
     {
         return [
             //status pesanan varchar, status dokumen bool, waktu mulai, datetime, waktu selesai datetime
-            'status_pesanan' => array_rand(["menunggu", "disetujui", "ditolak"]),
+            'status_pesanan' => array_rand(["Menunggu Dokumen", "Disetujui", "Ditolak"]),
             'status_dokumen' => $this->faker->boolean(),
             'waktu_mulai' => $this->faker->dateTime(),
             'waktu_selesai' => $this->faker->dateTime(),
 
-            'Ruangan_id_ruangan' => random_int(1,10),
-            'Akun_id_akun' => random_int(1,10),
+            'Ruangan_id_ruangan' => random_int(1,6),
+            'Akun_id_akun' => 1,
         ];
     }
 }

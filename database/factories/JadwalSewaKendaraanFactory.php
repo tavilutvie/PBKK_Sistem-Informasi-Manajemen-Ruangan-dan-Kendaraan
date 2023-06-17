@@ -22,7 +22,7 @@ class JadwalSewaKendaraanFactory extends Factory
             'waktu_mulai' => $this->faker->time(),
             'waktu_selesai' => $this->faker->time(),
 
-            'Kendaraan_id_kendaraan' => random_int(1,10),
+            'Kendaraan_id_kendaraan' => random_int(1,6),
         ];
     }
 }

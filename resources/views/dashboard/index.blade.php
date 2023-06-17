@@ -1,8 +1,26 @@
-@extends("layouts.template")
-
-@include("partials.navbar")
+@extends('Template.head')
 
 @section('main_content')
+
+@include('Partials.navbar')
+
+@if (session()->has('success'))
+    <div class="d-flex justify-content-center align-items-center bg-success">
+        <div class="alert alert-success alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="d-flex justify-content-center align-items-center bg-danger">
+        <div class="alert alert-danger alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
 
     <!-- Carousel -->
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
@@ -16,7 +34,7 @@
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-item active">
-          <img src="src/img/GedungRektorat.webp" class="d-block w-100" alt="Gedung Rektorat">
+          <img src="/src/img/GedungRektorat.webp" class="d-block w-100" alt="Gedung Rektorat">
           <div class="carousel-caption d-none d-md-block">
             <div class="container w-50 bg-dark rounded">
               <h5>SISTEM INFORMASI MANAJEMEN PEMINJAMAN RUANGAN DAN KENDARAAN</h5>
@@ -24,7 +42,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="src/img/GedungRiset.webp" class="d-block w-100" alt="Gedung Riset">
+          <img src="/src/img/GedungRiset.webp" class="d-block w-100" alt="Gedung Riset">
           <div class="carousel-caption d-none d-md-block">
             <div class="container w-50 bg-dark rounded">
               <h5>SISTEM INFORMASI MANAJEMEN PEMINJAMAN RUANGAN DAN KENDARAAN</h5>
@@ -32,7 +50,7 @@
           </div>
         </div>
         <div class="carousel-item">
-          <img src="src/img/GrahaITS.webp" class="d-block w-100" alt="Graha ITS">
+          <img src="/src/img/GrahaITS.webp" class="d-block w-100" alt="Graha ITS">
           <div class="carousel-caption d-none d-md-block">
             <div class="container w-50 bg-dark rounded">
               <h5>SISTEM INFORMASI MANAJEMEN PEMINJAMAN RUANGAN DAN KENDARAAN</h5>
@@ -65,14 +83,14 @@
             </div>
             <div class="row d-flex align-items-center justify-content-around flex-wrap">
                 <div class="card my-3" style="width: 18rem; height: 24rem;">
-                    <img src="src/img/Pascasarjana.webp" class="card-img-top rounded" alt="Pascasarjana">
+                    <img src="/src/img/Pascasarjana.webp" class="card-img-top rounded" alt="Pascasarjana">
                     <div class="card-body">
                         <h5 class="card-title">Pascasarjana</h5>
                         <p class="card-text">Ruang Pascasarjana yang cukup besar dapat digunakan oleh mahasiswa ITS untuk berbagai keperluan mahasiswa ITS</p>
                     </div>
                 </div>
                 <div class="card my-3" style="width: 18rem; height: 24rem;">
-                    <img src="src/img/TeaterA.webp" class="card-img-top rounded" alt="Teater A">
+                    <img src="/src/img/Teater_A.webp" class="card-img-top rounded" alt="Teater A">
                     <div class="card-body">
                         <h5 class="card-title">Teater A</h5>
                         <p class="card-text">ITS memiliki 3 teater dilengkapi dengan kebutuhan layar, sound, dan
@@ -80,7 +98,7 @@
                     </div>
                 </div>
                 <div class="card my-3" style="width: 18rem; height: 24rem;">
-                    <img src="src/img/GrahaITS.webp" class="card-img-top rounded" alt="Graha ITS">
+                    <img src="/src/img/GrahaITS.webp" class="card-img-top rounded" alt="Graha ITS">
                     <div class="card-body">
                         <h5 class="card-title">Graha ITS</h5>
                         <p class="card-text">Graha ITS adalah gedung yang berada di kampus ITS yang berfungsi sebagai
@@ -109,7 +127,7 @@
             </div>
             <div class="row d-flex align-items-center justify-content-around flex-wrap">
                 <div class="card my-3" style="width: 18rem; height: 24rem;">
-                    <img src="src/img/MobilPickup.webp" class="card-img-top rounded" alt="Mobil Pickup">
+                    <img src="/src/img/Mobil_Pickup.webp" class="card-img-top rounded" alt="Mobil Pickup">
                     <div class="card-body">
                         <h5 class="card-title">Mobil Pickup</h5>
                         <p class="card-text">Mobil Pickup dapat digunakan untuk pemindahan barang-barang yang berukuran
@@ -117,7 +135,7 @@
                     </div>
                 </div>
                 <div class="card my-3" style="width: 18rem; height: 24rem;">
-                    <img src="src/img/TrukBox.webp" class="card-img-top rounded" alt="Truk Box">
+                    <img src="/src/img/Truk_Box.webp" class="card-img-top rounded" alt="Truk Box">
                     <div class="card-body">
                         <h5 class="card-title">Truk Box</h5>
                         <p class="card-text">Truk Box dapat digunakan untuk mengangkat barang cukup besar, membantu
@@ -125,11 +143,12 @@
                     </div>
                 </div>
                 <div class="card my-3" style="width: 18rem; height: 24rem;">
-                    <img src="src/img/TrukEngkel.webp" class="card-img-top rounded" alt="Graha ITS">
+                    <img src="/src/img/Truk_Engkel.webp" class="card-img-top rounded" alt="Graha ITS">
                     <div class="card-body">
-                        <h5 class="card-title">Graha ITS</h5>
-                        <p class="card-text">Graha ITS adalah gedung yang berada di kampus ITS yang berfungsi sebagai
-                            tempat untuk mengadakan acara-acara besar. Graha ITS memiliki kapasitas sampai 1500 orang</p>
+                        <h5 class="card-title">Truk Engkel</h5>
+                        <p class="card-text">Truk Engkel milik ITS dapat digunakan untuk kebutuhan pemindahan
+                            barang-barang proyek, seperti kayu, besi, dan sebagainya di area kampus ITS
+                        </p>
                     </div>
                 </div>
             </div>
@@ -140,4 +159,7 @@
     </div>
     <!---->
 
+@include('Partials.footer')
+
 @endsection
+
