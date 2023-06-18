@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Domain;
 
 use App\Http\Controllers\Controller;
+use App\Models\PesananRuangan;
 use Illuminate\Http\Request;
 
 use App\Services\RuanganServiceProvider;
@@ -57,8 +58,8 @@ class OrderController extends Controller
     public function orderRuangan(Request $request) {
         $is_valid = $this->pesanan_ruangan_service_provider->validateData($request);
 
-        if(!$is_valid) {
-            return redirect()->back()->with('error', 'Data tidak valid');
+        if($is_valid->fails()) {
+            return redirect($request->Ruangan_id_ruangan.'/orderRuangan')->with('error', 'Data tidak valid');
         }
 
         $this->pesanan_ruangan_service_provider->createRuanganOrder($request);

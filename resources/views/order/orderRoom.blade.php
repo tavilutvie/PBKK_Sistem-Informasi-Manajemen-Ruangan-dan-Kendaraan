@@ -44,18 +44,18 @@
                 </div>
                 <div class="form-group py-2"> <!-- Date input -->
                     <label class="control-label" for="tanggal_pemakaian">Tanggal Pemakaian</label>
-                    <input class="form-control" id="tanggal_pemakaian" name="tanggal_pemakaian" placeholder="MM/DD/YYYY" type="date"/>
+                    <input class="form-control" id="tanggal_pemakaian" name="tanggal_pemakaian" placeholder="MM/DD/YYYY" type="date" required/>
                 </div>
                 <div class="form-group py-2"> <!-- Jam mulai pemakaian -->
                     <label class="control-label" for="waktu_mulai">Jam Mulai Pemakaian</label>
-                    <input class="form-control" id="waktu_mulai" name="waktu_mulai" placeholder="HH:MM" type="time"/>
+                    <input class="form-control" id="waktu_mulai" name="waktu_mulai" placeholder="HH:MM" type="time" required/>
                 </div>
                 <div class="form-group py-2"> <!-- Jam selesai pemakaian -->
                     <label class="control-label" for="waktu_selesai">Jam Selesai Pemakaian</label>
-                    <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM" type="time"/>
-                    <div class="d-flex justify-content-center w-100 px-5 my-5">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                    <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM" type="time" required/>
+                </div>
+                <div class="d-flex justify-content-center w-100 px-5 my-5">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
