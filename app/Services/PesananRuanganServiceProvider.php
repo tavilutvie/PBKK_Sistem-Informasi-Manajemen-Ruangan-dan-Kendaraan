@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\PesananRuanganRepository;
+use Illuminate\Http\Request;
 
 class PesananRuanganServiceProvider
 {
@@ -38,6 +39,36 @@ class PesananRuanganServiceProvider
      */
     public function updateRuanganOrder(array $data) {
         $this->pesanan_ruangan_repository->update($data);
+
+        return;
+    }
+
+    /**
+     * Validate new data
+     */
+    public function validateData(Request $data) {
+        $is_valid = $data->validate([
+            'Akun_id_akun' => 'required|integer',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+            'Ruangan_id_ruangan' => 'required|integer',
+            'tanggal_pemakaian' => 'required|date',
+        ]);
+        return $is_valid;
+    }
+
+    /**
+     * Create new ruangan order
+     */
+    public function createRuanganOrder(Request $data) {
+        $new_data = [
+            'Akun_id_akun' => $data->Akun_id_akun,
+            'Ruangan_id_ruangan' => $data->Ruangan_id_ruangan,
+            'waktu_mulai' => $data->tanggal_pemakaian . " " . $data->waktu_mulai,
+            'waktu_selesai' => $data->tanggal_pemakaian . " " . $data->waktu_selesai,
+        ];
+
+        $this->pesanan_ruangan_repository->create($new_data);
 
         return;
     }

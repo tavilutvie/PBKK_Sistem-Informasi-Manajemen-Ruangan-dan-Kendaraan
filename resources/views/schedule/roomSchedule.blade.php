@@ -67,7 +67,7 @@
     </table>
 
     <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-4">
-        <a href="#" class="btn btn-success">Lakukan Pemesanan</a>
+        <a href="/{{ $ruangan['id_ruangan'] }}/orderRuangan" class="btn btn-success">Lakukan Pemesanan</a>
     </div>
 
     <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-5">
