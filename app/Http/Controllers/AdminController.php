@@ -72,7 +72,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Update ruangan order data
+     * Update kendaraan order data
      */
     public function updateKendaraan(Request $request, int $id) {
         $status_dokumen = $request->status_dokumen;
