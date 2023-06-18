@@ -78,8 +78,8 @@ class OrderController extends Controller
     public function orderKendaraan(Request $request) {
         $is_valid = $this->pesanan_kendaraan_service_provider->validateData($request);
 
-        if(!$is_valid) {
-            return redirect()->back()->with('error', 'Data tidak valid');
+        if($is_valid->fails()) {
+            return redirect($request->Kendaraan_id_kendaraan.'/orderKendaraan')->with('error', 'Data tidak valid');
         }
 
         $this->pesanan_kendaraan_service_provider->createKendaraanOrder($request);

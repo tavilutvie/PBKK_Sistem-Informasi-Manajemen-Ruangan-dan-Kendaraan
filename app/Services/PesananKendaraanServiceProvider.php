@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Repositories\PesananKendaraanRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PesananKendaraanServiceProvider
 {
@@ -46,12 +47,13 @@ class PesananKendaraanServiceProvider
      * Validate new data
      */
     public function validateData(Request $data) {
-        $is_valid = $data->validate([
+        $now = now();
+        $is_valid = Validator::make($data->all(), [
             'Akun_id_akun' => 'required|integer',
             'waktu_mulai' => 'required',
             'waktu_selesai' => 'required',
             'Kendaraan_id_kendaraan' => 'required|integer',
-            'tanggal_pemakaian' => 'required|date',
+            'tanggal_pemakaian' => 'required|date|after_or_equal:' . $now->format('Y-m-d'),
         ]);
         return $is_valid;
     }

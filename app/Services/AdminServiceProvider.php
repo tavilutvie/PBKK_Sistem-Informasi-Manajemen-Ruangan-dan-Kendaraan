@@ -114,6 +114,9 @@ class AdminServiceProvider
         return;
     }
 
+    /**
+     * Update Kendaraan order data
+     */
     public function updateKendaraanOrder(array $kendaraan_data) {
         $this->pesanan_kendaraan_service_provider->updateKendaraanOrder($kendaraan_data);
 
