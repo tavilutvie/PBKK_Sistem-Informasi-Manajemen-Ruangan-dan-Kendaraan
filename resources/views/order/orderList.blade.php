@@ -70,9 +70,9 @@
                     <td>{{ $pesanan_kendaraan->id_pesanan_kendaraan }}</td>
                     <td>{{ $pesanan_kendaraan->kendaraan->jenis_kendaraan }}</td>
                     <td>{{ $pesanan_kendaraan->kendaraan->nomor_plat }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[0] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[1] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_selesai)[1] }}</td>
+                    <td>{{ explode(" ", $pesanan_kendaraan->waktu_mulai)[0] }}</td>
+                    <td>{{ explode(" ", $pesanan_kendaraan->waktu_mulai)[1] }}</td>
+                    <td>{{ explode(" ", $pesanan_kendaraan->waktu_selesai)[1] }}</td>
                     <td>{{ $pesanan_kendaraan->status_dokumen }}</td>
                     <td>{{ $pesanan_kendaraan->status_pesanan }}</td>
                 </tr>
