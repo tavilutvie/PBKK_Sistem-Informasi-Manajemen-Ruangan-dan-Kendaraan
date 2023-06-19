@@ -53,6 +53,7 @@ Route::controller(OrderController::class)->group(function() {
 
 Route::controller(AdminController::class)->group(function() {
     Route::get('/admin', 'index')->middleware(['auth', 'admin'])->name('admin');
+    Route::get('/adminLog', 'adminLog')->middleware(['auth', 'admin'])->name('adminLog');
     Route::post('/admin/updateRuangan/{id}', 'updateRuangan')->middleware(['auth', 'admin'])->name('updateRuangan');
     Route::post('/admin/updateKendaraan/{id}', 'updateKendaraan')->middleware(['auth', 'admin'])->name('updateKendaraan');
 });

@@ -106,6 +106,60 @@ class AdminServiceProvider
     }
 
     /**
+     * Utility Functions
+     *
+     * filterRuanganOrderList => Filtering Ruangan Order List to just have unchecked status dokumen and pengecekan dokumen
+     *
+     */
+    private function unfilterOrderList(array $dataList, int $tipe): array {
+        $unfiltered_data = [];
+
+        foreach($dataList as $data) {
+            // Get Tanggal
+            $data['tanggal'] = explode(" ", $data['waktu_mulai'])[0];
+
+            // Get username
+            $akun_data = $this->akun_service_provider->getAkunById($data['Akun_id_akun']);
+            $id_akun = $akun_data['user_id'];
+
+            $username = $this->user_service_provider->getUsernameById($id_akun);
+            $data['username'] = $username;
+            
+            // Get room name
+            if ($tipe == 1) {
+                $data['jenis'] = "Ruangan";
+                $ruangan_data = $this->ruangan_service_provider->getRuanganById($data['Ruangan_id_ruangan']);
+                $data['nama'] = $ruangan_data['nama_ruangan'];
+            } else {
+                $data['jenis'] = "Kendaraan";
+                $kendaraan_data = $this->kendaraan_service_provider->getKendaraanById($data['Kendaraan_id_kendaraan']);
+                $data['nama'] = $kendaraan_data['jenis_kendaraan'];
+            }
+
+            array_push($unfiltered_data, $data);           
+        }
+
+        return $unfiltered_data;
+    }
+
+    /**
+     * Get all order ruangan and kendaraan filtered
+     */
+    public function getUnfilteredOrder() {
+        $ruangan_order_list = $this->pesanan_ruangan_service_provider->getListOrder();
+        $kendaraan_order_list = $this->pesanan_kendaraan_service_provider->getListOrder();
+
+        $unfiltered_ruangan_order_list = $this->unfilterOrderList($ruangan_order_list, 1);
+        $unfiltered_kendaraan_order_list = $this->unfilterOrderList($kendaraan_order_list, 0);
+
+        $unfiltered_list = array_merge_recursive($unfiltered_ruangan_order_list,$unfiltered_kendaraan_order_list);
+
+        return [
+            "order_list" => $unfiltered_list
+        ];
+    }
+
+    /**
      * Update Ruangan order data
      */
     public function updateRuanganOrder(array $ruangan_data) {

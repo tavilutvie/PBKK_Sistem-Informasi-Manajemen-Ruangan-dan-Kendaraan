@@ -4,6 +4,10 @@
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 py-2">ADMIN PAGE</h1>
 
+    <div class="d-flex justify-content-left w-100 px-5 mt-4 mb-3">
+        <a href="/adminLog" class="btn btn-primary">ADMIN LOG</a>
+    </div>
+
     <!-- RUANGAN -->
     <h2 class="text-center text-dark border-5 py-1">LIST PEMESANAN RUANGAN</h2>
     <table class="container table table-striped">
@@ -147,7 +151,7 @@
             </tbody>
         </table>
     <!--  -->
-
+    
         <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-5">
             <a href="/logout" class="btn btn-primary">LOGOUT</a>
         </div>

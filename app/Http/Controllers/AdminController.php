@@ -22,6 +22,16 @@ class AdminController extends Controller
         ]);
     }
 
+    public function adminLog()
+    {
+        $jadwal_unfiltered = $this->admin_service_provider->getUnfilteredOrder();
+
+        return view('Dashboard/adminLog', [
+            "page" => "Admin Homepage",
+            "orders" => $jadwal_unfiltered['order_list']
+        ]);
+    }
+
     /**
      * Update ruangan order data
      */
