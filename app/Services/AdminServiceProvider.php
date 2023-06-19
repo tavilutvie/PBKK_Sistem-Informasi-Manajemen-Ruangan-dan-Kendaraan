@@ -154,6 +154,7 @@ class AdminServiceProvider
      * Get Jabatan by id
      */
     public function getJabatan(int $id) {
+        
         return $this->akun_service_provider->getJabatan($id);
     }
 }

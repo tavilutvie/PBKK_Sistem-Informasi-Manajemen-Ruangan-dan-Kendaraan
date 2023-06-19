@@ -58,7 +58,8 @@ class AkunServiceProvider
      */
     public function getJabatan(int $id) {
         $akun_data = $this->akunRepository->getById($id);
-
-        return $akun_data->jabatan;
+   
+        $jabatan = $akun_data->jabatan;
+        return $jabatan;
     }
 }
