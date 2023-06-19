@@ -90,9 +90,23 @@ class OrderController extends Controller
     /**
      * Upload dokumen peminjaman baru
      */
-    public function uploadDokumenPeminjaman(Request $request, int $id)
+    public function uploadDokumenRuangan(Request $request, int $id)
     {
         $new_data = $this->pesanan_ruangan_service_provider->uploadDokumenPeminjaman($request, $id);
+
+        if(!$new_data) {
+            return redirect()->back()->with('error', 'Dokumen gagal diupload');
+        }
+
+        return redirect()->back()->with('success', 'Dokumen berhasil diupload');
+    }
+
+    /**
+     * Upload dokumen peminjaman baru
+     */
+    public function uploadDokumenKendaraan(Request $request, int $id)
+    {
+        $new_data = $this->pesanan_kendaraan_service_provider->uploadDokumenPeminjaman($request, $id);
 
         if(!$new_data) {
             return redirect()->back()->with('error', 'Dokumen gagal diupload');
