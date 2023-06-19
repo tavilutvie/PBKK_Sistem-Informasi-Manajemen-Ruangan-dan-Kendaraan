@@ -103,6 +103,7 @@
                 <form action="/admin/updateKendaraan/{{ $kendaraan_order['id_pesanan_kendaraan'] }}" method="post">
                         @csrf
                         <tr>
+                            <input type="hidden" name="id_akun" value="{{ $kendaraan_order['Akun_id_akun'] }}">
                             <td>{{ $iterator }}</td>
                             <td>{{ $kendaraan_order['username'] }}</td>
                             <td>

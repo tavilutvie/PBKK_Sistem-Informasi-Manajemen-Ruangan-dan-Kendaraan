@@ -84,8 +84,17 @@ class AdminController extends Controller
      * Update kendaraan order data
      */
     public function updateKendaraan(Request $request, int $id) {
+        $id_akun = $request->id_akun;
+  
+        $jabatan = $this->admin_service_provider->getJabatan($id_akun);
+        
         $status_dokumen = $request->status_dokumen;
         $status_pesanan = $request->status_pesanan;
+
+        if ($jabatan == 'tendik') {
+            $status_dokumen = true;
+            $status_pesanan = 'Disetujui'; 
+        }
         if($status_dokumen == null && $status_pesanan == null) {
             $status_dokumen = false;
             $status_pesanan = 'Menunggu Dokumen';
