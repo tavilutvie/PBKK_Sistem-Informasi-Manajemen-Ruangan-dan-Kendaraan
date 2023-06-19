@@ -76,4 +76,13 @@ class PesananRuanganServiceProvider
 
         return;
     }
+
+    /**
+     * Delete ruangan order
+     */
+    public function deleteRuanganOrder(int $id) {
+        $this->pesanan_ruangan_repository->delete($id);
+
+        return;
+    }
 }

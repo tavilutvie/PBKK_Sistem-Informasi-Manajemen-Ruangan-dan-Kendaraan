@@ -49,6 +49,8 @@ Route::controller(OrderController::class)->group(function() {
     Route::get('{id}/orderKendaraan', 'orderKendaraanView')->middleware(['auth'])->name('orderKendaraanView');
     Route::post('/orderRuangan', 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
     Route::post('/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
+    Route::delete('/orderList/deleteRuangan/{id}', 'deleteRuangan')->middleware(['auth'])->name('deleteRuangan');
+    Route::delete('/orderList/deleteKendaraan/{id}', 'deleteKendaraan')->middleware(['auth'])->name('deleteKendaraan');
 });
 
 Route::controller(AdminController::class)->group(function() {

@@ -73,4 +73,13 @@ class PesananKendaraanServiceProvider
 
         return;
     }
+
+        /**
+     * Delete kendaraan order
+     */
+    public function deleteKendaraanOrder(int $id) {
+        $this->pesanan_kendaraan_repository->delete($id);
+
+        return;
+    }
 }
