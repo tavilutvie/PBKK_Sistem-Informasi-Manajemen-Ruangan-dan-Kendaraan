@@ -10,7 +10,6 @@ use App\Services\RuanganServiceProvider;
 use App\Services\KendaraanServiceProvider;
 use App\Services\JadwalSewaRuanganServiceProvider;
 use App\Services\JadwalSewaKendaraanServiceProvider;
-use Database\Seeders\JadwalSewaRuanganSeeder;
 
 class AdminServiceProvider
 {
@@ -143,10 +142,36 @@ class AdminServiceProvider
     public function getRuanganId(string $nama_ruangan) {
         return $this->ruangan_service_provider->getIdByRoomName($nama_ruangan);
     }
-        /**
+
+    /**
      * Get Kendaraan id from nama
      */
     public function getKendaraanId(string $jenis_kendaraan) {
         return $this->kendaraan_service_provider->getIdByVehicleType($jenis_kendaraan);
+    }
+
+    /**
+     * Get Daftar akun belum terverifikasi
+     */
+    public function getUnverifiedAkunList() {
+        $daftar_akun = $this->akun_service_provider->getDaftarAkun();
+
+        // Filter $daftar akun is_verified == false
+        $filtered_daftar_akun = [];
+
+        foreach($daftar_akun as $akun) {
+            if(!$akun['is_verified']) {
+                array_push($filtered_daftar_akun, $akun);
+            }
+        }
+
+        return $filtered_daftar_akun;
+    }
+
+    /**
+     * Verify Akun
+     */
+    public function verifyAkun(int $id_akun) {
+        $this->akun_service_provider->verifyAkun($id_akun);
     }
 }
