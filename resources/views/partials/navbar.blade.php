@@ -72,11 +72,20 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             @auth
-                                <li class="dropdown-item">Halo, {{ auth()->user()->name }} </li>
+                                <li class="dropdown-item">
+                                    Halo, {{ auth()->user()->name }}
+                                    @if (auth()->user()->akun->is_verified == true)
+                                        <span class="badge bg-success">Terverifikasi</span>
+                                    @else
+                                        <span class="badge bg-danger">Menunggu Verifikasi</span>
+                                    @endif
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="/orderList">Pesanan Anda</a></li>
+                                @if (auth()->user()->akun->is_verified == true)
+                                    <li><a class="dropdown-item" href="/orderList">Pesanan Anda</a></li>
+                                @endif
                                 <form class="my-3" action="/logout" method="GET">
                                     @csrf
                                     <button type="submit" class="dropdown-item">Keluar</button>

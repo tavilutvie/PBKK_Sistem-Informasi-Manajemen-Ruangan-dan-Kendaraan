@@ -45,8 +45,8 @@ Route::controller(KendaraanController::class)->group(function() {
 
 Route::controller(OrderController::class)->group(function() {
     Route::get('/orderList', 'list')->middleware(['auth'])->name('orderList');
-    Route::get('{id}/orderRuangan', 'orderRuanganView')->middleware(['auth'])->name('orderRuanganView');
-    Route::get('{id}/orderKendaraan', 'orderKendaraanView')->middleware(['auth'])->name('orderKendaraanView');
+    Route::get('{id}/orderRuangan', 'orderRuanganView')->middleware(['auth', 'verified'])->name('orderRuanganView');
+    Route::get('{id}/orderKendaraan', 'orderKendaraanView')->middleware(['auth', 'verified'])->name('orderKendaraanView');
     Route::post('/orderRuangan', 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
     Route::post('/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
     Route::post('/uploadDokumenPeminjaman/{id}', 'uploadDokumenPeminjaman')->middleware(['auth'])->name('uploadDocumentPeminjaman');
