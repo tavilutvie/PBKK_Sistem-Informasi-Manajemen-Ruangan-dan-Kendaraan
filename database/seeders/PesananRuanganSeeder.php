@@ -27,7 +27,7 @@ class PesananRuanganSeeder extends Seeder
         ]);
 
         PesananRuangan::create([
-            'status_pesanan' => 'Menunggu Dokumen',
+            'status_pesanan' => 'Pengecekan Dokumen',
             'status_dokumen' => true,
             'waktu_mulai' => '2021-10-23 10:00:00',
             'waktu_selesai' => '2021-10-23 15:00:00',
@@ -45,7 +45,7 @@ class PesananRuanganSeeder extends Seeder
         ]);
 
         PesananRuangan::create([
-            'status_pesanan' => 'Menunggu Dokumen',
+            'status_pesanan' => 'Pengecekan Dokumen',
             'status_dokumen' => true,
             'waktu_mulai' => '2022-07-27 13:30:00',
             'waktu_selesai' => '2022-07-27 16:30:00',
@@ -54,7 +54,7 @@ class PesananRuanganSeeder extends Seeder
         ]);
 
         PesananRuangan::create([
-            'status_pesanan' => 'Menunggu Dokumen',
+            'status_pesanan' => 'Pengecekan Dokumen',
             'status_dokumen' => true,
             'waktu_mulai' => '2023-01-11 18:00:00',
             'waktu_selesai' => '2023-01-11 22:30:00',
