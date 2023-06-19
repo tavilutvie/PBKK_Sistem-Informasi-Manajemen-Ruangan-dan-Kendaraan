@@ -17,10 +17,13 @@ class PesananKendaraanRepository
     public function create(array $new)
     {
         $pesanan_kendaraan = new PesananKendaraan();
-        $pesanan_kendaraan->status_pesanan = $new['status_pesanan'];
-        $pesanan_kendaraan->status_dokumen = $new['status_dokumen'];
+        // $pesanan_kendaraan->status_pesanan = $new['status_pesanan'];
+        // $pesanan_kendaraan->status_dokumen = $new['status_dokumen'];
+        $pesanan_kendaraan->status_dokumen = false;
         $pesanan_kendaraan->waktu_mulai = $new['waktu_mulai'];
         $pesanan_kendaraan->waktu_selesai = $new['waktu_selesai'];
+        $pesanan_kendaraan->Akun_id_akun = $new['Akun_id_akun'];
+        $pesanan_kendaraan->Kendaraan_id_kendaraan = $new['Kendaraan_id_kendaraan'];
         $pesanan_kendaraan->save();
 
         return $pesanan_kendaraan;
@@ -58,14 +61,21 @@ class PesananKendaraanRepository
         return PesananKendaraan::where('User_id_user', $id_user)->get();
     }
 
+
     /**
      * Update Order Kendaraan by id
      */
-    public function update(int $id, string $nama_kolom, string $update)
+    public function update(array $update)
     {
-        $pesanan_kendaraan = PesananKendaraan::where('id_pesanan_kendaraan', $id)->first();
-        $pesanan_kendaraan->$nama_kolom = $update;
-        $pesanan_kendaraan->save();
+        $pesanan_kendaraan = PesananKendaraan::where('id_pesanan_kendaraan', $update['id_pesanan_kendaraan']);
+
+        if(!$pesanan_kendaraan) {
+            return null;
+        }
+
+        foreach($update as $key => $value) {
+            $pesanan_kendaraan->update([$key => $value]);
+        }
 
         return $pesanan_kendaraan;
     }
@@ -76,6 +86,11 @@ class PesananKendaraanRepository
     public function delete(int $id)
     {
         $pesanan_kendaraan = PesananKendaraan::where('id_pesanan_kendaraan', $id)->first();
+
+        if(!$pesanan_kendaraan) {
+            return null;
+        }
+
         $pesanan_kendaraan->delete();
 
         return $pesanan_kendaraan;

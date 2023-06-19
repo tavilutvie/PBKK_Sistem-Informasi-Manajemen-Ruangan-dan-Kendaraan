@@ -67,7 +67,7 @@ class AdminServiceProvider
         $filtered_data = [];
 
         foreach($dataList as $data) {
-            if(!$data['status_dokumen'] && $data['status_pesanan'] == 'Menunggu Dokumen' || $data['status_pesanan'] == 'Pengecekan Dokumen') {
+            if(!$data['status_dokumen'] || $data['status_pesanan'] == 'Menunggu Dokumen' || $data['status_pesanan'] == 'Pengecekan Dokumen') {
                 // Get Tanggal
                 $data['tanggal'] = explode(" ", $data['waktu_mulai'])[0];
 
@@ -115,10 +115,26 @@ class AdminServiceProvider
     }
 
     /**
-     * Add New Jadwal data
+     * Update Kendaraan order data
      */
-    public function addNewSchedule(array $jadwal_data) {
+    public function updateKendaraanOrder(array $kendaraan_data) {
+        $this->pesanan_kendaraan_service_provider->updateKendaraanOrder($kendaraan_data);
+
+        return;
+    }
+
+    /**
+     * Add New Jadwal data for Ruangan
+     */
+    public function addNewScheduleRuangan(array $jadwal_data) {
         $this->jadwal_sewa_ruangan_service_provider->addData($jadwal_data);
+    }
+
+    /**
+     * Add New Jadwal data for Kendaraan
+     */
+    public function addNewScheduleKendaraan(array $jadwal_data) {
+        $this->jadwal_sewa_kendaraan_service_provider->addData($jadwal_data);
     }
 
     /**
@@ -126,5 +142,11 @@ class AdminServiceProvider
      */
     public function getRuanganId(string $nama_ruangan) {
         return $this->ruangan_service_provider->getIdByRoomName($nama_ruangan);
+    }
+        /**
+     * Get Kendaraan id from nama
+     */
+    public function getKendaraanId(string $jenis_kendaraan) {
+        return $this->kendaraan_service_provider->getIdByVehicleType($jenis_kendaraan);
     }
 }

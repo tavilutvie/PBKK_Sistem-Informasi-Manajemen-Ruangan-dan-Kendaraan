@@ -15,6 +15,7 @@ class JadwalSewaKendaraanRepository
         $jadwalSewaKendaraan->tanggal_pesanan = $new['tanggal_pesanan'];
         $jadwalSewaKendaraan->waktu_mulai = $new['waktu_mulai'];
         $jadwalSewaKendaraan->waktu_selesai = $new['waktu_selesai'];
+        $jadwalSewaKendaraan->Kendaraan_id_kendaraan = $new['Kendaraan_id_kendaraan'];
         $jadwalSewaKendaraan->save();
 
         return $jadwalSewaKendaraan;

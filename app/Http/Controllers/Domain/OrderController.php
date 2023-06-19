@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Services\RuanganServiceProvider;
+use App\Services\KendaraanServiceProvider;
 use App\Services\PesananRuanganServiceProvider;
 use App\Services\PesananKendaraanServiceProvider;
 
@@ -13,6 +14,7 @@ class OrderController extends Controller
 {
     public function __construct(
         private RuanganServiceProvider $ruangan_service_provider,
+        private KendaraanServiceProvider $kendaraan_service_provider,
         private PesananRuanganServiceProvider $pesanan_ruangan_service_provider,
         private PesananKendaraanServiceProvider $pesanan_kendaraan_service_provider
     ) {}
@@ -46,8 +48,12 @@ class OrderController extends Controller
      * Order Kendaraan.
      */
     public function orderKendaraanView(int $id) {
+        $kendaraan_data = $this->kendaraan_service_provider->getDetailKendaraan($id);
+
         return view('Order\orderVehicle', [
             'page' => 'Order Kendaraan',
+            'id_kendaraan' => $id,
+            'jenis_kendaraan' => $kendaraan_data['jenis_kendaraan'],
         ]);
     }
 
@@ -57,11 +63,26 @@ class OrderController extends Controller
     public function orderRuangan(Request $request) {
         $is_valid = $this->pesanan_ruangan_service_provider->validateData($request);
 
-        if($is_valid->fails()) {
-            return redirect($request->Ruangan_id_ruangan.'/orderRuangan')->with('error', 'Data tidak valid');
+        if(!$is_valid) {
+            return redirect()->back()->with('error', 'Data tidak valid');
         }
 
         $this->pesanan_ruangan_service_provider->createRuanganOrder($request);
+
+        return redirect()->route('index')->with('success', 'Pesanan berhasil dibuat');
+    }
+
+        /**
+     * Order Kendaraan Post
+     */
+    public function orderKendaraan(Request $request) {
+        $is_valid = $this->pesanan_kendaraan_service_provider->validateData($request);
+
+        if($is_valid->fails()) {
+            return redirect($request->Kendaraan_id_kendaraan.'/orderKendaraan')->with('error', 'Data tidak valid');
+        }
+
+        $this->pesanan_kendaraan_service_provider->createKendaraanOrder($request);
 
         return redirect()->route('index')->with('success', 'Pesanan berhasil dibuat');
     }

@@ -79,4 +79,11 @@ class KendaraanServiceProvider
 
         return $kendaraan_row;
     }
+
+        /**
+     * Get kendaraan id from nama
+     */
+    public function getIdByVehicleType(string $nama_ruangan) {
+        return $this->kendaraan_repository->getIdByType($nama_ruangan);
+    }
 }

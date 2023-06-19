@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Repositories\PesananKendaraanRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PesananKendaraanServiceProvider
 {
@@ -31,5 +33,44 @@ class PesananKendaraanServiceProvider
         }
 
         return $pesanan_kendaraan_all;
+    }
+    /**
+     * Update kendaraan order data
+     */
+    public function updateKendaraanOrder(array $data) {
+        $this->pesanan_kendaraan_repository->update($data);
+
+        return;
+    }
+
+    /**
+     * Validate new data
+     */
+    public function validateData(Request $data) {
+        $now = now();
+        $is_valid = Validator::make($data->all(), [
+            'Akun_id_akun' => 'required|integer',
+            'waktu_mulai' => 'required',
+            'waktu_selesai' => 'required',
+            'Kendaraan_id_kendaraan' => 'required|integer',
+            'tanggal_pemakaian' => 'required|date|after_or_equal:' . $now->format('Y-m-d'),
+        ]);
+        return $is_valid;
+    }
+
+        /**
+     * Create new kendaraan order
+     */
+    public function createKendaraanOrder(Request $data) {
+        $new_data = [
+            'Akun_id_akun' => $data->Akun_id_akun,
+            'Kendaraan_id_kendaraan' => $data->Kendaraan_id_kendaraan,
+            'waktu_mulai' => $data->tanggal_pemakaian . " " . $data->waktu_mulai,
+            'waktu_selesai' => $data->tanggal_pemakaian . " " . $data->waktu_selesai,
+        ];
+
+        $this->pesanan_kendaraan_repository->create($new_data);
+
+        return;
     }
 }
