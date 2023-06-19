@@ -26,8 +26,15 @@ class AdminController extends Controller
      * Update ruangan order data
      */
     public function updateRuangan(Request $request, int $id) {
+        $jabatan = $this->admin_service_provider->getJabatan($id);
+
         $status_dokumen = $request->status_dokumen;
         $status_pesanan = $request->status_pesanan;
+        
+        if ($jabatan == 'tendik') {
+            $status_dokumen = true;
+            $status_pesanan = 'Disetujui'; 
+        }
         if($status_dokumen == null && $status_pesanan == null) {
             $status_dokumen = false;
             $status_pesanan = 'Menunggu Dokumen';

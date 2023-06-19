@@ -52,4 +52,13 @@ class AkunServiceProvider
 
         return $akun_data_array;
     }
+
+    /**
+     * Get jabatan
+     */
+    public function getJabatan(int $id) {
+        $akun_data = $this->akunRepository->getById($id);
+
+        return $akun_data->jabatan;
+    }
 }
