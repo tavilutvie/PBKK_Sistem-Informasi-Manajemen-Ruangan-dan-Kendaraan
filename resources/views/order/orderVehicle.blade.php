@@ -31,8 +31,8 @@
     <div class="d-flex align-items-center justify-content-around flex-wrap">
         <div class="mb-2" style="width: 34rem;">
             <div class="container pb-3">
-                <h1 class="text-center text-dark">jenis_kendaraan</h1>
-                <h3 class="text-center text-dark py-2">nomor_plat</h3>
+                <h1 class="text-center text-dark">{{ $jenis_kendaraan }}</h1>
+                <h3 class="text-center text-dark py-2">{{ $nomor_plat }}</h3>
                 <img src="/src/img/{{ $jenis_kendaraan }}.webp" class="card-img-top rounded img-fluid" alt="Gambar kendaraan"
                     max-width>
             </div>
@@ -53,6 +53,10 @@
                     <!-- Jam mulai pemakaian -->
                     <label class="control-label" for="waktu_mulai">Jam Mulai Pemakaian</label>
                     <input class="form-control" id="waktu_mulai" name="waktu_mulai" placeholder="HH:MM" type="time" required/>
+                </div>
+                <div class="form-group py-2"> <!-- Jam selesai pemakaian -->
+                    <label class="control-label" for="waktu_selesai">Jam Selesai Pemakaian</label>
+                    <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM" type="time" required/>
                 </div>
                 <div class="form-group py">
                     <label for="formFile" class="form-label">Dokumen Peminjaman</label>

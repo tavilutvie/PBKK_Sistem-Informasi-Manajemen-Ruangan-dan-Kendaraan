@@ -54,6 +54,7 @@ class OrderController extends Controller
             'page' => 'Order Kendaraan',
             'id_kendaraan' => $id,
             'jenis_kendaraan' => $kendaraan_data['jenis_kendaraan'],
+            'nomor_plat' => $kendaraan_data['nomor_plat'],
         ]);
     }
 
