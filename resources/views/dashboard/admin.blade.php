@@ -50,6 +50,7 @@
                     <form action="/admin/updateRuangan/{{ $ruangan_order['id_pesanan_ruangan'] }}" method="post">
                         @csrf
                         <tr>
+                            <input type="hidden" name="id_akun" value="{{ $ruangan_order['Akun_id_akun'] }}">
                             <td>{{ $iterator }}</td>
                             <td>{{ $ruangan_order['username'] }}</td>
                             <td>

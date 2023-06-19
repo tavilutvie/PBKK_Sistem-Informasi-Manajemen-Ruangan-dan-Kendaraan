@@ -149,4 +149,12 @@ class AdminServiceProvider
     public function getKendaraanId(string $jenis_kendaraan) {
         return $this->kendaraan_service_provider->getIdByVehicleType($jenis_kendaraan);
     }
+
+    /**
+     * Get Jabatan by id
+     */
+    public function getJabatan(int $id) {
+        
+        return $this->akun_service_provider->getJabatan($id);
+    }
 }

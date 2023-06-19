@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function index()
     {
         $jadwal_filtered = $this->admin_service_provider->getFilteredOrder();
-
+        
         return view('Dashboard/admin', [
             "page" => "Admin Homepage",
             "ruangan_orders" => $jadwal_filtered['ruangan_order_list'],
@@ -26,8 +26,17 @@ class AdminController extends Controller
      * Update ruangan order data
      */
     public function updateRuangan(Request $request, int $id) {
+        $id_akun = $request->id_akun;
+  
+        $jabatan = $this->admin_service_provider->getJabatan($id_akun);
+
         $status_dokumen = $request->status_dokumen;
         $status_pesanan = $request->status_pesanan;
+        
+        if ($jabatan == 'tendik') {
+            $status_dokumen = true;
+            $status_pesanan = 'Disetujui'; 
+        }
         if($status_dokumen == null && $status_pesanan == null) {
             $status_dokumen = false;
             $status_pesanan = 'Menunggu Dokumen';
@@ -64,7 +73,7 @@ class AdminController extends Controller
                 'waktu_selesai' => $request->waktu_selesai,
                 'Ruangan_id_ruangan' => $id_ruangan
             ];
-
+            
             $this->admin_service_provider->addNewScheduleRuangan($jadwal_data);
         }
 
