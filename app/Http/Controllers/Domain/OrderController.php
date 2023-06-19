@@ -72,7 +72,7 @@ class OrderController extends Controller
         return redirect()->route('index')->with('success', 'Pesanan berhasil dibuat');
     }
 
-        /**
+    /**
      * Order Kendaraan Post
      */
     public function orderKendaraan(Request $request) {
@@ -85,5 +85,19 @@ class OrderController extends Controller
         $this->pesanan_kendaraan_service_provider->createKendaraanOrder($request);
 
         return redirect()->route('index')->with('success', 'Pesanan berhasil dibuat');
+    }
+
+    /**
+     * Upload dokumen peminjaman baru
+     */
+    public function uploadDokumenPeminjaman(Request $request, int $id)
+    {
+        $new_data = $this->pesanan_ruangan_service_provider->uploadDokumenPeminjaman($request, $id);
+
+        if(!$new_data) {
+            return redirect()->back()->with('error', 'Dokumen gagal diupload');
+        }
+
+        return redirect()->back()->with('success', 'Dokumen berhasil diupload');
     }
 }

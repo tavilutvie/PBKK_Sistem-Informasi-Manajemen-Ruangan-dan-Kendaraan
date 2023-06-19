@@ -44,8 +44,7 @@
     </div>
 </div>
 
-<div class="row d-flex align-items-center justify-content-around flex-wrap">
-<div>
+<div class="d-flex flex-column align-items-center justify-content-around flex-wrap">
     <h2 class="text-center text-dark border-5 py-1">Jadwal</h2>
     <table class="container table table-striped">
         <thead>

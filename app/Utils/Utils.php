@@ -2,6 +2,8 @@
 
 namespace App\Utils;
 
+use Illuminate\Support\Facades\Storage;
+
 class Utils
 {
     /**

@@ -1,5 +1,24 @@
 @extends('Template.head')
 @section('main_content')
+
+@if (session()->has('success'))
+    <div class="d-flex justify-content-center align-items-center bg-success">
+        <div class="alert alert-success alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="d-flex justify-content-center align-items-center bg-danger">
+        <div class="alert alert-danger alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
+
 <!-- TITLE -->
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 py-2">ADMIN PAGE</h1>
@@ -18,6 +37,7 @@
                     <th scope="col">Nama Ruangan</th>
                     <th scope="col">Status Pesanan</th>
                     <th scope="col">Aksi</th>
+                    <th scope="col">Dokumen Peminjaman</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,9 +85,26 @@
                                     <option value="Gagal">Gagal</option>
                                 </select>
                             </td>
-                            <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
-                        </tr>
-                    </form>
+                            <td>
+                                <button type="submit" class="btn btn-primary">UPDATE</button>
+                            </td>
+                        </form>
+                        <td class="d-flex flex-column justify-content-center align-items-center">
+                            @if ($ruangan_order['dokumen_peminjaman'])
+                                <a class="btn btn-success" href="{{ $ruangan_order['dokumen_peminjaman'] }}" target="_blank">
+                                    Lihat Dokumen
+                                </a>
+                            @else
+                                <form action="uploadDokumenPeminjaman/{{ $ruangan_order['id_pesanan_ruangan'] }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-2">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="dokumen_peminjaman" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">UPLOAD</button>
+                                </form>
+                            @endif
+                        </td>
+                    </tr>
                     <div class="d-none">
                         {{ $iterator = $iterator + 1 }}
                     </div>
