@@ -42,7 +42,7 @@ class AuthServiceProvider
         $this->userServiceProvider->saveUser($is_valid_user);
 
         // Get User ID
-        $user_id = $this->userServiceProvider->getUserIdByUsername($is_valid_user['nama']);
+        $user_id = $this->userServiceProvider->getUserIdByUsername($is_valid_user['name']);
 
         // Save akun with given user id
         $this->akunServiceProvider->saveAkun($user_id, $is_valid_akun);

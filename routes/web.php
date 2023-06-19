@@ -49,6 +49,7 @@ Route::controller(OrderController::class)->group(function() {
     Route::get('{id}/orderKendaraan', 'orderKendaraanView')->middleware(['auth'])->name('orderKendaraanView');
     Route::post('/orderRuangan', 'orderRuangan')->middleware(['auth'])->name('orderRuangan');
     Route::post('/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
+    Route::post('/uploadDokumenPeminjaman/{id}', 'uploadDokumenPeminjaman')->middleware(['auth'])->name('uploadDocumentPeminjaman');
 });
 
 Route::controller(AdminController::class)->group(function() {
