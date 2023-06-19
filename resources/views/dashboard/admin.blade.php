@@ -96,7 +96,7 @@
                                     Lihat Dokumen
                                 </a>
                             @else
-                                <form action="uploadDokumenPeminjaman/{{ $ruangan_order['id_pesanan_ruangan'] }}" method="post" enctype="multipart/form-data">
+                                <form action="uploadDokumenRuangan/{{ $ruangan_order['id_pesanan_ruangan'] }}" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-2">
                                         <input class="form-control form-control-sm" id="formFileSm" type="file" name="dokumen_peminjaman" required>
@@ -128,6 +128,7 @@
                     <th scope="col">Jenis Kendaraan</th>
                     <th scope="col">Status Pesanan</th>
                     <th scope="col">Aksi</th>
+                    <th scope="col">Dokumen Peminjaman</th>
                 </tr>
             </thead>
             <tbody>
@@ -175,8 +176,26 @@
                                     <option value="Gagal">Gagal</option>
                                 </select>
                             </td>
-                            <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
-                        </tr>
+                            <td>
+                                <button type="submit" class="btn btn-primary">UPDATE</button>
+                            </td>
+                        </form>
+                        <td class="d-flex flex-column justify-content-center align-items-center">
+                            @if ($kendaraan_order['dokumen_peminjaman'])
+                                <a class="btn btn-success" href="{{ $kendaraan_order['dokumen_peminjaman'] }}" target="_blank">
+                                    Lihat Dokumen
+                                </a>
+                            @else
+                                <form action="uploadDokumenKendaraan/{{ $kendaraan_order['id_pesanan_kendaraan'] }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-2">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="dokumen_peminjaman" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">UPLOAD</button>
+                                </form>
+                            @endif
+                        </td>
+                    </tr>
                     </form>
                     <div class="d-none">
                         {{ $iterator = $iterator + 1 }}

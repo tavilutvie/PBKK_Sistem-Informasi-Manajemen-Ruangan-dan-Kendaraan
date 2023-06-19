@@ -22,6 +22,7 @@ class PesananKendaraanFactory extends Factory
             'status_dokumen' => $this->faker->boolean(),
             'waktu_mulai' => $this->faker->dateTime(),
             'waktu_selesai' => $this->faker->dateTime(),
+            'dokumen_peminjaman' => $this->faker->word(),
 
             'Kendaraan_id_kendaraan' => random_int(1,6),
             'Akun_id_akun' => 1,
