@@ -54,9 +54,16 @@
                         <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                                 Halo, {{ auth()->user()->name }}
+                                @if (auth()->user()->akun->is_verified == true)
+                                    <span class="badge bg-success">Akun Terverifikasi</span>
+                                @else
+                                    <span class="badge bg-danger">Menunggu Verifikasi</span>
+                                @endif
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="/orderList" class="dropdown-item">Pesanan Anda</a></li>
+                            @if (auth()->user()->akun->is_verified == true)
+                                <li><a href="/orderList" class="dropdown-item">Pesanan Anda</a></li>
+                            @endif
                             <form class="my-2" action="/logout" method="GET">
                                 @csrf
                                 <button type="submit" class="dropdown-item">Keluar</button>
@@ -72,11 +79,20 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end">
                             @auth
-                                <li class="dropdown-item">Halo, {{ auth()->user()->name }} </li>
+                                <li class="dropdown-item">
+                                    Halo, {{ auth()->user()->name }}
+                                    @if (auth()->user()->akun->is_verified == true)
+                                        <span class="badge bg-success">Akun Terverifikasi</span>
+                                    @else
+                                        <span class="badge bg-danger">Menunggu Verifikasi</span>
+                                    @endif
+                                </li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
+                                @if (auth()->user()->akun->is_verified == true)
                                 <li><a class="dropdown-item" href="/orderList">Pesanan Anda</a></li>
+                                @endif
                                 <form class="my-3" action="/logout" method="GET">
                                     @csrf
                                     <button type="submit" class="dropdown-item">Keluar</button>

@@ -22,6 +22,24 @@ class AdminController extends Controller
         ]);
     }
 
+    public function getUnverified()
+    {
+        $daftar_akun = $this->admin_service_provider->getUnverifiedAkunList();
+
+        return view('Dashboard.adminVerifyAccount', [
+            "page" => "Admin Verify Account",
+            "daftar_akuns" => $daftar_akun,
+        ]);
+    }
+
+    public function verify(Request $akun)
+    {
+        $id_akun = $akun->id_akun;
+        $this->admin_service_provider->verifyAkun($id_akun);
+
+        return redirect('/adminVerifyAccount')->with('success', 'Akun berhasil diverifikasi!');
+    }
+
     /**
      * Update ruangan order data
      */
