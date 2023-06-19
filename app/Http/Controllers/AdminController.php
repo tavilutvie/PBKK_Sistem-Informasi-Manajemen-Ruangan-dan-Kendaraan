@@ -27,9 +27,20 @@ class AdminController extends Controller
         $jadwal_unfiltered = $this->admin_service_provider->getUnfilteredOrder();
 
         return view('Dashboard/adminLog', [
-            "page" => "Admin Homepage",
+            "page" => "Admin Log",
             "orders" => $jadwal_unfiltered['order_list']
         ]);
+    }
+
+    public function export()
+    {
+        $orders = $this->admin_service_provider->getUnfilteredOrder();
+
+        view()->share('orders', $orders['order_list']);
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('dashboard/adminLog-pdf');
+
+        return $pdf->download('data.pdf');
     }
 
     /**

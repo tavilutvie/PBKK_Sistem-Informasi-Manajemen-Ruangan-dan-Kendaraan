@@ -6,7 +6,7 @@
         <a href="/admin" class="btn btn-primary">Back to Admin Page</a>
     </div>
     <div class="d-flex justify-content-left w-100 px-5 mt-4 mb-3">
-        <a href="/admin" class="btn btn-primary">Download</a>
+        <a href="/adminLog/export" class="btn btn-success">Export PDF</a>
     </div>
     <h1 class="text-center text-dark border-5 py-2">ADMIN LOG</h1>
 
