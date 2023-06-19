@@ -54,7 +54,8 @@
                         <tr>
                             <input type="hidden" name="id_akun" value="{{ $ruangan_order['Akun_id_akun'] }}">
                             <td>{{ $iterator }}</td>
-                            <td>{{ $ruangan_order['username'] }}</td>
+                            <td>{{ $ruangan_order['username'] }} <span class="badge bg-info">{{ $ruangan_order['jabatan'] }}</span></td>
+
                             <td>
                                 <div class="form-check">
                                     <input name="status_dokumen" class="form-check-input" type="checkbox" id="flexCheckDefault"
@@ -144,7 +145,7 @@
                         @csrf
                         <tr>
                             <td>{{ $iterator }}</td>
-                            <td>{{ $kendaraan_order['username'] }}</td>
+                            <td>{{ $kendaraan_order['username'] }} <span class="badge bg-info">{{ $kendaraan_order['jabatan'] }}</span></td>
                             <td>
                                 <div class="form-check">
                                     <input name="status_dokumen" class="form-check-input" type="checkbox" id="flexCheckDefault"

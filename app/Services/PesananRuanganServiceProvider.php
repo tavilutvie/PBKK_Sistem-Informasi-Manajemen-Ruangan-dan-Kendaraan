@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
+use App\Services\AkunServiceProvider;
+
 class PesananRuanganServiceProvider
 {
     public function __construct(
-        private PesananRuanganRepository $pesanan_ruangan_repository
+        private PesananRuanganRepository $pesanan_ruangan_repository,
+        private AkunServiceProvider $akun_service_provider
     ) {}
 
     /**
@@ -18,12 +21,18 @@ class PesananRuanganServiceProvider
      */
     public function getListOrder() {
         $pesanan_ruangans = $this->pesanan_ruangan_repository->getAll();
-        $pesanan_ruangan_all = [];
 
+        $jabatan = "";
+
+        $pesanan_ruangan_all = [];
         foreach($pesanan_ruangans as $pesanan_ruangan) {
+            $id_akun = $pesanan_ruangan->Akun_id_akun;
+            $jabatan = $this->akun_service_provider->getJabatan($id_akun);
+
             $pesanan_ruangan_row = [
                 'id_pesanan_ruangan' => $pesanan_ruangan->id_pesanan_ruangan,
-                'Akun_id_akun' => $pesanan_ruangan->Akun_id_akun,
+                'Akun_id_akun' => $id_akun,
+                'jabatan' => $jabatan,
                 'Ruangan_id_ruangan' => $pesanan_ruangan->Ruangan_id_ruangan,
                 'status_pesanan' => $pesanan_ruangan->status_pesanan,
                 'status_dokumen' => $pesanan_ruangan->status_dokumen,

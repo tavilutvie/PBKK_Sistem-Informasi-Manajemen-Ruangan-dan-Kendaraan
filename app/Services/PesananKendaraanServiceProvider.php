@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
+use App\Services\AkunServiceProvider;
+
 class PesananKendaraanServiceProvider
 {
     public function __construct(
-        private PesananKendaraanRepository $pesanan_kendaraan_repository
+        private PesananKendaraanRepository $pesanan_kendaraan_repository,
+        private AkunServiceProvider $akun_service_provider
     ) {}
 
     /**
@@ -21,9 +24,13 @@ class PesananKendaraanServiceProvider
         $pesanan_kendaraan_all = [];
 
         foreach($pesanan_kendaraans as $pesanan_kendaraan) {
+            $id_akun = $pesanan_kendaraan->Akun_id_akun;
+            $jabatan = $this->akun_service_provider->getJabatan($id_akun);
+
             $pesanan_kendaraan_row = [
                 'id_pesanan_kendaraan' => $pesanan_kendaraan->id_pesanan_kendaraan,
-                'Akun_id_akun' => $pesanan_kendaraan->Akun_id_akun,
+                'Akun_id_akun' => $id_akun,
+                'jabatan' => $jabatan,
                 'Kendaraan_id_kendaraan' => $pesanan_kendaraan->Kendaraan_id_kendaraan,
                 'status_pesanan' => $pesanan_kendaraan->status_pesanan,
                 'status_dokumen' => $pesanan_kendaraan->status_dokumen,
@@ -84,7 +91,7 @@ class PesananKendaraanServiceProvider
 
         // change doc file to path
         $data['dokumen_peminjaman'] = $doc_path;
-        
+
         // save data
         $new_data = [
             'Akun_id_akun' => $data->Akun_id_akun,
