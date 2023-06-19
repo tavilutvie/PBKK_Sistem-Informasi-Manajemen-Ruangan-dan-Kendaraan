@@ -57,6 +57,7 @@ class PesananRuanganServiceProvider
             'waktu_selesai' => 'required',
             'Ruangan_id_ruangan' => 'required|integer',
             'tanggal_pemakaian' => 'required|date|after_or_equal:' . $now->format('Y-m-d'),
+            'dokumen_peminjaman' => 'mimes:pdf|max:2048'
         ]);
         return $is_valid;
     }
