@@ -34,7 +34,9 @@ class AdminServiceProvider
         $filtered_data = [];
 
         foreach($dataList as $data) {
-            if(!$data['status_dokumen'] || $data['status_pesanan'] == 'Menunggu Dokumen' || $data['status_pesanan'] == 'Pengecekan Dokumen' || $data['status_pesanan'] == 'Dibatalkan') {
+            if(!$data['status_dokumen'] || $data['status_pesanan'] == 'Menunggu Dokumen' || $data['status_pesanan'] == 'Pengecekan Dokumen') {
+                if ($data['status_pesanan'] == 'Dibatalkan') continue;
+
                 // Get Tanggal
                 $data['tanggal'] = explode(" ", $data['waktu_mulai'])[0];
 
@@ -205,7 +207,7 @@ class AdminServiceProvider
      * Get Kendaraan id from nama
      */
     public function getKendaraanId(string $jenis_kendaraan) {
-        return $this->kendaraan_service_provider->getIdByVehicleType($jenis_kendaraan);
+        return $this->kendaraan_service_provider->getDetailKendaraan($jenis_kendaraan);
     }
 
     /**
