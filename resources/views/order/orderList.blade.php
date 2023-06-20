@@ -60,7 +60,7 @@
                         <td>{{ explode(' ', $pesanan_ruangan['waktu_selesai'])[1] }}</td>
                         <td>{{ $pesanan_ruangan['status_dokumen'] }}</td>
                         <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
-                        <td><button type="submit" class="btn btn-primary" @if ($pesanan_ruangan['status_pesanan'] == "Dibatalkan")
+                        <td><button type="submit" class="btn btn-primary" @if ($pesanan_ruangan['status_pesanan'] == "Dibatalkan" || $pesanan_ruangan['status_pesanan'] == "Disetujui" || $pesanan_ruangan['status_pesanan'] == "Gagal")
                         disabled
                         @endif>Batalkan</button></td>
                     </tr>
@@ -108,7 +108,7 @@
                         <td>{{ explode(' ', $pesanan_kendaraan['waktu_selesai'])[1] }}</td>
                         <td>{{ $pesanan_kendaraan['status_dokumen'] }}</td>
                         <td>{{ $pesanan_kendaraan['status_pesanan'] }}</td>
-                        <td><button type="submit" class="btn btn-primary" @if ($pesanan_kendaraan['status_pesanan'] == "Dibatalkan")
+                        <td><button type="submit" class="btn btn-primary" @if ($pesanan_ruangan['status_pesanan'] == "Dibatalkan" || $pesanan_ruangan['status_pesanan'] == "Disetujui" || $pesanan_ruangan['status_pesanan'] == "Gagal")
                         disabled
                         @endif>Batalkan</button></td>
                     </tr>

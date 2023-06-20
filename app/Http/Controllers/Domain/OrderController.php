@@ -120,16 +120,7 @@ class OrderController extends Controller
      * Delete ruangan order data
      */
     public function deleteRuangan(Request $request, int $id) {
-        $status_pesanan = $request->status_pesanan;
-
-
-        // tidak bisa delete ruangan jika status_pesanan == Disetujui
-        if ($status_pesanan == 'Disetujui' || $status_pesanan == 'Gagal') {
-            return redirect()->route('orderList')->with('error', 'Pesanan tidak bisa dihapus');
-        }
-        else {
-            $this->pesanan_ruangan_service_provider->cancelRuanganOrder($id);
-        }
+        $this->pesanan_ruangan_service_provider->cancelRuanganOrder($id);
 
         return redirect()->route('orderList')->with('success', 'Pesanan berhasil dihapus');
     }
@@ -138,15 +129,7 @@ class OrderController extends Controller
      * Delete kendaraan order data
      */
     public function deleteKendaraan(Request $request, int $id) {
-        $status_pesanan = $request->status_pesanan;
-
-        // tidak bisa delete kendaraan jika status_pesanan == Disetujui
-        if ($status_pesanan == 'Disetujui' || $status_pesanan == 'Gagal') {
-            return redirect()->route('orderList')->with('error', 'Pesanan tidak bisa dihapus');
-        }
-        else {
-            $this->pesanan_kendaraan_service_provider->cancelKendaraanOrder($id);
-        }
+        $this->pesanan_kendaraan_service_provider->cancelKendaraanOrder($id);
 
         return redirect()->route('orderList')->with('success', 'Pesanan berhasil dihapus');
     }
