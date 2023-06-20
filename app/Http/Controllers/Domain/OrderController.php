@@ -23,11 +23,14 @@ class OrderController extends Controller
      * Get all orders.
      */
     public function list() {
+        $pesanan_ruangan = $this->pesanan_ruangan_service_provider->getListOrder();
+        $pesanan_kendaraan = $this->pesanan_kendaraan_service_provider->getListOrder();
+
         return view('Order\orderList', [
             'page' => 'Order List',
             'username' => auth()->user()->name,
-            'pesanan_ruangans' => auth()->user()->akun->pesananRuangan,
-            'pesanan_kendaraans' => auth()->user()->akun->pesananKendaraan,
+            'pesanan_ruangans' => $pesanan_ruangan,
+            'pesanan_kendaraans' => $pesanan_kendaraan,
         ]);
     }
 
@@ -99,7 +102,7 @@ class OrderController extends Controller
             return redirect()->route('orderList')->with('error', 'Pesanan tidak bisa dihapus');
         }
         else {
-            $this->pesanan_ruangan_service_provider->deleteRuanganOrder($id);
+            $this->pesanan_ruangan_service_provider->cancelRuanganOrder($id);
         }
 
         return redirect()->route('orderList')->with('success', 'Pesanan berhasil dihapus');

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\PesananRuanganRepository;
+use App\Services\RuanganServiceProvider;
 use Illuminate\Http\Request;
 
 use Carbon\Carbon;
@@ -11,7 +12,8 @@ use Illuminate\Support\Facades\Validator;
 class PesananRuanganServiceProvider
 {
     public function __construct(
-        private PesananRuanganRepository $pesanan_ruangan_repository
+        private PesananRuanganRepository $pesanan_ruangan_repository,
+        private RuanganServiceProvider $ruangan_service_provider
     ) {}
 
     /**
@@ -22,6 +24,7 @@ class PesananRuanganServiceProvider
         $pesanan_ruangan_all = [];
 
         foreach($pesanan_ruangans as $pesanan_ruangan) {
+            $nama_ruangan = $this->ruangan_service_provider->getDetailRuangan($pesanan_ruangan->Ruangan_id_ruangan)['nama_ruangan'];
             $pesanan_ruangan_row = [
                 'id_pesanan_ruangan' => $pesanan_ruangan->id_pesanan_ruangan,
                 'Akun_id_akun' => $pesanan_ruangan->Akun_id_akun,
@@ -29,7 +32,8 @@ class PesananRuanganServiceProvider
                 'status_pesanan' => $pesanan_ruangan->status_pesanan,
                 'status_dokumen' => $pesanan_ruangan->status_dokumen,
                 'waktu_mulai' => $pesanan_ruangan->waktu_mulai,
-                'waktu_selesai' => $pesanan_ruangan->waktu_selesai
+                'waktu_selesai' => $pesanan_ruangan->waktu_selesai,
+                'nama_ruangan' => $nama_ruangan,
             ];
             array_push($pesanan_ruangan_all, $pesanan_ruangan_row);
         }
@@ -78,10 +82,16 @@ class PesananRuanganServiceProvider
     }
 
     /**
-     * Delete ruangan order
+     * Cancel ruangan order
      */
-    public function deleteRuanganOrder(int $id) {
-        $this->pesanan_ruangan_repository->delete($id);
+    public function cancelRuanganOrder(int $id) {
+
+        $pesanan_ruangan = [
+            'id_pesanan_ruangan' => $id,
+            'status_pesanan' => 'Dibatalkan',
+        ];
+
+        $this->pesanan_ruangan_repository->update($pesanan_ruangan);
 
         return;
     }

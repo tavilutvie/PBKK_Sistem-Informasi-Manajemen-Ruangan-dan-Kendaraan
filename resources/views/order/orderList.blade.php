@@ -49,16 +49,16 @@
         </thead>
         <tbody>
             @foreach ($pesanan_ruangans as $pesanan_ruangan)
-                <form action="/orderList/deleteRuangan/{{ $pesanan_ruangan['id_pesanan_ruangan'] }}" method="delete">
+                <form action="/orderList/deleteRuangan/{{ $pesanan_ruangan['id_pesanan_ruangan'] }}" method="post">
                     @csrf
                     <tr>
-                        <td>{{ $pesanan_ruangan->id_pesanan_ruangan }}</td>
-                        <td>{{ str_replace('_', ' ', ucfirst($pesanan_ruangan->ruangan->nama_ruangan)) }}</td>
-                        <td>{{ explode(' ', $pesanan_ruangan->waktu_mulai)[0] }}</td>
-                        <td>{{ explode(' ', $pesanan_ruangan->waktu_mulai)[1] }}</td>
-                        <td>{{ explode(' ', $pesanan_ruangan->waktu_selesai)[1] }}</td>
-                        <td>{{ $pesanan_ruangan->status_dokumen }}</td>
-                        <td>{{ $pesanan_ruangan->status_pesanan }}</td>
+                        <td>{{ $pesanan_ruangan['id_pesanan_ruangan'] }}</td>
+                        <td>{{ str_replace('_', ' ', ucfirst($pesanan_ruangan['nama_ruangan'])) }}</td>
+                        <td>{{ explode(' ', $pesanan_ruangan['waktu_mulai'])[0] }}</td>
+                        <td>{{ explode(' ', $pesanan_ruangan['waktu_mulai'])[1] }}</td>
+                        <td>{{ explode(' ', $pesanan_ruangan['waktu_selesai'])[1] }}</td>
+                        <td>{{ $pesanan_ruangan['status_dokumen'] }}</td>
+                        <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
                         <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
                     </tr>
                 </form>
@@ -92,14 +92,14 @@
         <tbody>
             @foreach ($pesanan_kendaraans as $pesanan_kendaraan)
                 <tr>
-                    <td>{{ $pesanan_kendaraan->id_pesanan_kendaraan }}</td>
-                    <td>{{ $pesanan_kendaraan->kendaraan->jenis_kendaraan }}</td>
-                    <td>{{ $pesanan_kendaraan->kendaraan->nomor_plat }}</td>
-                    <td>{{ explode(' ', $pesanan_kendaraan->waktu_mulai)[0] }}</td>
-                    <td>{{ explode(' ', $pesanan_kendaraan->waktu_mulai)[1] }}</td>
-                    <td>{{ explode(' ', $pesanan_kendaraan->waktu_selesai)[1] }}</td>
-                    <td>{{ $pesanan_kendaraan->status_dokumen }}</td>
-                    <td>{{ $pesanan_kendaraan->status_pesanan }}</td>
+                    <td>{{ $pesanan_kendaraan['id_pesanan_kendaraan'] }}</td>
+                    <td>{{ $pesanan_kendaraan['jenis_kendaraan'] }}</td>
+                    <td>{{ $pesanan_kendaraan['nomor_plat'] }}</td>
+                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[0] }}</td>
+                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[1] }}</td>
+                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_selesai'])[1] }}</td>
+                    <td>{{ $pesanan_kendaraan['status_dokumen'] }}</td>
+                    <td>{{ $pesanan_kendaraan['status_pesanan'] }}</td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Launch demo modal
                       </button>

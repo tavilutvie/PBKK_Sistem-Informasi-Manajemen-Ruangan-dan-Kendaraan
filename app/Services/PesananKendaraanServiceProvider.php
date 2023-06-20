@@ -3,13 +3,15 @@
 namespace App\Services;
 
 use App\Repositories\PesananKendaraanRepository;
+use App\Services\KendaraanServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class PesananKendaraanServiceProvider
 {
     public function __construct(
-        private PesananKendaraanRepository $pesanan_kendaraan_repository
+        private PesananKendaraanRepository $pesanan_kendaraan_repository,
+        private KendaraanServiceProvider $kendaraan_service_provider
     ) {}
 
     /**
@@ -20,6 +22,8 @@ class PesananKendaraanServiceProvider
         $pesanan_kendaraan_all = [];
 
         foreach($pesanan_kendaraans as $pesanan_kendaraan) {
+            $jenis_kendaraan = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['jenis_kendaraan'];
+            $nomor_plat = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['nomor_plat'];
             $pesanan_kendaraan_row = [
                 'id_pesanan_kendaraan' => $pesanan_kendaraan->id_pesanan_kendaraan,
                 'Akun_id_akun' => $pesanan_kendaraan->Akun_id_akun,
@@ -27,7 +31,9 @@ class PesananKendaraanServiceProvider
                 'status_pesanan' => $pesanan_kendaraan->status_pesanan,
                 'status_dokumen' => $pesanan_kendaraan->status_dokumen,
                 'waktu_mulai' => $pesanan_kendaraan->waktu_mulai,
-                'waktu_selesai' => $pesanan_kendaraan->waktu_selesai
+                'waktu_selesai' => $pesanan_kendaraan->waktu_selesai,
+                'jenis_kendaraan' => $jenis_kendaraan,
+                'nomor_plat' => $nomor_plat,
             ];
             array_push($pesanan_kendaraan_all, $pesanan_kendaraan_row);
         }
