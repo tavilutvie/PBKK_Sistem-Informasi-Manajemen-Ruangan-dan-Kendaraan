@@ -58,7 +58,8 @@ class KendaraanRepository
      */
     public function getIdByType(string $jenis_kendaraan) {
         $kendaraan_data = Kendaraan::where('jenis_kendaraan', $jenis_kendaraan)->first();
-        return $kendaraan_data->id_kendaraan;
+        $id_kendaraan = $kendaraan_data->id_kendaraan;
+        return $id_kendaraan;
     }
 
     /**

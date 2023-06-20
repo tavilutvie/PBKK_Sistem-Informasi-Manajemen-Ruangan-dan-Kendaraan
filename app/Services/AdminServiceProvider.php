@@ -210,7 +210,7 @@ class AdminServiceProvider
      * Get Kendaraan id from nama
      */
     public function getKendaraanId(string $jenis_kendaraan) {
-        return $this->kendaraan_service_provider->getDetailKendaraan($jenis_kendaraan);
+        return $this->kendaraan_service_provider->getIdKendaraanByJenis($jenis_kendaraan);
     }
 
     /**
