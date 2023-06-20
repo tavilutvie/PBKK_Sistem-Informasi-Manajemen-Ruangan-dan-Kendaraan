@@ -146,6 +146,7 @@ class PesananKendaraanServiceProvider
             'waktu_mulai' => $data->tanggal_pemakaian . " " . $data->waktu_mulai,
             'waktu_selesai' => $data->tanggal_pemakaian . " " . $data->waktu_selesai,
             'dokumen_peminjaman' => $doc_path,
+            'status_pesanan' => $status_pesanan,
             'status_dokumen' => $status_dokumen,
         ];
 
