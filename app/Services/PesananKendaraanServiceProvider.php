@@ -29,6 +29,8 @@ class PesananKendaraanServiceProvider
             $id_akun = $pesanan_kendaraan->Akun_id_akun;
             $jabatan = $this->akun_service_provider->getJabatan($id_akun);
 
+            $jenis_kendaraan = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['jenis_kendaraan'];
+            $nomor_plat = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['nomor_plat'];
             $pesanan_kendaraan_row = [
                 'id_pesanan_kendaraan' => $pesanan_kendaraan->id_pesanan_kendaraan,
                 'Akun_id_akun' => $id_akun,
@@ -39,6 +41,8 @@ class PesananKendaraanServiceProvider
                 'waktu_mulai' => $pesanan_kendaraan->waktu_mulai,
                 'waktu_selesai' => $pesanan_kendaraan->waktu_selesai,
                 'dokumen_peminjaman' => $pesanan_kendaraan->dokumen_peminjaman,
+                'jenis_kendaraan' => $jenis_kendaraan,
+                'nomor_plat' => $nomor_plat,
             ];
             array_push($pesanan_kendaraan_all, $pesanan_kendaraan_row);
         }
@@ -141,5 +145,14 @@ class PesananKendaraanServiceProvider
     public function getDetailKendaraan(int $id)
     {
         return $this->kendaraan_service_provider->getDetailKendaraan($id);
+    }
+
+    /**
+     * Delete kendaraan order
+     */
+    public function deleteKendaraanOrder(int $id) {
+        $this->pesanan_kendaraan_repository->delete($id);
+
+        return;
     }
 }

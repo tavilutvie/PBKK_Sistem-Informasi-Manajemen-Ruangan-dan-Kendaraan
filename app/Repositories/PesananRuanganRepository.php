@@ -77,20 +77,5 @@ class PesananRuanganRepository
         return $pesanan_ruangan;
     }
 
-    /**
-     * Delete Order Ruangan by id
-     */
-    public function delete(int $id)
-    {
-        $pesanan_ruangan = PesananRuangan::where('id_pesanan_ruangan', $id)->first();
-
-        if(!$pesanan_ruangan) {
-            return null;
-        }
-
-        $pesanan_ruangan->delete();
-
-        return $pesanan_ruangan;
-    }
 
 }

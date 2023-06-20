@@ -34,7 +34,7 @@ class AdminServiceProvider
         $filtered_data = [];
 
         foreach($dataList as $data) {
-            if(!$data['status_dokumen'] || $data['status_pesanan'] == 'Menunggu Dokumen' || $data['status_pesanan'] == 'Pengecekan Dokumen') {
+            if(!$data['status_dokumen'] || $data['status_pesanan'] == 'Menunggu Dokumen' || $data['status_pesanan'] == 'Pengecekan Dokumen' || $data['status_pesanan'] == 'Dibatalkan') {
                 // Get Tanggal
                 $data['tanggal'] = explode(" ", $data['waktu_mulai'])[0];
 

@@ -3,12 +3,10 @@
 namespace App\Services;
 
 use App\Repositories\PesananRuanganRepository;
+use App\Services\RuanganServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
-use App\Services\AkunServiceProvider;
-use App\Services\RuanganServiceProvider;
 
 class PesananRuanganServiceProvider
 {
@@ -146,5 +144,20 @@ class PesananRuanganServiceProvider
     public function getDetailRuangan(int $id)
     {
         return $this->ruangan_service_provider->getDetailRuangan($id);
+    }
+
+    /**
+     * Cancel Ruangan Order
+     */
+    public function cancelRuanganOrder(int $id) {
+
+        $pesanan_ruangan = [
+            'id_pesanan_ruangan' => $id,
+            'status_pesanan' => 'Dibatalkan',
+        ];
+
+        $this->pesanan_ruangan_repository->update($pesanan_ruangan);
+
+        return;
     }
 }

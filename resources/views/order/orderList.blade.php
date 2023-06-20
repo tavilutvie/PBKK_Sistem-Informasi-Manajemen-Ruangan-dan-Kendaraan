@@ -1,8 +1,27 @@
 @extends('Template.head')
 
 @section('main_content')
+    @include('Partials.navbar')
 
-@include('Partials.navbar')
+
+    @if (session()->has('success'))
+        <div class="d-flex justify-content-center align-items-center bg-success">
+            <div class="alert alert-success alert-dismissible fade show w-25 my-3" role="alert">
+                {{ session('success') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="d-flex justify-content-center align-items-center bg-danger">
+            <div class="alert alert-danger alert-dismissible fade show w-25 my-3" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
 
     <!-- TITLE -->
     <div class="container py-5">
@@ -25,19 +44,24 @@
                 <th scope="col">Waktu Selesai</th>
                 <th scope="col">Status Dokumen</th>
                 <th scope="col">Status Pemesanan</th>
+                <th scope="col">Batalkan Pesanan</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($pesanan_ruangans as $pesanan_ruangan)
-                <tr>
-                    <td>{{ $pesanan_ruangan['id_pesanan_ruangan'] }}</td>
-                    <td>{{ str_replace("_", " ", ucfirst($pesanan_ruangan['nama_ruangan'])) }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan['waktu_mulai'])[0] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan['waktu_mulai'])[1] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan['waktu_selesai'])[1] }}</td>
-                    <td>{{ $pesanan_ruangan['status_dokumen'] }}</td>
-                    <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
-                </tr>
+                <form action="/orderList/deleteRuangan/{{ $pesanan_ruangan['id_pesanan_ruangan'] }}" method="post">
+                    @csrf
+                    <tr>
+                        <td>{{ $pesanan_ruangan['id_pesanan_ruangan'] }}</td>
+                        <td>{{ str_replace('_', ' ', ucfirst($pesanan_ruangan['nama_ruangan'])) }}</td>
+                        <td>{{ explode(' ', $pesanan_ruangan['waktu_mulai'])[0] }}</td>
+                        <td>{{ explode(' ', $pesanan_ruangan['waktu_mulai'])[1] }}</td>
+                        <td>{{ explode(' ', $pesanan_ruangan['waktu_selesai'])[1] }}</td>
+                        <td>{{ $pesanan_ruangan['status_dokumen'] }}</td>
+                        <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
+                        <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
+                    </tr>
+                </form>
             @endforeach
         </tbody>
     </table>
@@ -62,19 +86,45 @@
                 <th scope="col">Waktu Selesai</th>
                 <th scope="col">Status Dokumen</th>
                 <th scope="col">Status Pemesanan</th>
+                <th scope="col">Batalkan Pesanan</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($pesanan_kendaraans as $pesanan_kendaraan)
                 <tr>
-                    <td>{{ $pesanan_kendaraan->id_pesanan_kendaraan }}</td>
-                    <td>{{ $pesanan_kendaraan->kendaraan->jenis_kendaraan }}</td>
-                    <td>{{ $pesanan_kendaraan->kendaraan->nomor_plat }}</td>
-                    <td>{{ explode(" ", $pesanan_kendaraan->waktu_mulai)[0] }}</td>
-                    <td>{{ explode(" ", $pesanan_kendaraan->waktu_mulai)[1] }}</td>
-                    <td>{{ explode(" ", $pesanan_kendaraan->waktu_selesai)[1] }}</td>
-                    <td>{{ $pesanan_kendaraan->status_dokumen }}</td>
-                    <td>{{ $pesanan_kendaraan->status_pesanan }}</td>
+                    <td>{{ $pesanan_kendaraan['id_pesanan_kendaraan'] }}</td>
+                    <td>{{ $pesanan_kendaraan['jenis_kendaraan'] }}</td>
+                    <td>{{ $pesanan_kendaraan['nomor_plat'] }}</td>
+                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[0] }}</td>
+                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[1] }}</td>
+                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_selesai'])[1] }}</td>
+                    <td>{{ $pesanan_kendaraan['status_dokumen'] }}</td>
+                    <td>{{ $pesanan_kendaraan['status_pesanan'] }}</td>
+                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Launch demo modal
+                      </button>
+                        <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -84,5 +134,8 @@
         <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
     </div>
 
-@include('Partials.footer')
+
+
+
+    @include('Partials.footer')
 @endsection
