@@ -118,6 +118,7 @@ class PesananKendaraanServiceProvider
     public function createKendaraanOrder(Request $data) {
         $doc_path = "";
         $status_dokumen = false;
+        $status_pesanan = "Menunggu Dokumen";
 
         if($data->hasFile('dokumen_peminjaman')) {
             // change status dokumen
@@ -130,7 +131,10 @@ class PesananKendaraanServiceProvider
             $doc_path = Storage::url('documents/kendaraan/' . $file_name);
         }
 
-        $doc_path != "" ? $status_dokumen = true : $status_dokumen = false;
+        if ($doc_path != "") {
+            $status_dokumen = true;
+            $status_pesanan = "Pengecekan Dokumen";
+        }
 
         // change doc file to path
         $data['dokumen_peminjaman'] = $doc_path;

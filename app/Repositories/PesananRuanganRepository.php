@@ -17,6 +17,7 @@ class PesananRuanganRepository
     {
         $pesanan_ruangan = new PesananRuangan();
         $pesanan_ruangan->status_dokumen = $new['status_dokumen'];
+        $pesanan_ruangan->status_pesanan = $new['status_pesanan'];
         $pesanan_ruangan->waktu_mulai = $new['waktu_mulai'];
         $pesanan_ruangan->waktu_selesai = $new['waktu_selesai'];
         $pesanan_ruangan->dokumen_peminjaman = $new['dokumen_peminjaman'];

@@ -120,6 +120,7 @@ class PesananRuanganServiceProvider
     public function createRuanganOrder(Request $data) {
         $doc_path = "";
         $status_dokumen = false;
+        $status_pesanan = "Menunggu Dokumen";
 
         if($data->hasFile('dokumen_peminjaman')) {
             // change status dokumen
@@ -133,6 +134,10 @@ class PesananRuanganServiceProvider
         }
 
         $doc_path != "" ? $status_dokumen = true : $status_dokumen = false;
+        if ($doc_path != "") {
+            $status_dokumen = true;
+            $status_pesanan = "Pengecekan Dokumen";
+        }
 
         // change doc file to path
         $data['dokumen_peminjaman'] = $doc_path;
@@ -145,6 +150,7 @@ class PesananRuanganServiceProvider
             'waktu_selesai' => $data->tanggal_pemakaian . " " . $data->waktu_selesai,
             'dokumen_peminjaman' => $doc_path,
             'status_dokumen' => $status_dokumen,
+            'status_pesanan' => $status_pesanan,
         ];
 
         $this->pesanan_ruangan_repository->create($new_data);
