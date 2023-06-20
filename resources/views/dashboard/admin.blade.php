@@ -82,9 +82,6 @@
                                 @if ($ruangan_order['status_dokumen'] == 0)
                                     disabled>
                                     <option value="Menunggu Dokumen" selected>Menunggu Dokumen</option>
-                                @elseif ($ruangan_order['status_pesanan'] == 'Dibatalkan')
-                                    disabled>
-                                    <option value="Dibatalkan" selected>Dibatalkan</option>
                                 @else
                                     >
                                 @endif>

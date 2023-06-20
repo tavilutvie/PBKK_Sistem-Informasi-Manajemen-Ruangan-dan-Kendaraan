@@ -3,7 +3,6 @@
 @section('main_content')
     @include('Partials.navbar')
 
-
     @if (session()->has('success'))
         <div class="d-flex justify-content-center align-items-center bg-success">
             <div class="alert alert-success alert-dismissible fade show w-25 my-3" role="alert">
@@ -21,7 +20,6 @@
             </div>
         </div>
     @endif
-
 
     <!-- TITLE -->
     <div class="container py-5">
@@ -59,15 +57,12 @@
                         <td>{{ explode(' ', $pesanan_ruangan['waktu_selesai'])[1] }}</td>
                         <td>{{ $pesanan_ruangan['status_dokumen'] }}</td>
                         <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
-                        <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
+                        <td><button type="submit" class="btn btn-primary">Batalkan</button></td>
                     </tr>
                 </form>
             @endforeach
         </tbody>
     </table>
-
-
-
 
     <!-- TITLE -->
     <div class="container py-5">
@@ -91,41 +86,20 @@
         </thead>
         <tbody>
             @foreach ($pesanan_kendaraans as $pesanan_kendaraan)
-                <tr>
-                    <td>{{ $pesanan_kendaraan['id_pesanan_kendaraan'] }}</td>
-                    <td>{{ $pesanan_kendaraan['jenis_kendaraan'] }}</td>
-                    <td>{{ $pesanan_kendaraan['nomor_plat'] }}</td>
-                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[0] }}</td>
-                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[1] }}</td>
-                    <td>{{ explode(' ', $pesanan_kendaraan['waktu_selesai'])[1] }}</td>
-                    <td>{{ $pesanan_kendaraan['status_dokumen'] }}</td>
-                    <td>{{ $pesanan_kendaraan['status_pesanan'] }}</td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                        Launch demo modal
-                      </button>
-                        <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-                    </td>
-                </tr>
+                <form action="/orderList/deleteKendaraan/{{ $pesanan_kendaraan['id_pesanan_kendaraan'] }}" method="post">
+                    @csrf
+                    <tr>
+                        <td>{{ $pesanan_kendaraan['id_pesanan_kendaraan'] }}</td>
+                        <td>{{ $pesanan_kendaraan['jenis_kendaraan'] }}</td>
+                        <td>{{ $pesanan_kendaraan['nomor_plat'] }}</td>
+                        <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[0] }}</td>
+                        <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[1] }}</td>
+                        <td>{{ explode(' ', $pesanan_kendaraan['waktu_selesai'])[1] }}</td>
+                        <td>{{ $pesanan_kendaraan['status_dokumen'] }}</td>
+                        <td>{{ $pesanan_kendaraan['status_pesanan'] }}</td>
+                        <td><button type="submit" class="btn btn-primary">Batalkan</button></td>
+                    </tr>
+                </form>
             @endforeach
         </tbody>
     </table>
@@ -133,9 +107,6 @@
     <div class="d-flex justify-content-center w-100 px-5 my-5">
         <a href="/" class="btn btn-primary">Kembali ke Beranda</a>
     </div>
-
-
-
 
     @include('Partials.footer')
 @endsection

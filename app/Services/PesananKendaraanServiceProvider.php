@@ -148,10 +148,15 @@ class PesananKendaraanServiceProvider
     }
 
     /**
-     * Delete kendaraan order
+     * Cancel kendaraan order
      */
-    public function deleteKendaraanOrder(int $id) {
-        $this->pesanan_kendaraan_repository->delete($id);
+    public function cancelKendaraanOrder(int $id) {
+        $pesanan_kendaraan = [
+            'id_pesanan_kendaraan' => $id,
+            'status_pesanan' => 'Dibatalkan',
+        ];
+
+        $this->pesanan_kendaraan_repository->update($pesanan_kendaraan);
 
         return;
     }

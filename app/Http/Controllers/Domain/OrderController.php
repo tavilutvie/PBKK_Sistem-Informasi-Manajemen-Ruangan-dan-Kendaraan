@@ -144,7 +144,7 @@ class OrderController extends Controller
             return redirect()->route('orderList')->with('error', 'Pesanan tidak bisa dihapus');
         }
         else {
-            $this->pesanan_kendaraan_service_provider->deleteKendaraanOrder($id);
+            $this->pesanan_kendaraan_service_provider->cancelKendaraanOrder($id);
         }
 
         return redirect()->route('orderList')->with('success', 'Pesanan berhasil dihapus');
