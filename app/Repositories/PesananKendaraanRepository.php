@@ -17,11 +17,10 @@ class PesananKendaraanRepository
     public function create(array $new)
     {
         $pesanan_kendaraan = new PesananKendaraan();
-        // $pesanan_kendaraan->status_pesanan = $new['status_pesanan'];
-        // $pesanan_kendaraan->status_dokumen = $new['status_dokumen'];
-        $pesanan_kendaraan->status_dokumen = false;
+        $pesanan_kendaraan->status_dokumen = $new['status_dokumen'];
         $pesanan_kendaraan->waktu_mulai = $new['waktu_mulai'];
         $pesanan_kendaraan->waktu_selesai = $new['waktu_selesai'];
+        $pesanan_kendaraan->dokumen_peminjaman = $new['dokumen_peminjaman'];
         $pesanan_kendaraan->Akun_id_akun = $new['Akun_id_akun'];
         $pesanan_kendaraan->Kendaraan_id_kendaraan = $new['Kendaraan_id_kendaraan'];
         $pesanan_kendaraan->save();

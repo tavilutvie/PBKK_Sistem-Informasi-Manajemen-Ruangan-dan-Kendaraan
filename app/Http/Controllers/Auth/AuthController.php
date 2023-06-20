@@ -4,16 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Services\AkunServiceProvider;
 use App\Services\AuthServiceProvider;
-use App\Services\UserServiceProvider;
 
 class AuthController extends Controller
 {
     public function __construct(
         private AuthServiceProvider $authServiceProvider,
-        private AkunServiceProvider $akunServiceProvider,
-        private UserServiceProvider $userServiceProvider
     )
     {}
 
@@ -21,19 +17,11 @@ class AuthController extends Controller
      * Register user (POST Method)
      */
     public function register(Request $request) {
-        $is_valid_user = $this->userServiceProvider->validateUser($request);
-        $is_valid_akun = $this->akunServiceProvider->validateAkun($request);
+        $register_result = $this->authServiceProvider->registerUser($request);
 
-        if (!$is_valid_user || !$is_valid_akun) return redirect('/register')->with('error', 'Registration failed!');
+        if (!$register_result)
+            return redirect('/register')->with('error', 'Registration failed!');
 
-        // save data
-        $this->userServiceProvider->saveUser($is_valid_user);
-
-        // get user id
-        $user_id = $this->userServiceProvider->getUserIdByUsername($is_valid_user['name']);
-
-        // save akun with given user id
-        $this->akunServiceProvider->saveAkun($user_id, $is_valid_akun);
 
         return redirect('/login')->with('success', 'Registration successful!');
     }

@@ -16,12 +16,13 @@ class PesananRuanganFactory extends Factory
      */
     public function definition(): array
     {
+        $status = $this->faker->boolean();
         return [
-            //status pesanan varchar, status dokumen bool, waktu mulai, datetime, waktu selesai datetime
-            'status_pesanan' => array_rand(["Menunggu Dokumen", "Disetujui", "Ditolak"]),
-            'status_dokumen' => $this->faker->boolean(),
+            'status_dokumen' => $status,
+            'status_pesanan' => $status == 0 ? "Menunggu Dokumen" : array_rand(["Pengecekan Dokumen", "Disetujui", "Ditolak"]),
             'waktu_mulai' => $this->faker->dateTime(),
             'waktu_selesai' => $this->faker->dateTime(),
+            'dokumen_peminjaman' => $this->faker->word(),
 
             'Ruangan_id_ruangan' => random_int(1,6),
             'Akun_id_akun' => 1,

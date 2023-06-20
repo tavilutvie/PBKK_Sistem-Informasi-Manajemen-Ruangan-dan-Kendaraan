@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('status_dokumen')->default(false);
             $table->datetime('waktu_mulai');
             $table->datetime('waktu_selesai');
+            $table->string('dokumen_peminjaman')->nullable(true);
 
             // Foreign keys
             $table->unsignedBigInteger('Akun_id_akun');

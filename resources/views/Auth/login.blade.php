@@ -44,7 +44,12 @@
 
                         <div class="form-outline form-white mb-5">
                             <label class="form-label" for="typePasswordX">Password</label>
-                                <input type="password" name="password" id="typePasswordX" class="form-control form-control-lg" required/>
+                                <input type="password" name="password" id="typePasswordX" class="form-control form-control-lg @error('password') is-invalid @enderror" required/>
+                                @error('password')
+                                    <div id="validationServerUsernameFeedback" class=" invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                         </div>
 
                             <button class="btn btn-outline-light btn-lg px-5 mb-4" type="submit">Login</button>

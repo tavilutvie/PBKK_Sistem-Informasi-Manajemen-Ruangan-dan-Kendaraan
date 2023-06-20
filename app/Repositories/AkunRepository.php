@@ -88,4 +88,33 @@ class AkunRepository
 
         return $akun;
     }
+
+    /**
+     * Get Akun user join
+     */
+    public function getAkunUserJoin()
+    {
+        return Akuns::join('users', 'users.id', '=', 'akuns.user_id')
+            ->select('users.*', 'akuns.*')
+            ->get();
+    }
+
+    /**
+     * Verify Akun
+     */
+    public function verify(int $id)
+    {
+        $akun = Akuns::where('id_akun', $id);
+
+        if(!$akun) {
+            return null;
+        }
+
+        $akun->update([
+            'is_verified' => true
+        ]);
+
+        return $akun;
+
+    }
 }

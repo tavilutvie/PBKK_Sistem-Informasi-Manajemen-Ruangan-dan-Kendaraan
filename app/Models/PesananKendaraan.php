@@ -14,6 +14,7 @@ class PesananKendaraan extends Model
         'status_dokumen',
         'waktu_mulai',
         'waktu_selesai',
+        'dokumen_peminjaman',
     ];
 
     public function akun() {

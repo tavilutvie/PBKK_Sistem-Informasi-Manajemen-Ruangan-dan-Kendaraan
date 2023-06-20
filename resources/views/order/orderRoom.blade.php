@@ -36,7 +36,7 @@
           <img src="/src/img/{{ $nama_ruangan }}.webp" class="card-img-top rounded img-fluid" alt="Gambar ruangan" max-width>
         </div>
 
-            <form action="/orderRuangan" method="post">
+            <form action="/orderRuangan" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="d-none">
                     <input type="text" name="Ruangan_id_ruangan" value="{{ $id_ruangan }}">
@@ -53,6 +53,11 @@
                 <div class="form-group py-2"> <!-- Jam selesai pemakaian -->
                     <label class="control-label" for="waktu_selesai">Jam Selesai Pemakaian</label>
                     <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM" type="time" required/>
+                </div>
+                <div class="form-group py">
+                    <label for="formFile" class="form-label">Dokumen Peminjaman</label>
+                    <input type="file" class="form-control" name="dokumen_peminjaman" accept=".pdf, .doc, .docx">
+                    <p class="p-3 bg-warning text-center rounded-bottom">Dokumen tidak wajib di-upload. Anda dapat menyerahkannya secara langsung pada Kantor Sarpras. Selama dokumen belum diterima, pesanan tidak akan diproses.</p>
                 </div>
                 <div class="d-flex justify-content-center w-100 px-5 my-5">
                     <button type="submit" class="btn btn-primary">Submit</button>

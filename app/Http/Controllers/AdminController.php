@@ -22,12 +22,61 @@ class AdminController extends Controller
         ]);
     }
 
+    public function getUnverified()
+    {
+        $daftar_akun = $this->admin_service_provider->getUnverifiedAkunList();
+
+        return view('Dashboard.adminVerifyAccount', [
+            "page" => "Admin Verify Account",
+            "daftar_akuns" => $daftar_akun,
+        ]);
+    }
+
+    public function verify(Request $akun)
+    {
+        $id_akun = $akun->id_akun;
+        $this->admin_service_provider->verifyAkun($id_akun);
+
+        return redirect('/adminVerifyAccount')->with('success', 'Akun berhasil diverifikasi!');
+    }
+
+    public function adminLog()
+    {
+        $orders = $this->admin_service_provider->getUnfilteredOrder();
+
+        return view('Dashboard/adminLog', [
+            "page" => "Admin Log",
+            "ruangan_orders" => $orders['ruangan_order_list'],
+            "kendaraan_orders" => $orders['kendaraan_order_list']
+        ]);
+    }
+
+    public function export()
+    {
+        $orders = $this->admin_service_provider->getUnfilteredOrder();
+
+        view()->share('orders', $orders);
+        $pdf = app('dompdf.wrapper');
+        $pdf->loadView('dashboard/adminLog-pdf');
+
+        return $pdf->download('data.pdf');
+    }
+
     /**
      * Update ruangan order data
      */
     public function updateRuangan(Request $request, int $id) {
+        $id_akun = $request->id_akun;
+
+        $jabatan = $this->admin_service_provider->getJabatan($id_akun);
+
         $status_dokumen = $request->status_dokumen;
         $status_pesanan = $request->status_pesanan;
+
+        if ($jabatan == 'tendik') {
+            $status_dokumen = true;
+            $status_pesanan = 'Disetujui';
+        }
         if($status_dokumen == null && $status_pesanan == null) {
             $status_dokumen = false;
             $status_pesanan = 'Menunggu Dokumen';
@@ -75,8 +124,17 @@ class AdminController extends Controller
      * Update kendaraan order data
      */
     public function updateKendaraan(Request $request, int $id) {
+        $id_akun = $request->id_akun;
+
+        $jabatan = $this->admin_service_provider->getJabatan($id_akun);
+
         $status_dokumen = $request->status_dokumen;
         $status_pesanan = $request->status_pesanan;
+
+        if ($jabatan == 'tendik') {
+            $status_dokumen = true;
+            $status_pesanan = 'Disetujui';
+        }
         if($status_dokumen == null && $status_pesanan == null) {
             $status_dokumen = false;
             $status_pesanan = 'Menunggu Dokumen';
