@@ -5,16 +5,12 @@ namespace App\Http\Controllers\Domain;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Services\RuanganServiceProvider;
-use App\Services\KendaraanServiceProvider;
 use App\Services\PesananRuanganServiceProvider;
 use App\Services\PesananKendaraanServiceProvider;
 
 class OrderController extends Controller
 {
     public function __construct(
-        private RuanganServiceProvider $ruangan_service_provider,
-        private KendaraanServiceProvider $kendaraan_service_provider,
         private PesananRuanganServiceProvider $pesanan_ruangan_service_provider,
         private PesananKendaraanServiceProvider $pesanan_kendaraan_service_provider
     ) {}
@@ -23,11 +19,14 @@ class OrderController extends Controller
      * Get all orders.
      */
     public function list() {
+        $pesanan_ruangan = $this->pesanan_ruangan_service_provider->getListOrder();
+        $pesanan_kendaraan = $this->pesanan_kendaraan_service_provider->getListOrder();
+
         return view('Order\orderList', [
             'page' => 'Order List',
             'username' => auth()->user()->name,
-            'pesanan_ruangans' => auth()->user()->akun->pesananRuangan,
-            'pesanan_kendaraans' => auth()->user()->akun->pesananKendaraan,
+            'pesanan_ruangans' => $pesanan_ruangan,
+            'pesanan_kendaraans' => $pesanan_kendaraan,
         ]);
     }
 
@@ -35,7 +34,7 @@ class OrderController extends Controller
      * Order Ruangan.
      */
     public function orderRuanganView(int $id) {
-        $ruangan_data = $this->ruangan_service_provider->getDetailRuangan($id);
+        $ruangan_data = $this->pesanan_ruangan_service_provider->getDetailRuangan($id);
 
         return view('Order\orderRoom', [
             'page' => 'Order Ruangan',
@@ -48,7 +47,7 @@ class OrderController extends Controller
      * Order Kendaraan.
      */
     public function orderKendaraanView(int $id) {
-        $kendaraan_data = $this->kendaraan_service_provider->getDetailKendaraan($id);
+        $kendaraan_data = $this->pesanan_kendaraan_service_provider->getDetailKendaraan($id);
 
         return view('Order\orderVehicle', [
             'page' => 'Order Kendaraan',

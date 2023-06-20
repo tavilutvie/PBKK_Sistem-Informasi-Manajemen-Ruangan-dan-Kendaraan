@@ -64,23 +64,6 @@ class KendaraanServiceProvider
     }
 
     /**
-     * Get kendaraan info by id
-     */
-    public function getKendaraanById(int $id): ?array {
-        $kendaraan = $this->kendaraan_repository->getByID($id);
-
-        if(!$kendaraan) return null;
-
-        $kendaraan_row = [
-            'jenis_kendaraan' => $kendaraan->jenis_kendaraan,
-            'nomor_plat' => $kendaraan->nomor_plat,
-            'status_operasional' => $kendaraan->status_operasional
-        ];
-
-        return $kendaraan_row;
-    }
-
-        /**
      * Get kendaraan id from nama
      */
     public function getIdByVehicleType(string $nama_ruangan) {

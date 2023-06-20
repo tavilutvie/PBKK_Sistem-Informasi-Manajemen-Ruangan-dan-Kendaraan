@@ -30,13 +30,13 @@
         <tbody>
             @foreach ($pesanan_ruangans as $pesanan_ruangan)
                 <tr>
-                    <td>{{ $pesanan_ruangan->id_pesanan_ruangan }}</td>
-                    <td>{{ str_replace("_", " ", ucfirst($pesanan_ruangan->ruangan->nama_ruangan)) }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[0] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_mulai)[1] }}</td>
-                    <td>{{ explode(" ", $pesanan_ruangan->waktu_selesai)[1] }}</td>
-                    <td>{{ $pesanan_ruangan->status_dokumen }}</td>
-                    <td>{{ $pesanan_ruangan->status_pesanan }}</td>
+                    <td>{{ $pesanan_ruangan['id_pesanan_ruangan'] }}</td>
+                    <td>{{ str_replace("_", " ", ucfirst($pesanan_ruangan['nama_ruangan'])) }}</td>
+                    <td>{{ explode(" ", $pesanan_ruangan['waktu_mulai'])[0] }}</td>
+                    <td>{{ explode(" ", $pesanan_ruangan['waktu_mulai'])[1] }}</td>
+                    <td>{{ explode(" ", $pesanan_ruangan['waktu_selesai'])[1] }}</td>
+                    <td>{{ $pesanan_ruangan['status_dokumen'] }}</td>
+                    <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
                 </tr>
             @endforeach
         </tbody>

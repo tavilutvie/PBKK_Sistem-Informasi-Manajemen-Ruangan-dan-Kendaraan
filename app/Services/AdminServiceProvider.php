@@ -46,7 +46,7 @@ class AdminServiceProvider
                 $data['username'] = $username;
 
                 // Get room name
-                $ruangan_data = $this->ruangan_service_provider->getRuanganById($data['Ruangan_id_ruangan']);
+                $ruangan_data = $this->ruangan_service_provider->getDetailRuangan($data['Ruangan_id_ruangan']);
                 $data['nama_ruangan'] = $ruangan_data['nama_ruangan'];
 
                 array_push($filtered_data, $data);
@@ -78,7 +78,7 @@ class AdminServiceProvider
                 $data['username'] = $username;
 
                 // Get jenis kendaraan
-                $kendaraan_data = $this->kendaraan_service_provider->getKendaraanById($data['Kendaraan_id_kendaraan']);
+                $kendaraan_data = $this->kendaraan_service_provider->getDetailKendaraan($data['Kendaraan_id_kendaraan']);
                 $data['jenis_kendaraan'] = $kendaraan_data['jenis_kendaraan'];
 
                 // Get plat kendaraan
@@ -114,11 +114,11 @@ class AdminServiceProvider
             // Get room name
             if ($tipe == "ruangan") {
                 $data['jenis'] = "Ruangan";
-                $ruangan_data = $this->ruangan_service_provider->getRuanganById($data['Ruangan_id_ruangan']);
+                $ruangan_data = $this->ruangan_service_provider->getDetailRuangan($data['Ruangan_id_ruangan']);
                 $data['nama'] = $ruangan_data['nama_ruangan'];
             } elseif ($tipe == "kendaraan") {
                 $data['jenis'] = "Kendaraan";
-                $kendaraan_data = $this->kendaraan_service_provider->getKendaraanById($data['Kendaraan_id_kendaraan']);
+                $kendaraan_data = $this->kendaraan_service_provider->getDetailKendaraan($data['Kendaraan_id_kendaraan']);
                 $data['nomor_plat'] = $kendaraan_data['nomor_plat'];
                 $data['nama'] = $kendaraan_data['jenis_kendaraan'];
             }

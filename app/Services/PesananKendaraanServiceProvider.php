@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 use App\Services\AkunServiceProvider;
+use App\Services\KendaraanServiceProvider;
 
 class PesananKendaraanServiceProvider
 {
     public function __construct(
         private PesananKendaraanRepository $pesanan_kendaraan_repository,
-        private AkunServiceProvider $akun_service_provider
+        private AkunServiceProvider $akun_service_provider,
+        private KendaraanServiceProvider $kendaraan_service_provider
     ) {}
 
     /**
@@ -131,5 +133,13 @@ class PesananKendaraanServiceProvider
         $this->pesanan_kendaraan_repository->update($data);
 
         return $data;
+    }
+
+    /**
+     * Get detail kendaraan
+     */
+    public function getDetailKendaraan(int $id)
+    {
+        return $this->kendaraan_service_provider->getDetailKendaraan($id);
     }
 }
