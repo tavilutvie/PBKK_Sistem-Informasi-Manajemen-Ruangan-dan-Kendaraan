@@ -46,11 +46,14 @@
             </tr>
         </thead>
         <tbody>
+            <div class="d-none">
+                {{ $iterator = 1; }}
+            </div>
             @foreach ($pesanan_ruangans as $pesanan_ruangan)
                 <form action="/orderList/deleteRuangan/{{ $pesanan_ruangan['id_pesanan_ruangan'] }}" method="post">
                     @csrf
                     <tr>
-                        <td>{{ $pesanan_ruangan['id_pesanan_ruangan'] }}</td>
+                        <td>{{ $iterator }}</td>
                         <td>{{ str_replace('_', ' ', ucfirst($pesanan_ruangan['nama_ruangan'])) }}</td>
                         <td>{{ explode(' ', $pesanan_ruangan['waktu_mulai'])[0] }}</td>
                         <td>{{ explode(' ', $pesanan_ruangan['waktu_mulai'])[1] }}</td>
@@ -59,6 +62,9 @@
                         <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
                         <td><button type="submit" class="btn btn-primary">Batalkan</button></td>
                     </tr>
+                    <div class="d-none">
+                    {{ $iterator = $iterator + 1 }}
+                    </div>
                 </form>
             @endforeach
         </tbody>
@@ -85,11 +91,14 @@
             </tr>
         </thead>
         <tbody>
+            <div class="d-none">
+                {{ $iterator = 1; }}
+            </div>
             @foreach ($pesanan_kendaraans as $pesanan_kendaraan)
                 <form action="/orderList/deleteKendaraan/{{ $pesanan_kendaraan['id_pesanan_kendaraan'] }}" method="post">
                     @csrf
                     <tr>
-                        <td>{{ $pesanan_kendaraan['id_pesanan_kendaraan'] }}</td>
+                        <td>{{ $iterator }}</td>
                         <td>{{ $pesanan_kendaraan['jenis_kendaraan'] }}</td>
                         <td>{{ $pesanan_kendaraan['nomor_plat'] }}</td>
                         <td>{{ explode(' ', $pesanan_kendaraan['waktu_mulai'])[0] }}</td>
@@ -99,6 +108,9 @@
                         <td>{{ $pesanan_kendaraan['status_pesanan'] }}</td>
                         <td><button type="submit" class="btn btn-primary">Batalkan</button></td>
                     </tr>
+                    <div class="d-none">
+                    {{ $iterator = $iterator + 1 }}
+                    </div>
                 </form>
             @endforeach
         </tbody>
