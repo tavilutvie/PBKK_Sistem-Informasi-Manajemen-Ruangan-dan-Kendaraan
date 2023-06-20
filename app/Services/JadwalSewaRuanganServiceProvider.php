@@ -45,4 +45,11 @@ class JadwalSewaRuanganServiceProvider
     public function addData(array $data) {
         $this->jadwal_sewa_ruangan_repository->create($data);
     }
+
+    /**
+     * Delete jadwal data
+     */
+    public function deleteSchedule(int $id) {
+        $this->jadwal_sewa_ruangan_repository->delete($id);
+    }
 }

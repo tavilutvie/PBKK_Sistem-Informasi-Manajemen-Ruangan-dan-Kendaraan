@@ -16,9 +16,11 @@ class PesananRuanganRepository
     public function create(array $new)
     {
         $pesanan_ruangan = new PesananRuangan();
-        $pesanan_ruangan->status_dokumen = false;
+        $pesanan_ruangan->status_dokumen = $new['status_dokumen'];
+        $pesanan_ruangan->status_pesanan = $new['status_pesanan'];
         $pesanan_ruangan->waktu_mulai = $new['waktu_mulai'];
         $pesanan_ruangan->waktu_selesai = $new['waktu_selesai'];
+        $pesanan_ruangan->dokumen_peminjaman = $new['dokumen_peminjaman'];
         $pesanan_ruangan->Akun_id_akun = $new['Akun_id_akun'];
         $pesanan_ruangan->Ruangan_id_ruangan = $new['Ruangan_id_ruangan'];
         $pesanan_ruangan->save();
@@ -39,7 +41,15 @@ class PesananRuanganRepository
      */
     public function get(int $id)
     {
-        return PesananRuangan::where('id_pesanan_ruangan', $id)->first();
+        return PesananRuangan::where('id_pesanan_ruangan', $id)->get();
+    }
+
+    /**
+     * Get Order Ruangan by akun id
+     */
+    public function getByIdAkun(int $id_akun)
+    {
+        return PesananRuangan::where('Akun_id_akun', $id_akun)->get();
     }
 
     /**
@@ -76,20 +86,5 @@ class PesananRuanganRepository
         return $pesanan_ruangan;
     }
 
-    /**
-     * Delete Order Ruangan by id
-     */
-    public function delete(int $id)
-    {
-        $pesanan_ruangan = PesananRuangan::where('id_pesanan_ruangan', $id)->first();
-
-        if(!$pesanan_ruangan) {
-            return null;
-        }
-
-        $pesanan_ruangan->delete();
-
-        return $pesanan_ruangan;
-    }
 
 }

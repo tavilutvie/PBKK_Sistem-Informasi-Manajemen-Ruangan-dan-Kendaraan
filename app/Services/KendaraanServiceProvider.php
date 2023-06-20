@@ -5,6 +5,8 @@ namespace App\Services;
 use App\Repositories\KendaraanRepository;
 use App\Services\JadwalSewaKendaraanServiceProvider;
 
+use function PHPUnit\Framework\returnSelf;
+
 class KendaraanServiceProvider
 {
     public function __construct(
@@ -64,26 +66,9 @@ class KendaraanServiceProvider
     }
 
     /**
-     * Get kendaraan info by id
+     * Get vehicle id with jenis
      */
-    public function getKendaraanById(int $id): ?array {
-        $kendaraan = $this->kendaraan_repository->getByID($id);
-
-        if(!$kendaraan) return null;
-
-        $kendaraan_row = [
-            'jenis_kendaraan' => $kendaraan->jenis_kendaraan,
-            'nomor_plat' => $kendaraan->nomor_plat,
-            'status_operasional' => $kendaraan->status_operasional
-        ];
-
-        return $kendaraan_row;
-    }
-
-        /**
-     * Get kendaraan id from nama
-     */
-    public function getIdByVehicleType(string $nama_ruangan) {
-        return $this->kendaraan_repository->getIdByType($nama_ruangan);
+    public function getIdKendaraanByJenis(string $jenis_kendaraan): ?int {
+        return $this->kendaraan_repository->getIdByType($jenis_kendaraan);
     }
 }

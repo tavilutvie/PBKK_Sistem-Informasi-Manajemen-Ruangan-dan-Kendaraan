@@ -5,16 +5,12 @@ namespace App\Http\Controllers\Domain;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Services\RuanganServiceProvider;
-use App\Services\KendaraanServiceProvider;
 use App\Services\PesananRuanganServiceProvider;
 use App\Services\PesananKendaraanServiceProvider;
 
 class OrderController extends Controller
 {
     public function __construct(
-        private RuanganServiceProvider $ruangan_service_provider,
-        private KendaraanServiceProvider $kendaraan_service_provider,
         private PesananRuanganServiceProvider $pesanan_ruangan_service_provider,
         private PesananKendaraanServiceProvider $pesanan_kendaraan_service_provider
     ) {}
@@ -23,11 +19,15 @@ class OrderController extends Controller
      * Get all orders.
      */
     public function list() {
+        $id_akun = auth()->user()->akun->id_akun;
+        $pesanan_ruangan = $this->pesanan_ruangan_service_provider->getListOrderWithId($id_akun);
+        $pesanan_kendaraan = $this->pesanan_kendaraan_service_provider->getListOrderWithId($id_akun);
+
         return view('Order\orderList', [
             'page' => 'Order List',
             'username' => auth()->user()->name,
-            'pesanan_ruangans' => auth()->user()->akun->pesananRuangan,
-            'pesanan_kendaraans' => auth()->user()->akun->pesananKendaraan,
+            'pesanan_ruangans' => $pesanan_ruangan,
+            'pesanan_kendaraans' => $pesanan_kendaraan,
         ]);
     }
 
@@ -35,7 +35,7 @@ class OrderController extends Controller
      * Order Ruangan.
      */
     public function orderRuanganView(int $id) {
-        $ruangan_data = $this->ruangan_service_provider->getDetailRuangan($id);
+        $ruangan_data = $this->pesanan_ruangan_service_provider->getDetailRuangan($id);
 
         return view('Order\orderRoom', [
             'page' => 'Order Ruangan',
@@ -48,12 +48,13 @@ class OrderController extends Controller
      * Order Kendaraan.
      */
     public function orderKendaraanView(int $id) {
-        $kendaraan_data = $this->kendaraan_service_provider->getDetailKendaraan($id);
+        $kendaraan_data = $this->pesanan_kendaraan_service_provider->getDetailKendaraan($id);
 
         return view('Order\orderVehicle', [
             'page' => 'Order Kendaraan',
             'id_kendaraan' => $id,
             'jenis_kendaraan' => $kendaraan_data['jenis_kendaraan'],
+            'nomor_plat' => $kendaraan_data['nomor_plat'],
         ]);
     }
 
@@ -72,7 +73,7 @@ class OrderController extends Controller
         return redirect()->route('index')->with('success', 'Pesanan berhasil dibuat');
     }
 
-        /**
+    /**
      * Order Kendaraan Post
      */
     public function orderKendaraan(Request $request) {
@@ -86,4 +87,51 @@ class OrderController extends Controller
 
         return redirect()->route('index')->with('success', 'Pesanan berhasil dibuat');
     }
+
+    /**
+     * Upload dokumen peminjaman baru
+     */
+    public function uploadDokumenRuangan(Request $request, int $id)
+    {
+        $new_data = $this->pesanan_ruangan_service_provider->uploadDokumenPeminjaman($request, $id);
+
+        if(!$new_data) {
+            return redirect()->back()->with('error', 'Dokumen gagal diupload');
+        }
+
+        return redirect()->back()->with('success', 'Dokumen berhasil diupload');
+    }
+
+    /**
+     * Upload dokumen peminjaman baru
+     */
+    public function uploadDokumenKendaraan(Request $request, int $id)
+    {
+        $new_data = $this->pesanan_kendaraan_service_provider->uploadDokumenPeminjaman($request, $id);
+
+        if(!$new_data) {
+            return redirect()->back()->with('error', 'Dokumen gagal diupload');
+        }
+
+        return redirect()->back()->with('success', 'Dokumen berhasil diupload');
+    }
+
+    /**
+     * Delete ruangan order data
+     */
+    public function deleteRuangan(Request $request, int $id) {
+        $this->pesanan_ruangan_service_provider->cancelRuanganOrder($id);
+
+        return redirect()->route('orderList')->with('success', 'Pesanan berhasil dihapus');
+    }
+
+    /**
+     * Delete kendaraan order data
+     */
+    public function deleteKendaraan(Request $request, int $id) {
+        $this->pesanan_kendaraan_service_provider->cancelKendaraanOrder($id);
+
+        return redirect()->route('orderList')->with('success', 'Pesanan berhasil dihapus');
+    }
+
 }

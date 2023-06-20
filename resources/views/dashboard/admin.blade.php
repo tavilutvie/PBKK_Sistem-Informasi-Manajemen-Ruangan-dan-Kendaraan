@@ -1,8 +1,30 @@
 @extends('Template.head')
 @section('main_content')
+
+@if (session()->has('success'))
+    <div class="d-flex justify-content-center align-items-center bg-success">
+        <div class="alert alert-success alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="d-flex justify-content-center align-items-center bg-danger">
+        <div class="alert alert-danger alert-dismissible fade show w-25 my-3" role="alert">
+            {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+@endif
+
 <!-- TITLE -->
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 py-2">ADMIN PAGE</h1>
+
+    <a href="/adminVerifyAccount" class="btn btn-primary">Verify Account</a>
+    <a href="/adminLog" class="btn btn-primary">Admin Log</a>
 
     <!-- RUANGAN -->
     <h2 class="text-center text-dark border-5 py-1">LIST PEMESANAN RUANGAN</h2>
@@ -18,6 +40,7 @@
                     <th scope="col">Nama Ruangan</th>
                     <th scope="col">Status Pesanan</th>
                     <th scope="col">Aksi</th>
+                    <th scope="col">Dokumen Peminjaman</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +53,10 @@
                     <form action="/admin/updateRuangan/{{ $ruangan_order['id_pesanan_ruangan'] }}" method="post">
                         @csrf
                         <tr>
+                            <input type="hidden" name="id_akun" value="{{ $ruangan_order['Akun_id_akun'] }}">
                             <td>{{ $iterator }}</td>
-                            <td>{{ $ruangan_order['username'] }}</td>
+                            <td>{{ $ruangan_order['username'] }} <span class="badge bg-info">{{ $ruangan_order['jabatan'] }}</span></td>
+
                             <td>
                                 <div class="form-check">
                                     <input name="status_dokumen" class="form-check-input" type="checkbox" id="flexCheckDefault"
@@ -65,9 +90,26 @@
                                     <option value="Gagal">Gagal</option>
                                 </select>
                             </td>
-                            <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
-                        </tr>
-                    </form>
+                            <td>
+                                <button type="submit" class="btn btn-primary">UPDATE</button>
+                            </td>
+                        </form>
+                        <td class="d-flex flex-column justify-content-center align-items-center">
+                            @if ($ruangan_order['dokumen_peminjaman'])
+                                <a class="btn btn-success" href="{{ $ruangan_order['dokumen_peminjaman'] }}" target="_blank">
+                                    Lihat Dokumen
+                                </a>
+                            @else
+                                <form action="uploadDokumenRuangan/{{ $ruangan_order['id_pesanan_ruangan'] }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-2">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="dokumen_peminjaman" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">UPLOAD</button>
+                                </form>
+                            @endif
+                        </td>
+                    </tr>
                     <div class="d-none">
                         {{ $iterator = $iterator + 1 }}
                     </div>
@@ -88,8 +130,10 @@
                     <th scope="col">Waktu Mulai</th>
                     <th scope="col">Waktu Selesai</th>
                     <th scope="col">Jenis Kendaraan</th>
+                    <th scope="col">Nomor Plat</th>
                     <th scope="col">Status Pesanan</th>
                     <th scope="col">Aksi</th>
+                    <th scope="col">Dokumen Peminjaman</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,8 +146,9 @@
                 <form action="/admin/updateKendaraan/{{ $kendaraan_order['id_pesanan_kendaraan'] }}" method="post">
                         @csrf
                         <tr>
+                            <input type="hidden" name="id_akun" value="{{ $kendaraan_order['Akun_id_akun'] }}">
                             <td>{{ $iterator }}</td>
-                            <td>{{ $kendaraan_order['username'] }}</td>
+                            <td>{{ $kendaraan_order['username'] }} <span class="badge bg-info">{{ $kendaraan_order['jabatan'] }}</span></td>
                             <td>
                                 <div class="form-check">
                                     <input name="status_dokumen" class="form-check-input" type="checkbox" id="flexCheckDefault"
@@ -124,6 +169,7 @@
                             <td><input name="waktu_mulai" type="time" value="{{ explode(" ", $kendaraan_order['waktu_mulai'])[1] }}" readonly="readonly"></td>
                             <td><input name="waktu_selesai" type="time" value="{{ explode(" ", $kendaraan_order['waktu_selesai'])[1] }}" readonly="readonly"></td>
                             <td><input name="jenis_kendaraan" type="text" value="{{ $kendaraan_order['jenis_kendaraan'] }}" readonly="readonly"></td>
+                            <td><input name="nomor_plat" type="text" value="{{ $kendaraan_order['nomor_plat'] }}" readonly="readonly"></td>
                             <td>
                                 <select name="status_pesanan" class="form-select" required
                                 @if ($kendaraan_order['status_dokumen'] == 0)
@@ -137,8 +183,26 @@
                                     <option value="Gagal">Gagal</option>
                                 </select>
                             </td>
-                            <td><button type="submit" class="btn btn-primary">UPDATE NOW</button></td>
-                        </tr>
+                            <td>
+                                <button type="submit" class="btn btn-primary">UPDATE</button>
+                            </td>
+                        </form>
+                        <td class="d-flex flex-column justify-content-center align-items-center">
+                            @if ($kendaraan_order['dokumen_peminjaman'])
+                                <a class="btn btn-success" href="{{ $kendaraan_order['dokumen_peminjaman'] }}" target="_blank">
+                                    Lihat Dokumen
+                                </a>
+                            @else
+                                <form action="uploadDokumenKendaraan/{{ $kendaraan_order['id_pesanan_kendaraan'] }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="mb-2">
+                                        <input class="form-control form-control-sm" id="formFileSm" type="file" name="dokumen_peminjaman" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-success w-100">UPLOAD</button>
+                                </form>
+                            @endif
+                        </td>
+                    </tr>
                     </form>
                     <div class="d-none">
                         {{ $iterator = $iterator + 1 }}

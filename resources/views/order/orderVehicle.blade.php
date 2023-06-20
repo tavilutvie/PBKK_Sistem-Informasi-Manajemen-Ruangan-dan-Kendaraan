@@ -31,13 +31,13 @@
     <div class="d-flex align-items-center justify-content-around flex-wrap">
         <div class="mb-2" style="width: 34rem;">
             <div class="container pb-3">
-                <h1 class="text-center text-dark">jenis_kendaraan</h1>
-                <h3 class="text-center text-dark py-2">nomor_plat</h3>
+                <h1 class="text-center text-dark">{{ $jenis_kendaraan }}</h1>
+                <h3 class="text-center text-dark py-2">{{ $nomor_plat }}</h3>
                 <img src="/src/img/{{ $jenis_kendaraan }}.webp" class="card-img-top rounded img-fluid" alt="Gambar kendaraan"
                     max-width>
             </div>
 
-            <form action="/orderKendaraan" method="post">
+            <form action="/orderKendaraan" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="d-none">
                     <input type="text" name="Kendaraan_id_kendaraan" value="{{ $id_kendaraan }}">
@@ -54,11 +54,14 @@
                     <label class="control-label" for="waktu_mulai">Jam Mulai Pemakaian</label>
                     <input class="form-control" id="waktu_mulai" name="waktu_mulai" placeholder="HH:MM" type="time" required/>
                 </div>
-                <div class="form-group py-2">
-                    <!-- Jam selesai pemakaian -->
+                <div class="form-group py-2"> <!-- Jam selesai pemakaian -->
                     <label class="control-label" for="waktu_selesai">Jam Selesai Pemakaian</label>
-                    <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM"
-                        type="time" required/>
+                    <input class="form-control" id="waktu_selesai" name="waktu_selesai" placeholder="HH:MM" type="time" required/>
+                </div>
+                <div class="form-group py">
+                    <label for="formFile" class="form-label">Dokumen Peminjaman</label>
+                    <input type="file" class="form-control" name="dokumen_peminjaman" accept=".pdf, .doc, .docx">
+                    <p class="p-3 bg-warning text-center rounded-bottom">Dokumen tidak wajib di-upload. Anda dapat menyerahkannya secara langsung pada Kantor Sarpras. Selama dokumen belum diterima, pesanan tidak akan diproses.</p>
                 </div>
                 <div class="d-flex justify-content-center w-100 px-5 my-5">
                     <button type="submit" class="btn btn-primary">Submit</button>

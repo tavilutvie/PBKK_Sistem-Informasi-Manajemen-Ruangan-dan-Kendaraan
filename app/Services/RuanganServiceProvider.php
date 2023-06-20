@@ -64,24 +64,6 @@ class RuanganServiceProvider
     }
 
     /**
-     * Get ruangan info by id
-     */
-    public function getRuanganById(int $id): ?array {
-        $ruangan = $this->ruangan_repository->getByID($id);
-
-    if(!$ruangan) return null;
-
-        $ruangan_row = [
-            'nama_ruangan' => $ruangan->nama_ruangan,
-            'jenis_ruangan' => $ruangan->jenis_ruangan,
-            'status_operasional' => $ruangan->status_operasional,
-            'kapasitas' => $ruangan->kapasitas
-        ];
-
-        return $ruangan_row;
-    }
-
-    /**
      * Get ruangan id from nama
      */
     public function getIdByRoomName(string $nama_ruangan) {

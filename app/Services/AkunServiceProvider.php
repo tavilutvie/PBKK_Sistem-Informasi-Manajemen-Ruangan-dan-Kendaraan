@@ -52,4 +52,48 @@ class AkunServiceProvider
 
         return $akun_data_array;
     }
+
+    /**
+     * Get jabatan
+     */
+    public function getJabatan(int $id) {
+        $akun_data = $this->akunRepository->getById($id);
+
+        $jabatan = $akun_data->jabatan;
+        return $jabatan;
+    }
+
+    /**
+     * Get daftar akun
+     */
+    public function getDaftarAkun()
+    {
+        $daftar_akun = $this->akunRepository->getAkunUserJoin();
+
+        $daftar_akun_array = [];
+        foreach ($daftar_akun as $akun) {
+            $daftar_akun_each = [
+                'email' => $akun->email,
+                'id_akun' => $akun->id_akun,
+                'is_verified' => $akun->is_verified,
+                'nama_belakang' => $akun->nama_belakang,
+                'nama_depan' => $akun->nama_depan,
+                'nomor_telepon' => $akun->nomor_telepon,
+                'nip' => $akun->nip,
+                'jabatan' => $akun->jabatan,
+                'foto_tanda_pengenal' => $akun->foto_tanda_pengenal
+            ];
+
+            array_push($daftar_akun_array, $daftar_akun_each);
+        }
+
+        return $daftar_akun_array;
+    }
+
+    /**
+     * Verifikasi akun
+     */
+    public function verifyAkun(int $id) {
+        $this->akunRepository->verify($id);
+    }
 }
