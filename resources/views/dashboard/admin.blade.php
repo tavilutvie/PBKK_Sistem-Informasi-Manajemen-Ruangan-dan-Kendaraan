@@ -92,6 +92,7 @@
                     <th scope="col">Waktu Mulai</th>
                     <th scope="col">Waktu Selesai</th>
                     <th scope="col">Jenis Kendaraan</th>
+                    <th scope="col">Nomor Plat</th>
                     <th scope="col">Status Pesanan</th>
                     <th scope="col">Aksi</th>
                 </tr>
@@ -128,6 +129,7 @@
                             <td><input name="waktu_mulai" type="time" value="{{ explode(" ", $kendaraan_order['waktu_mulai'])[1] }}" readonly="readonly"></td>
                             <td><input name="waktu_selesai" type="time" value="{{ explode(" ", $kendaraan_order['waktu_selesai'])[1] }}" readonly="readonly"></td>
                             <td><input name="jenis_kendaraan" type="text" value="{{ $kendaraan_order['jenis_kendaraan'] }}" readonly="readonly"></td>
+                            <td><input name="nomor_plat" type="text" value="{{ $kendaraan_order['nomor_plat'] }}" readonly="readonly"></td>
                             <td>
                                 <select name="status_pesanan" class="form-select" required
                                 @if ($kendaraan_order['status_dokumen'] == 0)
@@ -151,7 +153,7 @@
             </tbody>
         </table>
     <!--  -->
-    
+
         <div class="d-flex justify-content-center w-100 px-5 mt-4 mb-5">
             <a href="/logout" class="btn btn-primary">LOGOUT</a>
         </div>

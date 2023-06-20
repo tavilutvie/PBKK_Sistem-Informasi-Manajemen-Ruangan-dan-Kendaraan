@@ -24,11 +24,12 @@ class AdminController extends Controller
 
     public function adminLog()
     {
-        $jadwal_unfiltered = $this->admin_service_provider->getUnfilteredOrder();
+        $orders = $this->admin_service_provider->getUnfilteredOrder();
 
         return view('Dashboard/adminLog', [
             "page" => "Admin Log",
-            "orders" => $jadwal_unfiltered['order_list']
+            "ruangan_orders" => $orders['ruangan_order_list'],
+            "kendaraan_orders" => $orders['kendaraan_order_list']
         ]);
     }
 
