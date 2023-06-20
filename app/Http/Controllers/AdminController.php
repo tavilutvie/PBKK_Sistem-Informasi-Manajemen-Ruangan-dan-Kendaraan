@@ -37,7 +37,7 @@ class AdminController extends Controller
     {
         $orders = $this->admin_service_provider->getUnfilteredOrder();
 
-        view()->share('orders', $orders['order_list']);
+        view()->share('orders', $orders);
         $pdf = app('dompdf.wrapper');
         $pdf->loadView('dashboard/adminLog-pdf');
 

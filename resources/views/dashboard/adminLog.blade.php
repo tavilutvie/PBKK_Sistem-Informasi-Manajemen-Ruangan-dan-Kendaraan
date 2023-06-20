@@ -33,22 +33,20 @@
                      }}
                 </div>
                 @foreach ($ruangan_orders as $order)
-
-                        @csrf
-                        <tr>
-                            <td>{{ $iterator }}</td>
-                            <td><input name="nama" type="text" value="{{ $order['nama'] }}" readonly="readonly"></td>
-                            <td>{{ $order['username'] }}</td>
-                            <td><input name="tanggal_pesanan" type="date" value="{{ $order['tanggal'] }}" readonly="readonly"></td>
-                            <td><input name="waktu_mulai" type="time" value="{{ explode(" ", $order['waktu_mulai'])[1] }}" readonly="readonly"></td>
-                            <td><input name="waktu_selesai" type="time" value="{{ explode(" ", $order['waktu_selesai'])[1] }}" readonly="readonly"></td>
-                            <td><input name="status_pesanan" type="text" value="{{ $order['status_pesanan'] }}" readonly="readonly"></td>
-                            @if ($order['status_dokumen'] == 1)
-                                <td><input type="text" value="Dokumen Diterima" readonly="readonly"></td>
-                            @elseif ($order['status_dokumen'] == 0)
-                                <td><input type="text" value="Dokumen Belum Diterima" readonly="readonly"></td>
-                            @endif
-                        </tr>
+                    <tr>
+                        <td>{{ $iterator }}</td>
+                        <td><input name="nama" type="text" value="{{ $order['nama'] }}" readonly="readonly"></td>
+                        <td>{{ $order['username'] }}</td>
+                        <td><input name="tanggal_pesanan" type="date" value="{{ $order['tanggal'] }}" readonly="readonly"></td>
+                        <td><input name="waktu_mulai" type="time" value="{{ explode(" ", $order['waktu_mulai'])[1] }}" readonly="readonly"></td>
+                        <td><input name="waktu_selesai" type="time" value="{{ explode(" ", $order['waktu_selesai'])[1] }}" readonly="readonly"></td>
+                        <td><input name="status_pesanan" type="text" value="{{ $order['status_pesanan'] }}" readonly="readonly"></td>
+                        @if ($order['status_dokumen'] == 1)
+                            <td><input type="text" value="Dokumen Diterima" readonly="readonly"></td>
+                        @elseif ($order['status_dokumen'] == 0)
+                            <td><input type="text" value="Dokumen Belum Diterima" readonly="readonly"></td>
+                        @endif
+                    </tr>
 
                     <div class="d-none">
                         {{ $iterator = $iterator + 1 }}
