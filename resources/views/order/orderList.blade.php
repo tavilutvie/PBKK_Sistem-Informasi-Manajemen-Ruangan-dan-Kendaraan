@@ -57,7 +57,9 @@
                         <td>{{ explode(' ', $pesanan_ruangan['waktu_selesai'])[1] }}</td>
                         <td>{{ $pesanan_ruangan['status_dokumen'] }}</td>
                         <td>{{ $pesanan_ruangan['status_pesanan'] }}</td>
-                        <td><button type="submit" class="btn btn-primary">Batalkan</button></td>
+                        <td><button type="submit" class="btn btn-primary" @if ($pesanan_ruangan['status_pesanan'] == "Dibatalkan")
+                        disabled
+                        @endif>Batalkan</button></td>
                     </tr>
                 </form>
             @endforeach
@@ -97,7 +99,9 @@
                         <td>{{ explode(' ', $pesanan_kendaraan['waktu_selesai'])[1] }}</td>
                         <td>{{ $pesanan_kendaraan['status_dokumen'] }}</td>
                         <td>{{ $pesanan_kendaraan['status_pesanan'] }}</td>
-                        <td><button type="submit" class="btn btn-primary">Batalkan</button></td>
+                        <td><button type="submit" class="btn btn-primary" @if ($pesanan_kendaraan['status_pesanan'] == "Dibatalkan")
+                        disabled
+                        @endif>Batalkan</button></td>
                     </tr>
                 </form>
             @endforeach

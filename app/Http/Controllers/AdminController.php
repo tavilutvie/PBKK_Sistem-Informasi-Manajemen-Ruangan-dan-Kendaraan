@@ -20,6 +20,7 @@ class AdminController extends Controller
             "ruangan_orders" => $jadwal_filtered['ruangan_order_list'],
             "kendaraan_orders" => $jadwal_filtered['kendaraan_order_list']
         ]);
+
     }
 
     public function getUnverified()

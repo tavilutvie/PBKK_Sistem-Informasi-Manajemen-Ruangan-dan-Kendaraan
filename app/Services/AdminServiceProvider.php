@@ -140,6 +140,7 @@ class AdminServiceProvider
         $ruangan_order_list = $this->pesanan_ruangan_service_provider->getListOrder();
         $kendaraan_order_list = $this->pesanan_kendaraan_service_provider->getListOrder();
 
+        // dd($kendaraan_order_list);
         $filtered_ruangan_order_list = $this->filterRuanganOrderList($ruangan_order_list);
         $filtered_kendaraan_order_list = $this->filterKendaraanOrderList($kendaraan_order_list);
 
