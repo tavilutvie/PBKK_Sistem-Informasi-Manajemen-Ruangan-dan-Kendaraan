@@ -22,7 +22,7 @@
 <div class="container pt-4">
     <h1 class="text-center text-dark border-5 py-2">Verifikasi Akun</h1>
 
-    <a href="/admin" class="btn btn-primary">Back to Index</a>
+    <a href="/admin" class="btn btn-primary">Back to Admin Page</a>
 
     <h2 class="text-center text-dark border-5 py-1">LIST AKUN BELUM TERVERIFIKASI</h2>
 

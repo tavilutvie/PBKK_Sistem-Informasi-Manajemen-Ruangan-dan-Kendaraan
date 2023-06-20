@@ -24,9 +24,7 @@
     <h1 class="text-center text-dark border-5 py-2">ADMIN PAGE</h1>
 
     <a href="/adminVerifyAccount" class="btn btn-primary">Verify Account</a>
-    <div class="d-flex justify-content-left w-100 px-5 mt-4 mb-3">
-        <a href="/adminLog" class="btn btn-primary">ADMIN LOG</a>
-    </div>
+    <a href="/adminLog" class="btn btn-primary">Admin Log</a>
 
     <!-- RUANGAN -->
     <h2 class="text-center text-dark border-5 py-1">LIST PEMESANAN RUANGAN</h2>
