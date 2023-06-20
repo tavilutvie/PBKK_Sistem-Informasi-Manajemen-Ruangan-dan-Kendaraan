@@ -26,6 +26,7 @@ class AkunsSeeder extends Seeder
 
         Akuns::create([
             'is_admin' => true,
+            'is_verified' => true,
             'nama_depan' => 'admin',
             'nama_belakang' => 'damas',
             'nomor_telepon' => '081234567890',
