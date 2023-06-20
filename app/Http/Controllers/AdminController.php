@@ -164,7 +164,7 @@ class AdminController extends Controller
         if ($status_pesanan == 'Disetujui') {
 
             // get kendaraan id
-            $id_kendaraan = $this->admin_service_provider->getKendaraanId($request->jenis_kendaraan);
+            $id_kendaraan = $this->admin_service_provider->getKendaraanId($request->jenis_kendaraan)['id_kendaraan'];
             $jadwal_data = [
                 'tanggal_pesanan' => $request->tanggal_pesanan,
                 'waktu_mulai' => $request->waktu_mulai,

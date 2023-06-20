@@ -78,20 +78,4 @@ class PesananKendaraanRepository
 
         return $pesanan_kendaraan;
     }
-
-    /**
-     * Delete Order Kendaraan by id
-     */
-    public function delete(int $id)
-    {
-        $pesanan_kendaraan = PesananKendaraan::where('id_pesanan_kendaraan', $id)->first();
-
-        if(!$pesanan_kendaraan) {
-            return null;
-        }
-
-        $pesanan_kendaraan->delete();
-
-        return $pesanan_kendaraan;
-    }
 }

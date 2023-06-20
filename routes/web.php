@@ -51,6 +51,8 @@ Route::controller(OrderController::class)->group(function() {
     Route::post('/orderKendaraan', 'orderKendaraan')->middleware(['auth'])->name('orderKendaraan');
     Route::post('/uploadDokumenRuangan/{id}', 'uploadDokumenRuangan')->middleware(['auth'])->name('uploadDokumenRuangan');
     Route::post('/uploadDokumenKendaraan/{id}', 'uploadDokumenKendaraan')->middleware(['auth'])->name('uploadDokumenKendaraan');
+    Route::post('/orderList/deleteRuangan/{id}', 'deleteRuangan')->middleware(['auth'])->name('deleteRuangan');
+    Route::post('/orderList/deleteKendaraan/{id}', 'deleteKendaraan')->middleware(['auth'])->name('deleteKendaraan');
 });
 
 Route::controller(AdminController::class)->group(function() {

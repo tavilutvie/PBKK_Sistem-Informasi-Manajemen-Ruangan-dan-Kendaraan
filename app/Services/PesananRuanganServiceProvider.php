@@ -3,17 +3,17 @@
 namespace App\Services;
 
 use App\Repositories\PesananRuanganRepository;
+use App\Services\RuanganServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-
-use App\Services\AkunServiceProvider;
 
 class PesananRuanganServiceProvider
 {
     public function __construct(
         private PesananRuanganRepository $pesanan_ruangan_repository,
-        private AkunServiceProvider $akun_service_provider
+        private AkunServiceProvider $akun_service_provider,
+        private RuanganServiceProvider $ruangan_service_provider
     ) {}
 
     /**
@@ -29,6 +29,8 @@ class PesananRuanganServiceProvider
             $id_akun = $pesanan_ruangan->Akun_id_akun;
             $jabatan = $this->akun_service_provider->getJabatan($id_akun);
 
+            $nama_ruangan = $this->ruangan_service_provider->getDetailRuangan($pesanan_ruangan->Ruangan_id_ruangan)['nama_ruangan'];
+
             $pesanan_ruangan_row = [
                 'id_pesanan_ruangan' => $pesanan_ruangan->id_pesanan_ruangan,
                 'Akun_id_akun' => $id_akun,
@@ -38,6 +40,7 @@ class PesananRuanganServiceProvider
                 'status_dokumen' => $pesanan_ruangan->status_dokumen,
                 'waktu_mulai' => $pesanan_ruangan->waktu_mulai,
                 'waktu_selesai' => $pesanan_ruangan->waktu_selesai,
+                'nama_ruangan' => $nama_ruangan,
                 'dokumen_peminjaman' => $pesanan_ruangan->dokumen_peminjaman,
             ];
             array_push($pesanan_ruangan_all, $pesanan_ruangan_row);
@@ -133,5 +136,28 @@ class PesananRuanganServiceProvider
         $this->pesanan_ruangan_repository->update($data, $id);
 
         return $data;
+    }
+
+    /**
+     * Get Detail ruangan
+     */
+    public function getDetailRuangan(int $id)
+    {
+        return $this->ruangan_service_provider->getDetailRuangan($id);
+    }
+
+    /**
+     * Cancel Ruangan Order
+     */
+    public function cancelRuanganOrder(int $id) {
+
+        $pesanan_ruangan = [
+            'id_pesanan_ruangan' => $id,
+            'status_pesanan' => 'Dibatalkan',
+        ];
+
+        $this->pesanan_ruangan_repository->update($pesanan_ruangan);
+
+        return;
     }
 }

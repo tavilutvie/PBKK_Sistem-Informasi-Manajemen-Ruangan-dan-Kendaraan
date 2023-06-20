@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 use App\Services\AkunServiceProvider;
+use App\Services\KendaraanServiceProvider;
 
 class PesananKendaraanServiceProvider
 {
     public function __construct(
         private PesananKendaraanRepository $pesanan_kendaraan_repository,
-        private AkunServiceProvider $akun_service_provider
+        private AkunServiceProvider $akun_service_provider,
+        private KendaraanServiceProvider $kendaraan_service_provider
     ) {}
 
     /**
@@ -27,6 +29,8 @@ class PesananKendaraanServiceProvider
             $id_akun = $pesanan_kendaraan->Akun_id_akun;
             $jabatan = $this->akun_service_provider->getJabatan($id_akun);
 
+            $jenis_kendaraan = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['jenis_kendaraan'];
+            $nomor_plat = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['nomor_plat'];
             $pesanan_kendaraan_row = [
                 'id_pesanan_kendaraan' => $pesanan_kendaraan->id_pesanan_kendaraan,
                 'Akun_id_akun' => $id_akun,
@@ -37,6 +41,8 @@ class PesananKendaraanServiceProvider
                 'waktu_mulai' => $pesanan_kendaraan->waktu_mulai,
                 'waktu_selesai' => $pesanan_kendaraan->waktu_selesai,
                 'dokumen_peminjaman' => $pesanan_kendaraan->dokumen_peminjaman,
+                'jenis_kendaraan' => $jenis_kendaraan,
+                'nomor_plat' => $nomor_plat,
             ];
             array_push($pesanan_kendaraan_all, $pesanan_kendaraan_row);
         }
@@ -131,5 +137,27 @@ class PesananKendaraanServiceProvider
         $this->pesanan_kendaraan_repository->update($data);
 
         return $data;
+    }
+
+    /**
+     * Get detail kendaraan
+     */
+    public function getDetailKendaraan(int $id)
+    {
+        return $this->kendaraan_service_provider->getDetailKendaraan($id);
+    }
+
+    /**
+     * Cancel kendaraan order
+     */
+    public function cancelKendaraanOrder(int $id) {
+        $pesanan_kendaraan = [
+            'id_pesanan_kendaraan' => $id,
+            'status_pesanan' => 'Dibatalkan',
+        ];
+
+        $this->pesanan_kendaraan_repository->update($pesanan_kendaraan);
+
+        return;
     }
 }
