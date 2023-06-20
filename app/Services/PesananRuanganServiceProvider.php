@@ -133,7 +133,6 @@ class PesananRuanganServiceProvider
             $doc_path = Storage::url('documents/ruangan/' . $file_name);
         }
 
-        $doc_path != "" ? $status_dokumen = true : $status_dokumen = false;
         if ($doc_path != "") {
             $status_dokumen = true;
             $status_pesanan = "Pengecekan Dokumen";
