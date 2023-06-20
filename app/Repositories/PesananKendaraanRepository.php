@@ -45,6 +45,14 @@ class PesananKendaraanRepository
     }
 
     /**
+     * Get Order Kendaraan by akun id
+     */
+    public function getByIdAkun(int $id_akun)
+    {
+        return PesananKendaraan::where('Akun_id_akun', $id_akun)->get();
+    }
+
+    /**
      * Get Order Kendaraan by Kendaraan_id_kendaraan
      */
     public function getByIdKendaraan(int $id_kendaraan)

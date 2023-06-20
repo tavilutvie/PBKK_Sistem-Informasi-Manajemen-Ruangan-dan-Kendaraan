@@ -19,8 +19,9 @@ class OrderController extends Controller
      * Get all orders.
      */
     public function list() {
-        $pesanan_ruangan = $this->pesanan_ruangan_service_provider->getListOrder();
-        $pesanan_kendaraan = $this->pesanan_kendaraan_service_provider->getListOrder();
+        $id_akun = auth()->user()->akun->id_akun;
+        $pesanan_ruangan = $this->pesanan_ruangan_service_provider->getListOrderWithId($id_akun);
+        $pesanan_kendaraan = $this->pesanan_kendaraan_service_provider->getListOrderWithId($id_akun);
 
         return view('Order\orderList', [
             'page' => 'Order List',

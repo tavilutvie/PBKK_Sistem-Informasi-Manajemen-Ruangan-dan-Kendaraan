@@ -19,6 +19,43 @@ class PesananKendaraanServiceProvider
     ) {}
 
     /**
+     * Get pesanan with id
+     */
+    public function getListOrderWithId(int $id_akun) {
+        $pesanan_kendaraans = $this->pesanan_kendaraan_repository->getByIdAkun($id_akun);
+
+        if($pesanan_kendaraans == null) {
+            return [];
+        }
+
+        $pesanan_kendaraan_all = [];
+        foreach ($pesanan_kendaraans as $pesanan_kendaraan) {
+            $jabatan = $this->akun_service_provider->getJabatan($id_akun);
+
+            $jenis_kendaraan = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['jenis_kendaraan'];
+            $nomor_plat = $this->kendaraan_service_provider->getDetailKendaraan($pesanan_kendaraan->Kendaraan_id_kendaraan)['nomor_plat'];
+
+            $pesanan_kendaraan_row = [
+                'id_pesanan_kendaraan' => $pesanan_kendaraan->id_pesanan_kendaraan,
+                'Akun_id_akun' => $id_akun,
+                'jabatan' => $jabatan,
+                'Kendaraan_id_kendaraan' => $pesanan_kendaraan->Kendaraan_id_kendaraan,
+                'status_pesanan' => $pesanan_kendaraan->status_pesanan,
+                'status_dokumen' => $pesanan_kendaraan->status_dokumen,
+                'waktu_mulai' => $pesanan_kendaraan->waktu_mulai,
+                'waktu_selesai' => $pesanan_kendaraan->waktu_selesai,
+                'jenis_kendaraan' => $jenis_kendaraan,
+                'nomor_plat' => $nomor_plat,
+                'dokumen_peminjaman' => $pesanan_kendaraan->dokumen_peminjaman
+            ];
+
+            array_push($pesanan_kendaraan_all, $pesanan_kendaraan_row);
+        }
+
+        return $pesanan_kendaraan_all;
+    }
+
+    /**
      * Get All pesanan kendaraan
      */
     public function getListOrder() {

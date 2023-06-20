@@ -8,13 +8,53 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
+use App\Services\JadwalSewaRuanganServiceProvider;
+use App\Services\AkunServiceProvider;
+
 class PesananRuanganServiceProvider
 {
     public function __construct(
         private PesananRuanganRepository $pesanan_ruangan_repository,
         private AkunServiceProvider $akun_service_provider,
-        private RuanganServiceProvider $ruangan_service_provider
+        private RuanganServiceProvider $ruangan_service_provider,
+        private JadwalSewaRuanganServiceProvider $jadwal_sewa_ruangan_service_provider
     ) {}
+
+    /**
+     * Get pesanan with id
+     */
+    public function getListOrderWithId(int $id_akun) {
+        $pesanan_ruangans = $this->pesanan_ruangan_repository->getByIdAkun($id_akun);
+
+        if($pesanan_ruangans == null) {
+            return [];
+        }
+
+        $pesanan_ruangan_all = [];
+        foreach ($pesanan_ruangans as $pesanan_ruangan) {
+            $jabatan = $this->akun_service_provider->getJabatan($id_akun);
+
+            $id_ruangan = $pesanan_ruangan->Ruangan_id_ruangan;
+            $nama_ruangan = $this->ruangan_service_provider->getDetailRuangan($id_ruangan)['nama_ruangan'];
+
+            $pesanan_ruangan_row = [
+                'id_pesanan_ruangan' => $pesanan_ruangan->id_pesanan_ruangan,
+                'Akun_id_akun' => $id_akun,
+                'jabatan' => $jabatan,
+                'Ruangan_id_ruangan' => $pesanan_ruangan->Ruangan_id_ruangan,
+                'status_pesanan' => $pesanan_ruangan->status_pesanan,
+                'status_dokumen' => $pesanan_ruangan->status_dokumen,
+                'waktu_mulai' => $pesanan_ruangan->waktu_mulai,
+                'waktu_selesai' => $pesanan_ruangan->waktu_selesai,
+                'nama_ruangan' => $nama_ruangan,
+                'dokumen_peminjaman' => $pesanan_ruangan->dokumen_peminjaman
+            ];
+
+            array_push($pesanan_ruangan_all, $pesanan_ruangan_row);
+        }
+
+        return $pesanan_ruangan_all;
+    }
 
     /**
      * Get All pesanan ruangan

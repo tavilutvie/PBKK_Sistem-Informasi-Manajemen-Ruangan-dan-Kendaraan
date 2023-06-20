@@ -40,7 +40,15 @@ class PesananRuanganRepository
      */
     public function get(int $id)
     {
-        return PesananRuangan::where('id_pesanan_ruangan', $id)->first();
+        return PesananRuangan::where('id_pesanan_ruangan', $id)->get();
+    }
+
+    /**
+     * Get Order Ruangan by akun id
+     */
+    public function getByIdAkun(int $id_akun)
+    {
+        return PesananRuangan::where('Akun_id_akun', $id_akun)->get();
     }
 
     /**
